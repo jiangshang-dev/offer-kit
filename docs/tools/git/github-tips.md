@@ -134,7 +134,7 @@ GitHub 自带的 Explore 是一个非常强大且好用的功能，适合用来�
 4. GitHub Collections 类似一个收藏夹集合。比如 [Teaching materials for computational social science](https://github.com/collections/teaching-computational-social-science) 这个收藏夹就汇总了计算机课程相关的开源资源，[Learn to Code](https://github.com/collections/learn-to-code) 这个收藏夹就汇总了对你学习编程有帮助的一些仓库；
 5. ……
 
-![](https://oss.javaguide.cn/github/offerkit/github-explore.png)
+![](https://oss.javaguide.cn/github/javaguide/github-explore.png)
 
 ## GitHub Actions 很强大
 
@@ -144,7 +144,7 @@ GitHub 自带的 Explore 是一个非常强大且好用的功能，适合用来�
 
 GitHub Actions 有一个官方市场，上面有很多别人提交的 Actions，可以直接复用。
 
-![](https://oss.javaguide.cn/github/offerkit/image-20211227100147433.png)
+![](https://oss.javaguide.cn/github/javaguide/image-20211227100147433.png)
 
 ## 后记
 

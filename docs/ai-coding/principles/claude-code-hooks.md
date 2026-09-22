@@ -37,7 +37,7 @@ head:
 
 这两者的差别，可以先用一张图概括：
 
-![Prompt 提醒依赖上下文和模型记忆，Hooks 卡点通过自动触发、脚本审计和风险阻断保证动作发生](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/hooks-vs-prompts-guarantee.webp)
+![Prompt 提醒依赖上下文和模型记忆，Hooks 卡点通过自动触发、脚本审计和风险阻断保证动作发生](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-vs-prompts-guarantee.webp)
 
 我更愿意把 Hooks 理解成 Claude Code 工作流里的固定卡点。会话开始、用户提交 Prompt、工具调用前后、上下文压缩前后，都可以挂上对应的处理动作。
 
@@ -51,7 +51,7 @@ handler 也不限于 shell command，官方还支持 HTTP endpoint、MCP 工具�
 
 下图标出了常用触发点：
 
-![Claude Code Hooks 围绕 SessionStart、UserPromptSubmit、PreToolUse、PostToolUse、PermissionRequest 和 PreCompact 等生命周期节点自动执行](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/claude-code-hooks-lifecycle-map.webp)
+![Claude Code Hooks 围绕 SessionStart、UserPromptSubmit、PreToolUse、PostToolUse、PermissionRequest 和 PreCompact 等生命周期节点自动执行](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-code-hooks-lifecycle-map.webp)
 
 Hook handler 主要有五类：
 
@@ -71,7 +71,7 @@ Hook handler 主要有五类：
 
 五类 handler 的关系如下：
 
-![Hook handler 包括 command、http、mcp_tool、prompt 和 agent，优先使用稳定可审计的 command 脚本](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/hook-handler-types.webp)
+![Hook handler 包括 command、http、mcp_tool、prompt 和 agent，优先使用稳定可审计的 command 脚本](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hook-handler-types.webp)
 
 ## Hooks 到底解决了什么问题
 
@@ -442,7 +442,7 @@ chmod +x .claude/hooks/guard.sh
 
 如果想系统理解 Skills 和 Prompt、MCP、Function Calling 的分工，可以看 [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](/ai/agent/skills.html)。
 
-![Agent 执行链路](https://oss.javaguide.cn/github/offerkit/ai/skills/skill-agent-execution-link.webp)
+![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
 
 Hooks 在生命周期节点上自动执行动作，Skills 则把完成某类任务所需的说明、脚本和参考资料交给 Claude。两者可以按下表区分：
 

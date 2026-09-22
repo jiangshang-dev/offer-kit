@@ -62,7 +62,7 @@ List 实现消息队列功能太简单，像消息确认机制等功能还需要
 
 **Redis 2.0 引入了发布订阅 (Pub/Sub) 功能，解决了 List 实现消息队列没有广播机制的问题。**
 
-![Redis 发布订阅 (Pub/Sub) 功能](https://oss.javaguide.cn/github/offerkit/database/redis/redis-pub-sub.png)
+![Redis 发布订阅 (Pub/Sub) 功能](https://oss.javaguide.cn/github/javaguide/database/redis/redis-pub-sub.png)
 
 Pub/Sub 中引入了一个概念叫 **Channel（频道）**，发布订阅机制的实现就是基于这个 Channel 来做的。
 
@@ -75,7 +75,7 @@ Pub/Sub 涉及发布者（Publisher）和订阅者（Subscriber，也叫消费�
 
 我们这里启动 3 个 Redis 客户端来简单演示一下：
 
-![Pub/Sub 实现消息队列演示](https://oss.javaguide.cn/github/offerkit/database/redis/redis-pubsub-message-queue.png)
+![Pub/Sub 实现消息队列演示](https://oss.javaguide.cn/github/javaguide/database/redis/redis-pubsub-message-queue.png)
 
 Pub/Sub 既能单播又能广播，还支持 Channel 的简单正则匹配。
 
@@ -105,7 +105,7 @@ Redis 5.0 新增了 `Stream` 数据结构。这是一个基于 Radix Tree（基�
 
 `Stream` 的结构如下：
 
-![](https://oss.javaguide.cn/github/offerkit/database/redis/redis-stream-structure.png)
+![](https://oss.javaguide.cn/github/javaguide/database/redis/redis-stream-structure.png)
 
 这是一个有序的消息链表，每个消息都有一个唯一的 ID 和对应的内容。ID 是一个时间戳和序列号的组合，用来保证消息的唯一性和递增性。内容是一个或多个键值对（类似 Hash 基本数据类型），用来存储消息的数据。
 

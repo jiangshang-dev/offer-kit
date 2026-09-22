@@ -29,7 +29,7 @@ I/O（**I**nput/**O**utput） 即**输入／输出**。
 
 根据冯.诺依曼结构，计算机结构分为 5 大部分：运算器、控制器、存储器、输入设备、输出设备。
 
-![冯诺依曼体系结构](https://oss.javaguide.cn/github/offerkit/java/io/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9pcy1jbG91ZC5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70.jpeg)
+![冯诺依曼体系结构](https://oss.javaguide.cn/github/javaguide/java/io/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9pcy1jbG91ZC5ibG9nLmNzZG4ubmV0,size_16,color_FFFFFF,t_70.jpeg)
 
 输入设备（比如键盘）和输出设备（比如显示器）都属于外部设备。网卡、硬盘这种既可以属于输入设备，也可以属于输出设备。
 
@@ -99,7 +99,7 @@ Java NIO 中，基于非阻塞 `SelectableChannel` 和 `Selector` 的网络编�
 
 这个时候，**I/O 多路复用模型** 就上场了。
 
-![](https://oss.javaguide.cn/github/offerkit/java/io/88ff862764024c3b8567367df11df6ab~tplv-k3u1fbpfcp-watermark.png)
+![](https://oss.javaguide.cn/github/javaguide/java/io/88ff862764024c3b8567367df11df6ab~tplv-k3u1fbpfcp-watermark.png)
 
 IO 多路复用模型中，线程首先发起 select 调用，询问内核数据是否准备就绪，等内核把数据准备好了，用户线程再发起 read 调用。read 调用的过程（数据从内核空间 -> 用户空间）还是阻塞的。
 
@@ -112,7 +112,7 @@ IO 多路复用模型中，线程首先发起 select 调用，询问内核数据
 
 Java 中的 NIO，有一个非常重要的**选择器 ( Selector )** 的概念，也可以被称为 **多路复用器**。通过它，只需要一个线程便可以管理多个客户端连接。当客户端数据到了之后，才会为其服务。
 
-![Buffer、Channel和Selector三者之间的关系](https://oss.javaguide.cn/github/offerkit/java/nio/channel-buffer-selector.png)
+![Buffer、Channel和Selector三者之间的关系](https://oss.javaguide.cn/github/javaguide/java/nio/channel-buffer-selector.png)
 
 ### AIO (Asynchronous I/O)
 
@@ -120,13 +120,13 @@ AIO 通常指 NIO.2 在 Java 7 中引入的异步通道 API。NIO.2 除了异步
 
 异步通道的操作会直接返回，调用者可以通过 `Future` 获取结果，也可以传入 `CompletionHandler` 在操作完成后执行回调。
 
-![](https://oss.javaguide.cn/github/offerkit/java/io/3077e72a1af049559e81d18205b56fd7~tplv-k3u1fbpfcp-watermark.png)
+![](https://oss.javaguide.cn/github/javaguide/java/io/3077e72a1af049559e81d18205b56fd7~tplv-k3u1fbpfcp-watermark.png)
 
 目前来说 AIO 的应用还不是很广泛。Netty 之前也尝试使用过 AIO，不过又放弃了。这是因为，Netty 使用了 AIO 之后，在 Linux 系统上的性能并没有多少提升。
 
 最后，来一张图，简单总结一下 Java 中的 BIO、NIO、AIO。
 
-![BIO、NIO 和 AIO 对比](https://oss.javaguide.cn/github/offerkit/java/nio/bio-aio-nio.png)
+![BIO、NIO 和 AIO 对比](https://oss.javaguide.cn/github/javaguide/java/nio/bio-aio-nio.png)
 
 ## 参考
 

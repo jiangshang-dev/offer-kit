@@ -30,7 +30,7 @@ tag:
 
 起初的时候，自己就是玩玩流行蝴蝶剑、单机摩托之类的单机游戏。但是，也没有到沉迷的地步，只是觉得这东西确实挺好玩的，一玩就可以玩一下午，恋恋不舍。
 
-![](https://oss.javaguide.cn/github/offerkit/books2a6021b9-e7a0-41c4-b69e-a652f7bc3e12-20200802173601289.png)
+![](https://oss.javaguide.cn/github/javaguide/books2a6021b9-e7a0-41c4-b69e-a652f7bc3e12-20200802173601289.png)
 
 ## 小学毕业后开始有网瘾
 
@@ -46,7 +46,7 @@ QQ 飞车这款戏当时还挺火的，很多 90 后的小伙伴应该比较熟�
 
 到了初二的时候，就没玩 QQ 飞车了。我的等级也永久定格在了 **120** 级，这个等级在当时那个升级难的一匹的年代，算的上非常高的等级了。
 
-![](https://oss.javaguide.cn/offerkit/b488618c-3c25-4bc9-afd4-7324e27553bd-20200802175534614.png)
+![](https://oss.javaguide.cn/javaguide/b488618c-3c25-4bc9-afd4-7324e27553bd-20200802175534614.png)
 
 ## 初二网瘾爆发
 

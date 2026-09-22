@@ -151,7 +151,7 @@ head:
 
 **2、技术架构直接写技术名词就行，不要再介绍技术是干嘛的了，没意义，属于无效介绍。**
 
-![](https://oss.javaguide.cn/github/offerkit/interview-preparation/46c92fbc5160e65dd85c451143177144.png)
+![](https://oss.javaguide.cn/github/javaguide/interview-preparation/46c92fbc5160e65dd85c451143177144.png)
 
 **3、尽量减少纯业务的个人职责介绍，对于面试不太友好。尽量再多挖掘一些亮点（6~8 条个人职责介绍差不多了，做好筛选），最好可以体现自己的综合素质，比如你是如何协调项目组成员协同开发的或者在遇到某一个棘手的问题的时候你是如何解决的又或者说你在这个项目优化了某个模块的性能。**
 
@@ -197,7 +197,7 @@ head:
 
 **6、避免模糊性描述，介绍要具体（技术+场景+效果），也要注意精简语言（避免堆砌技术词，省略不必要的描述）。**
 
-![](https://oss.javaguide.cn/github/offerkit/interview-preparation/project-experience-avoiding-ambiguity-descriptio.png)
+![](https://oss.javaguide.cn/github/javaguide/interview-preparation/project-experience-avoiding-ambiguity-descriptio.png)
 
 ### 荣誉奖项（可选）
 

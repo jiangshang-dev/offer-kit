@@ -3,6 +3,7 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   { text: "后端面试", icon: "mdi:language-java", link: "/home.md" },
   { text: "计算机基础", icon: "mdi:desktop-classic", link: "/cs-basics/" },
+  { text: "软考", icon: "mdi:file-certificate-outline", link: "/ruankao/" },
   { text: "AI 应用", icon: "mdi:robot-outline", link: "/ai/" },
   { text: "AI 编程", icon: "mdi:code-tags", link: "/ai-coding/" },
   {

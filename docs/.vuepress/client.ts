@@ -9,6 +9,10 @@ const UnlockContent = defineAsyncComponent(
   () => import("./components/unlock/UnlockContent.vue"),
 );
 
+const PdfViewer = defineAsyncComponent(
+  () => import("./components/PdfViewer.vue"),
+);
+
 const CHUNK_LOAD_ERROR_PATTERN =
   /Failed to fetch dynamically imported module|Importing a module script failed|error loading dynamically imported module|Unable to preload CSS/i;
 
@@ -19,6 +23,7 @@ export default defineClientConfig({
   enhance({ app, router }) {
     app.component("Mermaid", LazyMermaid);
     app.component("UnlockContent", UnlockContent);
+    app.component("PdfViewer", PdfViewer);
 
     router.onError((error, to) => {
       if (typeof window === "undefined") return;

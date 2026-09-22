@@ -15,7 +15,7 @@ icon: "mdi:help-circle-outline"
 
 《OfferKit 面试突击版》在我的公众号后台回复“**PDF**”即可获取，免费的。除了 《OfferKit 面试突击版》之外，还会免费送你多本优质面试 PDF 手册。
 
-![公众号](https://oss.javaguide.cn/github/offerkit/gongzhonghaoxuanchuan.png)
+![公众号](https://oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
 
 ## 如何看待 OfferKit 的 star 数量很多？
 
