@@ -3,27 +3,33 @@
     <div class="pdf-toolbar">
       <span class="pdf-title">{{ title || "PDF 预览" }}</span>
       <div class="pdf-actions">
-        <a class="pdf-btn" :href="resolvedSrc" target="_blank" rel="noopener">
+        <a class="pdf-btn" :href="openHref" target="_blank" rel="noopener">
           新窗口打开
         </a>
-        <a class="pdf-btn ghost" :href="resolvedSrc" :download="downloadName">
+        <a
+          class="pdf-btn ghost"
+          :href="downloadSrc"
+          target="_blank"
+          rel="noopener"
+        >
           下载
         </a>
       </div>
     </div>
     <div class="pdf-frame-wrap">
       <iframe
+        v-if="previewSrc"
         class="pdf-frame"
-        :src="resolvedSrc"
+        :src="previewSrc"
         :title="title || 'PDF'"
-        loading="lazy"
       />
+      <div v-else class="pdf-status">{{ statusText }}</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, onBeforeUnmount, onMounted, ref, watch } from "vue";
 import { withBase } from "vuepress/client";
 
 const props = defineProps<{
@@ -31,22 +37,104 @@ const props = defineProps<{
   title?: string;
 }>();
 
-const resolvedSrc = computed(() => {
-  const raw = props.src.startsWith("http")
-    ? props.src
-    : withBase(encodeURI(props.src));
-  // Chrome/Safari 内置阅读器：带 #toolbar=1 便于翻页
-  return raw.includes("#") ? raw : `${raw}#toolbar=1&navpanes=0`;
-});
+const previewSrc = ref("");
+const statusText = ref("正在加载 PDF…");
+const blobUrl = ref("");
 
-const downloadName = computed(() => {
+const downloadSrc = computed(() =>
+  /^https?:\/\//i.test(props.src) ? props.src : withBase(encodeURI(props.src)),
+);
+
+const openHref = computed(() => previewSrc.value || downloadSrc.value);
+
+/**
+ * OSS 强制 attachment，需经同源 /__oss 代理改写为 inline。
+ * 生产环境路径要带 base，例如 /offer/__oss/...
+ */
+const toProxyPath = (src: string): string | null => {
   try {
-    const path = decodeURIComponent(props.src.split("/").pop() || "document.pdf");
-    return path;
+    if (!/^https?:\/\//i.test(src)) return null;
+    const u = new URL(src);
+    if (!u.hostname.includes("aliyuncs.com")) return null;
+    const encodedPath = u.pathname
+      .split("/")
+      .map((seg) => {
+        if (!seg) return "";
+        try {
+          return encodeURIComponent(decodeURIComponent(seg));
+        } catch {
+          return encodeURIComponent(seg);
+        }
+      })
+      .join("/");
+    // withBase 保证部署在 /offer/ 时请求 /offer/__oss/...
+    return withBase(`/__oss${encodedPath}${u.search}`);
   } catch {
-    return "document.pdf";
+    return null;
   }
-});
+};
+
+const revokeBlob = () => {
+  if (blobUrl.value) {
+    URL.revokeObjectURL(blobUrl.value);
+    blobUrl.value = "";
+  }
+};
+
+const looksLikePdf = (buf: ArrayBuffer) => {
+  const head = new Uint8Array(buf.slice(0, 5));
+  return (
+    head.length >= 5 &&
+    head[0] === 0x25 &&
+    head[1] === 0x50 &&
+    head[2] === 0x44 &&
+    head[3] === 0x46 &&
+    head[4] === 0x2d
+  ); // %PDF-
+};
+
+const loadPdf = async () => {
+  revokeBlob();
+  previewSrc.value = "";
+  statusText.value = "正在加载 PDF…";
+
+  const proxyPath = toProxyPath(props.src);
+  const candidates = [
+    proxyPath,
+    /^https?:\/\//i.test(props.src) ? props.src : null,
+    !/^https?:\/\//i.test(props.src) ? withBase(encodeURI(props.src)) : null,
+  ].filter(Boolean) as string[];
+
+  let lastError: unknown = null;
+
+  for (const fetchUrl of candidates) {
+    try {
+      const res = await fetch(fetchUrl, { credentials: "omit" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const buf = await res.arrayBuffer();
+      if (!looksLikePdf(buf)) {
+        throw new Error("响应不是 PDF（可能是 HTML 404 页）");
+      }
+      const url = URL.createObjectURL(
+        new Blob([buf], { type: "application/pdf" }),
+      );
+      blobUrl.value = url;
+      previewSrc.value = url;
+      statusText.value = "";
+      return;
+    } catch (err) {
+      lastError = err;
+    }
+  }
+
+  console.error("[PdfViewer]", lastError);
+  statusText.value =
+    "预览失败：生产环境请配置 Nginx /__oss 代理，或点击右上角「下载」。";
+};
+
+onMounted(loadPdf);
+watch(() => props.src, loadPdf);
+onBeforeUnmount(revokeBlob);
 </script>
 
 <style scoped>
@@ -111,6 +199,16 @@ const downloadName = computed(() => {
   border: 0;
   display: block;
   background: #525659;
+}
+
+.pdf-status {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  color: #e2e8f0;
+  text-align: center;
+  line-height: 1.6;
 }
 
 @media (max-width: 768px) {

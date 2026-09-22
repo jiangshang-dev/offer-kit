@@ -1,0 +1,22 @@
+# OfferKit 部署到 Nginx（子路径 /offer/）必改片段
+# 把下面两段合并进 xianggang_default.conf，然后重载 nginx
+
+# 1) 静态站点：try_files 必须回落到 /offer/index.html（你现在误写成了 /admin/）
+location /offer/ {
+    alias /var/www/offer/;
+    index index.html;
+    try_files $uri $uri/ /offer/index.html;
+}
+
+# 2) PDF 预览代理：绕过 OSS 强制下载（Content-Disposition: attachment）
+# 前端会请求 /offer/__oss/ruankao/xxx.pdf
+location /offer/__oss/ {
+    proxy_pass https://dinenova.oss-cn-beijing.aliyuncs.com/;
+    proxy_set_header Host dinenova.oss-cn-beijing.aliyuncs.com;
+    proxy_ssl_server_name on;
+    proxy_hide_header Content-Disposition;
+    proxy_hide_header x-oss-force-download;
+    add_header Content-Disposition "inline" always;
+    add_header Content-Type "application/pdf" always;
+    proxy_intercept_errors off;
+}

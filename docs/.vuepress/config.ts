@@ -11,7 +11,8 @@ const mermaidComponentPath = require.resolve(
 export default defineUserConfig({
   // Use DOCS_DEST for a one-off deployment build without changing the normal output.
   dest: process.env.DOCS_DEST ?? "./dist",
-  // 本地开发默认根路径；部署到 GitHub Pages 子目录时可设 BASE=/blog/
+  // 本地默认 /；线上挂在 nginx 子路径时必须带尾部斜杠，例如 BASE=/offer/
+  // 打包：BASE=/offer/ pnpm docs:build
   base: process.env.BASE ?? "/",
 
   title: "OfferKit",
@@ -54,6 +55,23 @@ export default defineUserConfig({
         preprocessorOptions: {
           scss: {
             silenceDeprecations: ["if-function"],
+          },
+        },
+      },
+      // 软考 PDF：OSS 强制 Content-Disposition: attachment，开发态经同源代理改为 inline 才能预览
+      server: {
+        proxy: {
+          "/__oss": {
+            target: "https://dinenova.oss-cn-beijing.aliyuncs.com",
+            changeOrigin: true,
+            secure: true,
+            rewrite: (path) => path.replace(/^\/__oss/, ""),
+            configure: (proxy) => {
+              proxy.on("proxyRes", (proxyRes) => {
+                proxyRes.headers["content-disposition"] = "inline";
+                delete proxyRes.headers["x-oss-force-download"];
+              });
+            },
           },
         },
       },

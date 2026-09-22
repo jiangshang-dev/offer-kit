@@ -106,6 +106,7 @@ const segmentDisplayNames = {
   rag: "RAG",
   redis: "Redis",
   rpc: "RPC",
+  ruankao: "软考",
   security: "安全",
   sql: "SQL",
   "system-design": "系统设计",
@@ -240,13 +241,13 @@ const buildSeoDescription = (page, app) => {
 };
 
 export default hopeTheme({
-  hostname: "https://alibabap8developer.github.io/myblog/",
+  hostname: "https://www.mianshi-offer.cn/offer/",
   logo: "/logo.png",
   favicon: "/favicon.ico",
 
   author: {
     name: "姜小白",
-    url: "https://alibabap8developer.github.io/myblog/",
+    url: "https://www.mianshi-offer.cn/offer/",
   },
 
   repo: "https://github.com/jiangshang-dev?tab=repositories",
@@ -295,8 +296,8 @@ export default hopeTheme({
   plugins: {
     blog: true,
     seo: {
-      canonical: "https://alibabap8developer.github.io/myblog/",
-      fallBackImage: "https://alibabap8developer.github.io/myblog/logo.png",
+      canonical: "https://www.mianshi-offer.cn/offer/",
+      fallBackImage: "https://www.mianshi-offer.cn/offer/logo.png",
       ogp: (ogp, page, app) => ({
         ...ogp,
         "og:description": buildSeoDescription(page, app),
@@ -317,14 +318,14 @@ export default hopeTheme({
               "@type": "WebSite",
               name: "OfferKit",
               alternateName: "Java 面试指南",
-              url: "https://alibabap8developer.github.io/myblog/",
+              url: "https://www.mianshi-offer.cn/offer/",
               inLanguage: "zh-CN",
               description:
                 "OfferKit 是一份 Java 面试和后端通用面试指南，覆盖 Java、MySQL、Redis、Spring、分布式和系统设计等核心知识。",
               publisher: {
                 "@type": "Person",
                 name: "姜小白",
-                url: "https://alibabap8developer.github.io/myblog/",
+                url: "https://www.mianshi-offer.cn/offer/",
               },
             }),
           ]);

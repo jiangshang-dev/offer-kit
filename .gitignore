@@ -27,3 +27,6 @@ dist.zip
 /TODO
 docs/ai/MATERIALS.md
 /.agents
+
+# 软考 PDF 本地镜像（由 scripts/sync-ruankao-pdfs.mjs 从 OSS 拉取）
+docs/.vuepress/public/ruankao/

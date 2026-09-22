@@ -16,9 +16,17 @@ ulimit -n 65536
 CHOKIDAR_USEPOLLING=1 pnpm docs:dev
 ```
 
-验证码（公众号自动回复）：`888666`
+## 打包
+```bash
+cd /Users/xiaobai/Deveploer/workspace/lingxi/blog
+pnpm docs:build:offer
+# 等价于：BASE=/offer/ pnpm docs:build
+```
+
+关注公众号「架构师姜小白」，回复「验证码」解锁。
 
 ## 相关链接
 
 - GitHub: https://github.com/jiangshang-dev?tab=repositories
 - 博客: https://alibabap8developer.github.io/myblog/
+
