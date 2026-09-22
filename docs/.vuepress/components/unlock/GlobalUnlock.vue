@@ -28,7 +28,7 @@
 
             <div class="qr-container">
               <img
-                :src="config.qrCodeUrl"
+                :src="qrCodeSrc"
                 alt="公众号二维码"
                 class="qr-image"
               />
@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
 import { computed, nextTick, onMounted, ref, watch } from "vue";
-import { usePageData } from "vuepress/client";
+import { usePageData, withBase } from "vuepress/client";
 import {
   PREVIEW_HEIGHT,
   unlockConfig as config,
@@ -81,6 +81,13 @@ const showDialog = ref(false);
 const hasAppliedLock = ref(false);
 const teleportTargetSelector = ref<string | null>(null);
 const globalUnlockKey = `offerkit_site_unlocked_${config.unlockVersion ?? "v1"}`;
+
+const qrCodeSrc = computed(() => {
+  const url = config.qrCodeUrl || "";
+  if (!url) return "";
+  if (/^https?:\/\//i.test(url)) return url;
+  return withBase(url);
+});
 
 const normalizePath = (path: string) =>
   path.replace(/\/$/, "").replace(".html", "").toLowerCase();

@@ -17,7 +17,7 @@
         </p>
 
         <div class="qr-container">
-          <img :src="qrCodeUrl" alt="公众号二维码" class="qr-image" />
+          <img :src="resolvedQrCodeUrl" alt="公众号二维码" class="qr-image" />
           <p class="qr-tip">
             扫码关注「{{ unlockConfig.accountName }}」，回复
             <span class="highlight">“验证码”</span>
@@ -48,6 +48,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
+import { withBase } from "vuepress/client";
 import { PREVIEW_HEIGHT, unlockConfig } from "../../features/unlock/config";
 
 const props = defineProps({
@@ -69,6 +70,13 @@ const isUnlocked = ref(false);
 const inputCode = ref("");
 const showError = ref(false);
 const globalUnlockKey = `offerkit_site_unlocked_${unlockConfig.unlockVersion ?? "v1"}`;
+
+const resolvedQrCodeUrl = computed(() => {
+  const url = props.qrCodeUrl || "";
+  if (!url) return "";
+  if (/^https?:\/\//i.test(url)) return url;
+  return withBase(url);
+});
 
 onMounted(() => {
   isUnlocked.value = localStorage.getItem(globalUnlockKey) === "true";

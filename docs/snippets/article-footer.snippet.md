@@ -6,6 +6,6 @@
 
 ::: center
 
-<img class="article-footer-qrcode" src="/wechat-qrcode.jpg" alt="架构师姜小白公众号" />
+![架构师姜小白公众号](/wechat-qrcode.jpg)
 
 :::
