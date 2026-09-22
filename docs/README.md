@@ -3,7 +3,10 @@ home: true
 icon: "mdi:home-outline"
 title: 灵犀面试（Java 面试 & 后端知识体系）
 description: 灵犀面试是姜小白整理的 Java 面试与后端知识体系，覆盖 Java、计算机基础、数据库、分布式、高并发、高可用、系统设计与 AI 应用开发，适合校招、社招与跳槽复习。
-heroImage: /logo.svg
+heroImage: /logo.png
+heroImageStyle:
+  width: 128px
+  height: 128px
 heroText: 灵犀面试
 tagline: 姜小白的后端面试笔记 · 关注公众号「架构师姜小白」解锁全文
 sitemap:
