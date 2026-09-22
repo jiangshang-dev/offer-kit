@@ -1,13 +1,13 @@
 ---
 home: true
 icon: "mdi:home-outline"
-title: 灵犀面试（Java 面试 & 后端知识体系）
-description: 灵犀面试是姜小白整理的 Java 面试与后端知识体系，覆盖 Java、计算机基础、数据库、分布式、高并发、高可用、系统设计与 AI 应用开发，适合校招、社招与跳槽复习。
+title: OfferKit（Java 面试 & 后端知识体系）
+description: OfferKit 是姜小白整理的 Java 面试与后端知识体系，覆盖 Java、计算机基础、数据库、分布式、高并发、高可用、系统设计与 AI 应用开发，适合校招、社招与跳槽复习。
 heroImage: /logo.png
 heroImageStyle:
   width: 128px
   height: 128px
-heroText: 灵犀面试
+heroText: OfferKit
 tagline: 姜小白的后端面试笔记 · 关注公众号「架构师姜小白」解锁全文
 sitemap:
   changefreq: weekly
@@ -15,7 +15,7 @@ sitemap:
 head:
   - - meta
     - name: keywords
-      content: 灵犀面试,姜小白,Java面试,Java面试指南,Java八股文,后端面试,后端开发,数据库面试,MySQL面试,Redis面试,分布式,高并发,高性能,高可用,系统设计,消息队列,缓存,计算机网络,Linux,AI面试,AI应用开发
+      content: OfferKit,姜小白,Java面试,Java面试指南,Java八股文,后端面试,后端开发,数据库面试,MySQL面试,Redis面试,分布式,高并发,高性能,高可用,系统设计,消息队列,缓存,计算机网络,Linux,AI面试,AI应用开发
 actions:
   - text: 开始阅读
     link: /home.md
@@ -23,7 +23,7 @@ actions:
   - text: 关于作者
     link: /about-the-author/
     type: default
-footer: 灵犀面试 · 关注公众号「架构师姜小白」获取验证码解锁全文
+footer: OfferKit · 关注公众号「架构师姜小白」获取验证码解锁全文
 ---
 
 <!-- markdownlint-disable MD033 -->

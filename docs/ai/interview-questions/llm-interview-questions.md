@@ -14,7 +14,7 @@ head:
 
 一次大模型调用从 Token 化开始，经过上下文组装和采样生成，再由后端处理流式返回、限流、重试、结构化解析和日志。基础面试题会沿着这条调用链路追问成本、延迟、稳定性和安全问题。
 
-题目按 JavaGuide 大模型基础专题的章节分组，详细原理和工程示例放在对应文章中。这里保留考点和问题，方便集中复习。
+题目按 OfferKit 大模型基础专题的章节分组，详细原理和工程示例放在对应文章中。这里保留考点和问题，方便集中复习。
 
 ## LLM 运行机制
 
@@ -33,7 +33,7 @@ Token、上下文窗口和采样参数共同影响一次调用能放入多少信
 - Token 预算怎么估算？输入、输出、历史消息、RAG 证据如何取舍？
 - 长上下文窗口会不会取代 RAG？二者分别适合什么场景？
 
-![Token 化过程示例](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-token-process.png)
+![Token 化过程示例](https://oss.javaguide.cn/github/offerkit/ai/llm/llm-token-process.png)
 
 ## API 调用工程
 

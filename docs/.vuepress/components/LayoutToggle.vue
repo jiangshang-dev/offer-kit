@@ -36,13 +36,13 @@ import { usePageData } from "vuepress/client";
 const isHidden = ref(false);
 const pageData = usePageData();
 
-const STORAGE_KEY = "lingxi-layout-hidden";
-const IMMERSIVE_TITLE = "灵犀面试 - 沉浸式阅读中";
+const STORAGE_KEY = "offerkit-layout-hidden";
+const IMMERSIVE_TITLE = "OfferKit - 沉浸式阅读中";
 
 // 计算当前页面的原始标题
 const originalTitle = computed(() => {
   const title = pageData.value.title;
-  const siteTitle = "灵犀面试";
+  const siteTitle = "OfferKit";
   return title ? `${title} | ${siteTitle}` : siteTitle;
 });
 

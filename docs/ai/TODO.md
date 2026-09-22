@@ -53,7 +53,7 @@ head:
 | 文件名                     | 标题                                                                   | 写作顺序                                   |
 | -------------------------- | ---------------------------------------------------------------------- | ------------------------------------------ |
 | `framework/README.md`      | AI 框架专题：Spring AI、LangChain4j 与 AI Workflow 工程落地            | 先补目录入口，避免 `framework/` 长期空置   |
-| `spring-ai.md`             | Spring AI 入门与实战：Java 后端如何接入大模型                          | 先写，贴合 JavaGuide 读者群体              |
+| `spring-ai.md`             | Spring AI 入门与实战：Java 后端如何接入大模型                          | 先写，贴合 OfferKit 读者群体              |
 | `langchain4j.md`           | LangChain4j 实战：Java 应用如何构建 RAG 和 Agent                       | 第二篇                                     |
 | `ai-workflow-framework.md` | LangGraph / Spring AI Alibaba Graph：AI Workflow、Graph、Loop 如何落地 | 第三篇，与 workflow-graph-loop.md 互相引用 |
 
@@ -66,7 +66,7 @@ head:
 
 ## 建议下一步实际动手顺序
 
-1. `system-design/llm-security.md`：JavaGuide 读者对安全话题接受度高，可以从传统 Web 安全自然过渡到 AI 新攻击面。
+1. `system-design/llm-security.md`：OfferKit 读者对安全话题接受度高，可以从传统 Web 安全自然过渡到 AI 新攻击面。
 2. `system-design/ai-observability.md`：能和 `harness-engineering.md`、`rag-optimization.md`、`llm-evaluation.md` 接上，形成“调试 -> 评测 -> 观测”闭环。
 3. `agent/tool-calling.md`：把 Function Calling、MCP Tool、权限审批和工具执行链路单独讲透，后续安全和系统设计都能复用。
 4. `framework/README.md` + `framework/spring-ai.md`：`framework/` 目前为空，先补 Java 读者最容易用上的 Spring AI。

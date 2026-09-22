@@ -1,8 +1,6 @@
-# 灵犀面试
+# OfferKit
 
 姜小白的 Java / 后端面试笔记站点，基于 VuePress + vuepress-theme-hope。
-
-面试题内容整理自开源资料，站点品牌、主题样式与全文解锁逻辑为独立定制。
 
 ## 功能
 
@@ -14,10 +12,11 @@
 
 ```bash
 pnpm install
-pnpm docs:dev
+ulimit -n 65536
+CHOKIDAR_USEPOLLING=1 pnpm docs:dev
 ```
 
-关注公众号后获取验证码
+验证码（公众号自动回复）：`888666`
 
 ## 相关链接
 

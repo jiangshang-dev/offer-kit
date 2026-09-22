@@ -12,7 +12,7 @@ head:
 
 我平时用 Claude Code，经常会同时开几个会话：一个开发新功能，一个重构，一个跑测试，一个看报错，另一个整理 PR 评论或补文档。
 
-![开启多个命令行窗口，让多个 Agent 在不同会话中并行](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/multi-agent-parallel-sessions.png)
+![开启多个命令行窗口，让多个 Agent 在不同会话中并行](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/multi-agent-parallel-sessions.png)
 
 以前这么用其实挺累。我一般会在 Ghostty 里开多个分屏，再配上几个终端标签页。窗口铺得满满当当，看起来像是把并行效率拉满了，脑子里却一直要记着：哪个会话还在跑？哪个已经完成？哪个卡在权限确认？哪个报错了？
 
@@ -24,8 +24,8 @@ Anthropic 前段时间推出的 **Agent View**，正好接手了这件麻烦事�
 
 如果你还不熟悉 Claude Code，可以先看看下面两篇：
 
-- [《Claude Code 使用指南》](https://javaguide.cn/ai-coding/practices/claudecode-tips.html)：Sub-Agent 子代理、多实例协作（Multi-Claude）、CLAUDE.md 配置等
-- [《Claude Code 核心命令详解》](https://javaguide.cn/ai-coding/practices/claudecode-commands.html)：`/simplify`、`/loop`、`/batch` 等命令的实战用法
+- [《Claude Code 使用指南》](/ai-coding/practices/claudecode-tips.html)：Sub-Agent 子代理、多实例协作（Multi-Claude）、CLAUDE.md 配置等
+- [《Claude Code 核心命令详解》](/ai-coding/practices/claudecode-commands.html)：`/simplify`、`/loop`、`/batch` 等命令的实战用法
 
 ## 怎么打开 Agent View
 
@@ -41,7 +41,7 @@ claude --version
 claude agents
 ```
 
-![终端直接运行 claude agents 即可进入](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view.png)
+![终端直接运行 claude agents 即可进入](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/claude-agents-list-view.png)
 
 打开后，每个后台会话占一行。左边是状态图标，中间是会话名和最近的执行摘要，右边是运行时长。会话默认按状态分组，需要你处理的会排在前面。
 
@@ -53,13 +53,13 @@ claude agents
 
 也可以在输入框为空时按左方向键 `←`。这两个操作都是把会话分离到后台，不会结束任务。之后用方向键选中会话，再按 `Enter` 或 `→`，就能重新进入完整对话。
 
-![进入指定的 Agent 会话](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/enter-agent-session.png)
+![进入指定的 Agent 会话](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/enter-agent-session.png)
 
 ## 先看黄色，再看红色
 
 Agent View 打开后，我通常先扫一遍左侧的状态图标。它比会话名更值得看，因为它直接告诉你哪里需要介入。
 
-![Claude Code Agent View](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-agents-list-view-20260518102539932.png)
+![Claude Code Agent View](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/claude-agents-list-view-20260518102539932.png)
 
 | 状态          | 界面表现 | 怎么处理                                      |
 | ------------- | -------- | --------------------------------------------- |
@@ -78,7 +78,7 @@ Agent View 打开后，我通常先扫一遍左侧的状态图标。它比会话
 
 选中会话后按空格键 `Space`，底部会弹出 Peek Panel，显示最近一次输出，或者 Claude 正在等待的问题。
 
-![Agent View 选中一个会话后按空格键弹出 Peek Panel](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/peek-panel-reply.png)
+![Agent View 选中一个会话后按空格键弹出 Peek Panel](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/peek-panel-reply.png)
 
 如果只是确认“是否允许修改这个文件”或者“要不要继续跑测试”，直接在面板里回复就行。会话收到消息后继续执行，不需要进入完整对话。
 
@@ -111,7 +111,7 @@ Agent View 打开后，我通常先扫一遍左侧的状态图标。它比会话
 
 这会把当前会话后台化，然后返回 Agent View。
 
-![/bg 把任务甩到后台里跑](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/bg-background-session.png)
+![/bg 把任务甩到后台里跑](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/bg-background-session.png)
 
 也可以顺手补一条指令再转入后台：
 
@@ -202,7 +202,7 @@ Agent View 底部有一个输入框。输入任务并按 `Enter`，会新建一�
 
 [Nicholas Carlini 的 C 编译器实验](https://www.anthropic.com/engineering/building-c-compiler) 把并行规模拉到了另一个量级：16 个 Claude Opus 4.6 实例在两周内跑了近 2000 个 Claude Code Session，产出约 10 万行代码，花费接近 2 万美元。这个实验使用的是 Agent Teams 和自定义执行框架，并非 Agent View 的能力展示。
 
-落到日常开发，能借鉴的是任务拆分、角色分工和测试约束。没有这些准备，多开几个 Session 只会更快地产生冲突。`/simplify` 和 `/batch` 等并行工作流的具体用法，可以看 [《Claude Code 核心命令详解》](https://javaguide.cn/ai-coding/practices/claudecode-commands.html)。
+落到日常开发，能借鉴的是任务拆分、角色分工和测试约束。没有这些准备，多开几个 Session 只会更快地产生冲突。`/simplify` 和 `/batch` 等并行工作流的具体用法，可以看 [《Claude Code 核心命令详解》](/ai-coding/practices/claudecode-commands.html)。
 
 ### 需要等待的 CI、测试和 PR
 
@@ -236,7 +236,7 @@ CI、集成测试和 PR Review 经常要等外部结果。一直把 Session 留�
 
 关机或重启会停止正在运行的任务。下次打开 Agent View 时，这些 Session 会显示为失败，进入、预览或回复后可以接着原来的对话继续。需要机器离线后照常运行的任务，应放到云端环境。详见 [Agent View 官方文档](https://code.claude.com/docs/en/agent-view)。
 
-想进一步了解几种并行方式的区别，可以看 [Claude Code 并行 Agent 官方说明](https://code.claude.com/docs/en/agents)、[《上下文工程实战指南》](https://javaguide.cn/ai/agent/context-engineering.html) 和 [《Harness Engineering》](https://javaguide.cn/ai/agent/harness-engineering.html)。
+想进一步了解几种并行方式的区别，可以看 [Claude Code 并行 Agent 官方说明](https://code.claude.com/docs/en/agents)、[《上下文工程实战指南》](/ai/agent/context-engineering.html) 和 [《Harness Engineering》](/ai/agent/harness-engineering.html)。
 
 ## Research Preview 期间别写死流程
 

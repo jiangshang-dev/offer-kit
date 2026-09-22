@@ -19,9 +19,9 @@ head:
 
 大概率不是。LLM 每次推理看到的还是本轮输入。Claude Code 能跨会话接上，靠的是模型外面那套文件和加载逻辑：哪些规则常驻，哪些经验先放索引里，哪些内容等任务相关时再读进来。
 
-本文和 [《AI Agent 记忆系统》](https://javaguide.cn/ai/agent/agent-memory.html) 这篇互为补充。那篇讲通用 Agent 记忆：短期记忆、长期记忆和记忆演化机制。放到 Claude Code 里，问题就更具体了：`CLAUDE.md` 到底放什么？Auto Memory 记下来的又是什么？`.claude/rules/` 和第三方的 `claude-mem`、`memsearch` 该怎么分工？
+本文和 [《AI Agent 记忆系统》](/ai/agent/agent-memory.html) 这篇互为补充。那篇讲通用 Agent 记忆：短期记忆、长期记忆和记忆演化机制。放到 Claude Code 里，问题就更具体了：`CLAUDE.md` 到底放什么？Auto Memory 记下来的又是什么？`.claude/rules/` 和第三方的 `claude-mem`、`memsearch` 该怎么分工？
 
-![AI Agent 记忆系统架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-memory-arch.png)
+![AI Agent 记忆系统架构](https://oss.javaguide.cn/github/offerkit/ai/agent/agent-memory-arch.png)
 
 ## LLM 自己不保存跨会话状态
 
@@ -31,11 +31,11 @@ head:
 
 普通聊天不太容易暴露这个问题。你连续聊几十轮，客户端把前文带上，模型自然能接话。Agent 场景就麻烦多了：它会读文件、跑命令、调用工具、拿日志，每一步返回都在吃上下文。几轮下来，窗口里塞满临时材料，长期规则反而混在里面。
 
-![LLM 自己不保存跨会话状态](https://oss.javaguide.cn/github/javaguide/ai/skills/llm-no-cross-session-state.webp)
+![LLM 自己不保存跨会话状态](https://oss.javaguide.cn/github/offerkit/ai/skills/llm-no-cross-session-state.webp)
 
 如果打个工程类比，Context Engineering 有点像给 LLM 做“内存管理”：上下文窗口容量有限，真正要管的是哪些信息常驻、哪些按需读取、哪些过期后淘汰。Token 紧张时，摘要、压缩、检索、优先级取舍，本质上都在处理同一个问题：**别让低价值内容挤掉当前任务真正需要的上下文。**
 
-上下文该怎么组织、什么时候按需加载、什么时候压缩，我在 [《上下文工程(Context Engineering) 是什么？和 Prompt Engineering 有什么区别？》](https://javaguide.cn/ai/agent/context-engineering.html) 里单独讲过，篇幅问题这里就不重复介绍了。
+上下文该怎么组织、什么时候按需加载、什么时候压缩，我在 [《上下文工程(Context Engineering) 是什么？和 Prompt Engineering 有什么区别？》](/ai/agent/context-engineering.html) 里单独讲过，篇幅问题这里就不重复介绍了。
 
 回到 Claude Code，长期记忆要先回答这几个问题：
 
@@ -46,7 +46,7 @@ head:
 
 很多问题都卡在第一项：**到底什么值得写入**。
 
-![Claude Code 记忆分层](https://oss.javaguide.cn/github/javaguide/ai/skills/claude-code-memory-layers.webp)
+![Claude Code 记忆分层](https://oss.javaguide.cn/github/offerkit/ai/skills/claude-code-memory-layers.webp)
 
 ## 规则和经验别搞混了
 
@@ -54,7 +54,7 @@ Claude Code 的长期上下文可以先分成两类：**人写给 Claude 的规�
 
 `CLAUDE.md` 是第一类。它更像会话开始前的工作说明书：编码规范、常用命令、目录约束、团队流程、不要碰的区域，都应该写在这里。官方文档把它归到 instructions and rules。
 
-![CLAUDE.md 和 AGENTS.md](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
+![CLAUDE.md 和 AGENTS.md](https://oss.javaguide.cn/github/offerkit/ai/coding/claude-agents-md.png)
 
 Auto Memory 是第二类。它记录的是 Claude 在项目里遇到的模式，比如 build 命令、调试经验、用户偏好、一些反复出现的坑。官方文档把它归到 learnings and patterns。
 
@@ -69,11 +69,11 @@ Auto Memory 是第二类。它记录的是 Claude 在项目里遇到的模式，
 
 ### `CLAUDE.md`：放每次都要看的规则
 
-`CLAUDE.md` 的具体写法，我之前在 [《CLAUDE.md 最佳实践：该写什么、不该写什么、项目变大后怎么拆》](https://javaguide.cn/ai-coding/practices/claude-md-best-practices.html) 里已经单独讲过。这篇不重复模板和示例，只看它在 memory 体系里的位置。
+`CLAUDE.md` 的具体写法，我之前在 [《CLAUDE.md 最佳实践：该写什么、不该写什么、项目变大后怎么拆》](/ai-coding/practices/claude-md-best-practices.html) 里已经单独讲过。这篇不重复模板和示例，只看它在 memory 体系里的位置。
 
 官方文档里这些位置分散在不同段落里看，我更建议直接按五层来记：
 
-![CLAUDE.md 层级与优先级](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-file-hierarchy.png)
+![CLAUDE.md 层级与优先级](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/claude-md-best-practices-file-hierarchy.png)
 
 | 位置     | 路径                                                                                                                                                  | 适合内容                                                    |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
@@ -87,11 +87,11 @@ Auto Memory 是第二类。它记录的是 Claude 在项目里遇到的模式，
 
 每份 `CLAUDE.md` 最好控制在 200 行以内。文件一长，模型就容易只记住一部分。
 
-![Claude Code 官方文档对 CLAUDE.md 的建议](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claudemd-claude-docs.png)
+![Claude Code 官方文档对 CLAUDE.md 的建议](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/claudemd-claude-docs.png)
 
 这就是我们常说的上下文腐化（Context Rot）问题。**上下文越长，信息越杂，模型利用上下文的稳定性就越可能变差。**
 
-![上下文腐化](https://oss.javaguide.cn/github/javaguide/ai/harness/context-rot-diagram.png)
+![上下文腐化](https://oss.javaguide.cn/github/offerkit/ai/harness/context-rot-diagram.png)
 
 `CLAUDE.md` 很容易被误用，尤其是下面这几种情况。
 
@@ -115,7 +115,7 @@ Auto Memory 是第二类。它记录的是 Claude 在项目里遇到的模式，
 
 真正适合按需加载规则的，是 `.claude/rules/`。
 
-![CLAUDE.md 与其他规则文件怎么分工](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-md-best-practices-rule-files-relationship.png)
+![CLAUDE.md 与其他规则文件怎么分工](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/claude-md-best-practices-rule-files-relationship.png)
 
 ### `.claude/rules/`：放按文件触发的规则
 
@@ -153,11 +153,11 @@ Auto Memory 是 Claude Code 官方提供的自动记忆机制。它的自动，�
 
 不过，它不是每轮会话都写，而是由 Claude 判断哪些内容以后还会用到。你可以用 `/memory` 直接打开对应的文件夹。
 
-![Claude Code  /memory](https://oss.javaguide.cn/github/javaguide/ai/skills/claudecode-memory-command.png)
+![Claude Code  /memory](https://oss.javaguide.cn/github/offerkit/ai/skills/claudecode-memory-command.png)
 
 按官方文档，Auto Memory 从 Claude Code v2.1.59 开始可用，并且默认开启。它会把项目记忆放到 `~/.claude/projects/<project>/memory/`，启动时先读 `MEMORY.md` 的前 200 行或 25KB。更细的内容不会一次性全塞进来，而是放在 topic files 里，需要时再打开；`/memory` 可以查看和编辑。
 
-![Claude Code Auto Memory](https://oss.javaguide.cn/github/javaguide/ai/skills/claude-code-auto-memory.png)
+![Claude Code Auto Memory](https://oss.javaguide.cn/github/offerkit/ai/skills/claude-code-auto-memory.png)
 
 也可以直接关掉它：
 
@@ -193,7 +193,7 @@ CLAUDE_CODE_DISABLE_AUTO_MEMORY=1
 
 这个设计很像我前面写过的 Skill 渐进式披露：先让模型知道“有什么”，别一上来就把“全部内容”塞满上下文。
 
-![Skill 渐进式披露](https://oss.javaguide.cn/github/javaguide/ai/skills/agent-skills-progressive-disclosure.webp)
+![Skill 渐进式披露](https://oss.javaguide.cn/github/offerkit/ai/skills/agent-skills-progressive-disclosure.webp)
 
 官方文档没有要求 topic file 一定使用某个 schema，也没有公开承诺“记忆类型必须是 user / feedback / project / reference”。
 
@@ -218,7 +218,7 @@ Auto Memory 会自动写 notes，但不等于可以完全不管。你让 Claude 
 
 真要保留下来，也不要只在 topic file 里塞一句结论。至少把事实、当时这么定的原因、记录时间/失效时间、用之前是否要核对都写上。以后 Agent 再读到这条记忆，看到的就不是一条死规则，而是一条有边界的记录。
 
-![记忆写入治理](https://oss.javaguide.cn/github/javaguide/ai/skills/claude-code-memory-write-governance.webp)
+![记忆写入治理](https://oss.javaguide.cn/github/offerkit/ai/skills/claude-code-memory-write-governance.webp)
 
 例如：
 
@@ -263,7 +263,7 @@ updated_at: 2026-06-17
 
 再往里，Auto Memory 到底用 grep、LLM picker、向量检索，还是别的策略，官方并没有展开。
 
-![Auto Memory 召回流程](https://oss.javaguide.cn/github/javaguide/ai/skills/claude-code-memory-recall-flow.webp)
+![Auto Memory 召回流程](https://oss.javaguide.cn/github/offerkit/ai/skills/claude-code-memory-recall-flow.webp)
 
 根据网上流出的源码片段和反编译分析来看：Claude 可能会先读 `MEMORY.md` 和各文件摘要，再按当前任务挑相关文件；也有人认为它更偏关键词匹配。
 
@@ -345,7 +345,7 @@ Agent Teams 可以引用某个 subagent definition 来生成 teammate，但这�
 
 长期记忆单独放到 `memory/` 目录。刚开始别分太细，四类够用：`user` 放用户长期偏好，`feedback` 放用户明确纠正过的做法，`project` 放阶段性决策和短期冻结规则，`reference` 放资料入口。每个 topic file 里写 `created_at`、`updated_at`、记录原因和适用范围；依赖当前代码状态的内容，打开以后先核对再用。
 
-![轻量记忆系统落地](https://oss.javaguide.cn/github/javaguide/ai/skills/claude-code-lightweight-memory-system.webp)
+![轻量记忆系统落地](https://oss.javaguide.cn/github/offerkit/ai/skills/claude-code-lightweight-memory-system.webp)
 
 这个版本可以先手工维护。它不酷，但脏数据少，团队能审阅，删错了也能从 Git 里找回来。等人工索引真的开始拖慢使用，再加自动摘要、全文检索或向量检索也不迟。
 

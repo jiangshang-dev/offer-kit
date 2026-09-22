@@ -9,12 +9,12 @@ head:
       content: 设计模式,单例模式,工厂模式,代理模式,责任链模式,策略模式,观察者模式,面试题
 ---
 
-**设计模式** 相关的面试题已经整理到了 PDF 手册中，你可以在我的公众号“**JavaGuide**”后台回复“**PDF**” 获取。
+**设计模式** 相关的面试题已经整理到了 PDF 手册中，你可以在我的公众号“**OfferKit**”后台回复“**PDF**” 获取。
 
-![JavaGuide 官方公众号](https://oss.javaguide.cn/github/javaguide/gongzhonghaoxuanchuan.png)
+![OfferKit 官方公众号](https://oss.javaguide.cn/github/offerkit/gongzhonghaoxuanchuan.png)
 
 **《设计模式》PDF 电子书内容概览**：
 
-![《设计模式》PDF文档概览](https://oss.javaguide.cn/github/javaguide/system-design/design-pattern-pdf.png)
+![《设计模式》PDF文档概览](https://oss.javaguide.cn/github/offerkit/system-design/design-pattern-pdf.png)
 
 <!-- @include: @article-footer.snippet.md -->

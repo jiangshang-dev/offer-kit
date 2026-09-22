@@ -26,7 +26,7 @@ Skill 刚出来那会，模型能力还没那么强。项目还没读明白就�
 
 所以这份清单会收得比较克制。我现在愿意留下的，通常能补上模型猜不到的项目约定，或者自带专业流程、脚本、模板和参考资料。只会提醒“先读代码、再修改、最后跑测试”的 Skill，我基本不会再推荐了。
 
-之前的[万字详解 Agent Skills](https://javaguide.cn/ai/agent/skills.html)讲过 Skill 和 Prompt、MCP 的区别；如果你想知道我为什么开始删减 Skills，可以接着看最新写的这篇 [强模型时代，AI 编程 Skills 还有必要装吗？](./skill-selection-and-pruning.md)。
+之前的[万字详解 Agent Skills](/ai/agent/skills.html)讲过 Skill 和 Prompt、MCP 的区别；如果你想知道我为什么开始删减 Skills，可以接着看最新写的这篇 [强模型时代，AI 编程 Skills 还有必要装吗？](./skill-selection-and-pruning.md)。
 
 ## Superpowers
 
@@ -55,7 +55,7 @@ Codex App 可以在侧边栏的 Plugins 中搜索 Superpowers；Codex CLI 则可
 
 Claude Code 安装界面会让你选择作用范围：
 
-![Superpowers 下载](https://oss.javaguide.cn/github/javaguide/ai/superpowers/superpowers-download.png)
+![Superpowers 下载](https://oss.javaguide.cn/github/offerkit/ai/superpowers/superpowers-download.png)
 
 | 选项                               | 作用范围         | 建议                                           |
 | ---------------------------------- | ---------------- | ---------------------------------------------- |
@@ -94,7 +94,7 @@ npx skills@latest add mattpocock/skills
 
 这套 Skills 适合已经有基本开发习惯、只想补几个薄弱环节的人。如果项目里已经有稳定的需求模板、TDD 规范和代码审查流程，重复安装对应 Skill 不会带来多少帮助。
 
-这几个 Skill 的实际用法和适用边界，我单独写了一篇：[mattpocock/skills：我最推荐的 4 个 AI 编程 Skill](https://javaguide.cn/ai-coding/practices/mattpocock-skills.html)。
+这几个 Skill 的实际用法和适用边界，我单独写了一篇：[mattpocock/skills：我最推荐的 4 个 AI 编程 Skill](/ai-coding/practices/mattpocock-skills.html)。
 
 项目地址：<https://github.com/mattpocock/skills>
 
@@ -106,7 +106,7 @@ Everything Claude Code 现在已经更名为 **ECC**。
 
 ECC 仓库同时放了 Skills、Agents、Hooks、Rules，以及记忆管理、安全扫描、持续学习和多语言工程规则。仓库里的 Skills 已经达到数百个，更像一套团队级 Harness 配置库。团队需要统一 Agent 的工作方式、记忆策略和安全检查时，集中管理会省去不少重复配置。
 
-![上下文腐化](https://oss.javaguide.cn/github/javaguide/ai/harness/context-rot-diagram.png)
+![上下文腐化](https://oss.javaguide.cn/github/offerkit/ai/harness/context-rot-diagram.png)
 
 组件一多，选择成本也会跟着上来。项目只缺代码审查或 TDD 时，可以用 ECC 的选择性安装，只取 Java 代码审查、上下文持久化或安全扫描等对应组件，不必把整套系统塞进每个仓库。
 
@@ -147,7 +147,7 @@ Claude Code 的安装命令如下：
 
 这是一个专为 AI 编程 Agent（Claude Code、Cursor、Windsurf 等）设计的专业 UI/UX 设计智能 Skill。
 
-![UI UX Pro Max](https://oss.javaguide.cn/github/javaguide/ai/harness/ui-ux-pro-max-skill.png)
+![UI UX Pro Max](https://oss.javaguide.cn/github/offerkit/ai/harness/ui-ux-pro-max-skill.png)
 
 它会根据产品类型和行业特性生成设计系统，再把配色、字体、布局、动效和反模式交给 Agent 执行。与只有几段审美提示词的轻量 Skill 相比，它带了一套可以检索的设计资料。
 

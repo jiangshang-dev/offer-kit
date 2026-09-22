@@ -91,7 +91,7 @@ Codex 能直接改代码，但不代表每次都应该直接改。
 
 它有点像 Claude Code 里的 `CLAUDE.md`，都是给 Agent 看的项目级指令文件。更直白一点说，`AGENTS.md` 是一份 **Agent 工作说明**：告诉 Codex 这个项目怎么启动、怎么测试、哪些目录别碰、改完后要给出什么证据。
 
-![多智能股票分析项目中的 CLAUDE.md 和 AGENTS.md](https://oss.javaguide.cn/github/javaguide/ai/coding/claude-agents-md.png)
+![多智能股票分析项目中的 CLAUDE.md 和 AGENTS.md](https://oss.javaguide.cn/github/offerkit/ai/coding/claude-agents-md.png)
 
 不过两者的定位不完全一样。
 
@@ -136,7 +136,7 @@ Codex 启动时会构建一条 instruction chain。当前官方文档里的发�
 
 还有一种更适合大项目的写法：让 `AGENTS.md` 只做目录。
 
-我在 [一文搞懂 Harness Engineering](https://javaguide.cn/ai/agent/harness-engineering.html) 里也提到过，OpenAI 自己的 `AGENTS.md` 大约只有 100 行，更像一个索引：先告诉 Agent 最关键的仓库规则，再指向 `docs/` 下面更细的设计文档、架构图、执行计划和质量评级。Agent 真的需要深入某个模块时，再顺着链接去读。
+我在 [一文搞懂 Harness Engineering](/ai/agent/harness-engineering.html) 里也提到过，OpenAI 自己的 `AGENTS.md` 大约只有 100 行，更像一个索引：先告诉 Agent 最关键的仓库规则，再指向 `docs/` 下面更细的设计文档、架构图、执行计划和质量评级。Agent 真的需要深入某个模块时，再顺着链接去读。
 
 这就是渐进式披露。
 
@@ -251,7 +251,7 @@ Knowing everything you know now, scrap this approach and propose the simpler imp
 
 MCP（Model Context Protocol，模型上下文协议）像一套接线规范：**外部系统把能力封装成 MCP Server，支持 MCP 的 AI 应用连接上来之后，就能发现这些能力并调用。**
 
-![MCP 图解](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
+![MCP 图解](https://oss.javaguide.cn/github/offerkit/ai/skills/mcp-simple-diagram.png)
 
 真实开发里的上下文，不只在仓库里。
 
@@ -291,13 +291,13 @@ codex mcp add context7 -- npx -y @upstash/context7-mcp
 
 Skill 更适合放遇到某类任务时应该怎么做。比如做代码审查、写测试、改前端页面、网页调研、写技术文章，这些任务每次流程都差不多，就没必要每次都在聊天里重新提醒一遍。
 
-小 G 之前写过两篇相关的文章：[Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://javaguide.cn/ai/agent/skills.html) 和 [AI 编程 Skills 选型清单](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html)。
+小 G 之前写过两篇相关的文章：[Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](/ai/agent/skills.html) 和 [AI 编程 Skills 选型清单](/ai-coding/practices/programmer-essential-skills.html)。
 
 简单说，Skill 就是一份能被 Agent 按需加载的任务说明。它不是插件，也不是 MCP 工具本身，而是把某类任务的流程、约束、检查项和踩坑经验写进 `SKILL.md`。
 
 Skill 不像 `AGENTS.md` 那样把全文每次都塞进上下文。默认情况下，Codex 会先看到 Skill 的名称和描述，用来判断是否该调用；只有真正用到这个 Skill 时，`SKILL.md` 正文和相关资源才会进入上下文。
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skills-agent-execution-link.png)
+![Agent 执行链路](https://oss.javaguide.cn/github/offerkit/ai/skills/skills-agent-execution-link.png)
 
 这些重复性很强的流程，都适合沉淀成 Skill。比如写功能前固定走 TDD，先写失败测试再实现；代码审查时固定检查安全、事务、性能和边界条件；写技术文章时固定核对事实来源、引用、标题层级和 AI 味。
 
@@ -334,7 +334,7 @@ Done when:
 
 现成 Skill 也可以直接用，比如 Superpowers 把 TDD、Code Review、Spec-Driven、Git Worktree、子 Agent 协作这些流程封装好了。
 
-我在 [AI 编程 Skills 选型清单：需求澄清、TDD、代码审查与 UI 设计](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html) 这篇文章中有详细推荐。
+我在 [AI 编程 Skills 选型清单：需求澄清、TDD、代码审查与 UI 设计](/ai-coding/practices/programmer-essential-skills.html) 这篇文章中有详细推荐。
 
 但第三方 Skill 不要拿来就跑。`SKILL.md` 也是指令，里面如果带了危险命令、奇怪脚本、过宽权限，Agent 会照着做。装之前至少看一眼正文、`scripts/` 和 `references/`，确认它没有越权操作。
 

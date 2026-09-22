@@ -96,11 +96,11 @@ ThreadLocalMap(ThreadLocal<?> firstKey, Object firstValue) {
 
 `ThreadLocal` 数据结构如下图所示：
 
-![ThreadLocal 数据结构](https://oss.javaguide.cn/github/javaguide/java/concurrent/threadlocal-data-structure.png)
+![ThreadLocal 数据结构](https://oss.javaguide.cn/github/offerkit/java/concurrent/threadlocal-data-structure.png)
 
 `ThreadLocalMap` 是 `ThreadLocal` 的静态内部类。
 
-![ThreadLocal内部类](https://oss.javaguide.cn/github/javaguide/java/concurrent/thread-local-inner-class.png)
+![ThreadLocal内部类](https://oss.javaguide.cn/github/offerkit/java/concurrent/thread-local-inner-class.png)
 
 ### ⭐️ ThreadLocal 内存泄露问题是怎么导致的？
 
@@ -246,7 +246,7 @@ Thread → ThreadLocalMap → Entry(ThreadLocal, value)
 
 `ThreadLocal` 数据结构如下图所示：
 
-![ThreadLocal 数据结构](https://oss.javaguide.cn/github/javaguide/java/concurrent/threadlocal-data-structure.png)
+![ThreadLocal 数据结构](https://oss.javaguide.cn/github/offerkit/java/concurrent/threadlocal-data-structure.png)
 
 异步执行往往意味着任务会从当前线程切换到另一个线程（例如线程池中的工作线程）执行。由于不同线程各自维护独立的 `ThreadLocalMap`，默认情况下 `ThreadLocal` 的上下文无法在异步执行中自动传递。
 
@@ -308,7 +308,7 @@ TTL 的核心逻辑可以概括为三个阶段（CRR）：
 
 这张图是 TTL 官方提供的 CRR 整个过程的时序图：
 
-![TTL 官方提供的 CRR 整个过程的时序图](https://oss.javaguide.cn/github/javaguide/java/concurrent/ttl-crr-timing-diagram.png)
+![TTL 官方提供的 CRR 整个过程的时序图](https://oss.javaguide.cn/github/offerkit/java/concurrent/ttl-crr-timing-diagram.png)
 
 不太好理解吧？可以看下我绘制的这张 CRR 时序图，更清晰直观一些：
 
@@ -480,7 +480,7 @@ java -javaagent:path/to/transmittable-thread-local-2.x.y.jar \
 
 **方式一：通过 `ThreadPoolExecutor` 构造函数直接创建（推荐）**
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/threadpoolexecutor-construtors.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/threadpoolexecutor-construtors.png)
 
 图中的“默认线程工厂”和“默认拒绝策略”，指的是当前构造函数没有显式传入对应参数时，`ThreadPoolExecutor` 会使用默认实现，并不是方法和说明错位。
 
@@ -490,7 +490,7 @@ java -javaagent:path/to/transmittable-thread-local-2.x.y.jar \
 
 `Executors` 工具类提供的创建线程池的方法如下图所示：
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/executors-new-thread-pool-methods.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/executors-new-thread-pool-methods.png)
 
 可以看出，通过 `Executors` 工具类可以创建多种类型的线程池，包括：
 
@@ -590,7 +590,7 @@ public ScheduledThreadPoolExecutor(int corePoolSize) {
 
 下面这张图可以加深你对线程池中各个参数的相互关系的理解（图片来源：《Java 性能调优实战》）：
 
-![线程池各个参数的关系](https://oss.javaguide.cn/github/javaguide/java/concurrent/relationship-between-thread-pool-parameters.png)
+![线程池各个参数的关系](https://oss.javaguide.cn/github/offerkit/java/concurrent/relationship-between-thread-pool-parameters.png)
 
 ### 线程池的核心线程会被回收吗？
 
@@ -795,7 +795,7 @@ public class ThreadPoolTest {
 
 为了充分利用 CPU，我们还可以调整线程池的 `maximumPoolSize`（最大线程数）参数，这样可以提高任务处理速度，避免累计在 `BlockingQueue` 的任务过多导致内存用完。
 
-![调整阻塞队列大小和最大线程数](https://oss.javaguide.cn/github/javaguide/java/concurrent/threadpool-reject-2-threadpool-reject-01.png)
+![调整阻塞队列大小和最大线程数](https://oss.javaguide.cn/github/offerkit/java/concurrent/threadpool-reject-2-threadpool-reject-01.png)
 
 如果服务器资源已达到可利用的极限，这就意味我们要在设计策略上改变线程池的调度了，我们都知道，导致主线程卡死的本质就是因为我们不希望任何一个任务被丢弃。换个思路，有没有办法既能保证任务不被丢弃且在服务器有余力时及时处理呢？
 
@@ -810,7 +810,7 @@ public class ThreadPoolTest {
 1. 实现 `RejectedExecutionHandler` 接口自定义拒绝策略，自定义拒绝策略负责将线程池暂时无法处理（此时阻塞队列已满）的任务入库（保存到 MySQL 中）。注意：线程池暂时无法处理的任务会先被放在阻塞队列中，阻塞队列满了才会触发拒绝策略。
 2. 继承 `BlockingQueue` 实现一个混合式阻塞队列，该队列包含 JDK 自带的 `ArrayBlockingQueue`。另外，该混合式阻塞队列需要修改取任务处理的逻辑，也就是重写 `take()` 方法，取任务时优先从数据库中读取最早的任务，数据库中无任务时再从 `ArrayBlockingQueue` 中去取任务。
 
-![将一部分任务保存到MySQL中](https://oss.javaguide.cn/github/javaguide/java/concurrent/threadpool-reject-2-threadpool-reject-02.png)
+![将一部分任务保存到MySQL中](https://oss.javaguide.cn/github/offerkit/java/concurrent/threadpool-reject-2-threadpool-reject-02.png)
 
 整个实现逻辑还是比较简单的，核心在于自定义拒绝策略和阻塞队列。如此一来，一旦我们的线程池中线程达到满载时，我们就可以通过拒绝策略将最新任务持久化到 MySQL 数据库中，等到线程池有了有余力处理所有任务时，让其优先处理数据库中的任务以避免“饥饿”问题。
 
@@ -864,7 +864,7 @@ new RejectedExecutionHandler() {
 
 ### ⭐️ 线程池处理任务的流程了解吗？
 
-![图解线程池实现原理](https://oss.javaguide.cn/github/javaguide/java/concurrent/thread-pool-principle.png)
+![图解线程池实现原理](https://oss.javaguide.cn/github/offerkit/java/concurrent/thread-pool-principle.png)
 
 1. 如果当前运行的线程数小于核心线程数，那么就会新建一个线程来执行任务。
 2. 如果当前运行的线程数等于或大于核心线程数，但是小于最大线程数，那么就把该任务放入到任务队列里等待执行。
@@ -964,7 +964,7 @@ public final class NamingThreadFactory implements ThreadFactory {
 
 CPU 密集型简单理解就是利用 CPU 计算能力的任务比如你在内存中对大量数据进行排序。但凡涉及到网络读取，文件读取这类都是 IO 密集型，这类任务的特点是 CPU 计算耗费时间相比于等待 IO 操作完成的时间来说很少，大部分时间都花在了等待 IO 操作完成上。
 
-> 🌈 拓展一下（参见：[issue#1737](https://github.com/Snailclimb/JavaGuide/issues/1737)）：
+> 🌈 拓展一下（参见：[issue#1737](https://github.com/jiangshang-dev/offerkit/issues/1737)）：
 >
 > 线程数更严谨的计算的方法应该是：`最佳线程数 = N（CPU 核心数）∗（1+WT（线程等待时间）/ST（线程计算时间））`，其中 `WT（线程等待时间）=线程运行总时间 - ST（线程计算时间）`。
 >
@@ -990,11 +990,11 @@ CPU 密集型简单理解就是利用 CPU 计算能力的任务比如你在内�
 
 **为什么是这三个参数？**
 
-我在[Java 线程池详解](https://javaguide.cn/java/concurrent/java-thread-pool-summary.html) 这篇文章中就说过这三个参数是 `ThreadPoolExecutor` 最重要的参数，它们基本决定了线程池对于任务的处理策略。
+我在[Java 线程池详解](/java/concurrent/java-thread-pool-summary.html) 这篇文章中就说过这三个参数是 `ThreadPoolExecutor` 最重要的参数，它们基本决定了线程池对于任务的处理策略。
 
 **如何支持参数动态配置？** 且看 `ThreadPoolExecutor` 提供的下面这些方法。
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/threadpoolexecutor-methods.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/threadpoolexecutor-methods.png)
 
 格外需要注意的是 `corePoolSize`。运行期间调小该参数后，超过新核心线程数的现有线程会在下一次空闲时终止；调大时，如果队列中已有任务，线程池会按需启动新线程处理。
 
@@ -1002,9 +1002,9 @@ CPU 密集型简单理解就是利用 CPU 计算能力的任务比如你在内�
 
 最终实现的可动态修改线程池参数效果如下。👏👏👏
 
-![动态配置线程池参数最终效果](https://oss.javaguide.cn/github/javaguide/java/concurrent/meituan-dynamically-configuring-thread-pool-parameters.png)
+![动态配置线程池参数最终效果](https://oss.javaguide.cn/github/offerkit/java/concurrent/meituan-dynamically-configuring-thread-pool-parameters.png)
 
-还没看够？我在[《后端面试高频系统设计&场景题》](https://javaguide.cn/zhuanlan/back-end-interview-high-frequency-system-design-and-scenario-questions.html)中详细介绍了如何设计一个动态线程池，这也是面试中常问的一道系统设计题。
+还没看够？我在[《后端面试高频系统设计&场景题》](/zhuanlan/back-end-interview-high-frequency-system-design-and-scenario-questions.html)中详细介绍了如何设计一个动态线程池，这也是面试中常问的一道系统设计题。
 
 ![《后端面试高频系统设计&场景题》](https://oss.javaguide.cn/xingqiu/back-end-interview-high-frequency-system-design-and-scenario-questions-fengmian.png)
 
@@ -1021,7 +1021,7 @@ CPU 密集型简单理解就是利用 CPU 计算能力的任务比如你在内�
 
 假如我们需要实现一个优先级任务线程池的话，那可以考虑使用 `PriorityBlockingQueue`（优先级阻塞队列）作为任务队列（`ThreadPoolExecutor` 的构造函数有一个 `workQueue` 参数可以传入任务队列）。
 
-![ThreadPoolExecutor构造函数](https://oss.javaguide.cn/github/javaguide/java/concurrent/common-parameters-of-threadpool-workqueue.jpg)
+![ThreadPoolExecutor构造函数](https://oss.javaguide.cn/github/offerkit/java/concurrent/common-parameters-of-threadpool-workqueue.jpg)
 
 `PriorityBlockingQueue` 是一个支持优先级的无界阻塞队列，可以看作是线程安全的 `PriorityQueue`，两者底层都是使用小顶堆形式的二叉堆，即值最小的元素优先出队。不过，`PriorityQueue` 不支持阻塞操作。
 
@@ -1046,7 +1046,7 @@ CPU 密集型简单理解就是利用 CPU 计算能力的任务比如你在内�
 
 重点是要掌握 `CompletableFuture` 的使用以及常见面试题。
 
-除了下面的面试题之外，还推荐你看看我写的这篇文章： [CompletableFuture 详解](https://javaguide.cn/java/concurrent/completablefuture-intro.html)。
+除了下面的面试题之外，还推荐你看看我写的这篇文章： [CompletableFuture 详解](/java/concurrent/completablefuture-intro.html)。
 
 ### Future 接口有什么用？
 
@@ -1096,7 +1096,7 @@ Future<?> submit(Runnable task);
 
 `FutureTask` 不光实现了 `Future` 接口，还实现了 `Runnable` 接口，因此可以作为任务直接被线程执行。
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/completablefuture-class-diagram.jpg)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/completablefuture-class-diagram.jpg)
 
 `FutureTask` 有两个构造函数，可传入 `Callable` 或者 `Runnable` 对象。实际上，传入 `Runnable` 对象也会在方法内部转换为 `Callable` 对象。
 
@@ -1133,13 +1133,13 @@ public class CompletableFuture<T> implements Future<T>, CompletionStage<T> {
 
 可以看到，`CompletableFuture` 同时实现了 `Future` 和 `CompletionStage` 接口。
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/completablefuture-class-diagram.jpg)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/completablefuture-class-diagram.jpg)
 
 `CompletionStage` 接口描述了一个异步计算的阶段。很多计算可以分成多个阶段或步骤，此时可以通过它将所有步骤组合起来，形成异步计算的流水线。
 
 `CompletionStage` 接口中的方法比较多，`CompletableFuture` 的函数式能力就是这个接口赋予的。从这个接口的方法参数你就可以发现其大量使用了 Java8 引入的函数式编程。
 
-![](https://oss.javaguide.cn/javaguide/image-20210902093026059.png)
+![](https://oss.javaguide.cn/offerkit/image-20210902093026059.png)
 
 ### ⭐️ 一个任务需要依赖另外两个任务执行完之后再执行，怎么设计？
 
@@ -1206,7 +1206,7 @@ CompletableFuture.runAsync(() -> {
 
 ## AQS
 
-关于 AQS 源码的详细分析，可以看看这一篇文章：[AQS 详解](https://javaguide.cn/java/concurrent/aqs.html)。
+关于 AQS 源码的详细分析，可以看看这一篇文章：[AQS 详解](/java/concurrent/aqs.html)。
 
 ### AQS 是什么？
 
@@ -1224,7 +1224,7 @@ AQS 核心思想是，如果被请求的共享资源空闲，则将当前请求�
 
 **CLH 锁** 对自旋锁进行了改进，是基于单链表的自旋锁。在多线程场景下，会将请求获取锁的线程组织成一个单向队列，每个等待的线程会通过自旋访问前一个线程节点的状态，前一个节点释放锁之后，当前节点才可以获取锁。**CLH 锁** 的队列结构如下图所示。
 
-![CLH 锁的队列结构](https://oss.javaguide.cn/github/javaguide/open-source-project/clh-lock-queue-structure.png)
+![CLH 锁的队列结构](https://oss.javaguide.cn/github/offerkit/open-source-project/clh-lock-queue-structure.png)
 
 AQS 中使用的 **等待队列** 是 CLH 锁队列的变体（接下来简称为 CLH 变体队列）。
 
@@ -1237,11 +1237,11 @@ AQS 将每条请求共享资源的线程封装成一个 CLH 变体队列的一�
 
 AQS 中的 CLH 变体队列结构如下图所示：
 
-![CLH 变体队列结构](https://oss.javaguide.cn/github/javaguide/java/concurrent/clh-queue-structure-bianti.png)
+![CLH 变体队列结构](https://oss.javaguide.cn/github/offerkit/java/concurrent/clh-queue-structure-bianti.png)
 
 AQS(`AbstractQueuedSynchronizer`)的核心原理图：
 
-![CLH 变体队列](https://oss.javaguide.cn/github/javaguide/java/concurrent/clh-queue-state.png)
+![CLH 变体队列](https://oss.javaguide.cn/github/offerkit/java/concurrent/clh-queue-state.png)
 
 AQS 使用 **int 成员变量 `state` 表示同步状态**，通过内置的 **线程等待队列** 来完成获取资源线程的排队工作。
 
@@ -1582,7 +1582,7 @@ public int await() throws InterruptedException, BrokenBarrierException {
 
 ## 虚拟线程
 
-虚拟线程在 Java 21 正式发布，这是一项重量级的更新。虽然目前面试中问的不多，但还是建议大家去简单了解一下。我写了一篇文章来总结虚拟线程常见的问题：[虚拟线程常见问题总结](https://javaguide.cn/java/concurrent/virtual-thread.html)，包含下面这些问题：
+虚拟线程在 Java 21 正式发布，这是一项重量级的更新。虽然目前面试中问的不多，但还是建议大家去简单了解一下。我写了一篇文章来总结虚拟线程常见的问题：[虚拟线程常见问题总结](/java/concurrent/virtual-thread.html)，包含下面这些问题：
 
 1. 什么是虚拟线程？
 2. 虚拟线程和平台线程有什么关系？

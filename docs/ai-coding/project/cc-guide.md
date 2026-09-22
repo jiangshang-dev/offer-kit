@@ -16,7 +16,7 @@ head:
 
 **CC GUI**（原名 Claude Code GUI）是一个采用 MIT 协议的开源 JetBrains 插件，为 Claude Code 和 OpenAI Codex 提供 GUI 界面。
 
-![CC GUI Github 项目界面](https://oss.javaguide.cn/github/javaguide/ai/cc-guide/cc-gui-github-project.png)
+![CC GUI Github 项目界面](https://oss.javaguide.cn/github/offerkit/ai/cc-guide/cc-gui-github-project.png)
 
 项目地址：[zhukunpenglinyutong/jetbrains-cc-gui](https://github.com/zhukunpenglinyutong/jetbrains-cc-gui)。
 
@@ -45,15 +45,15 @@ CC GUI 和 ACP 是两种不同的路线：
 
 打开 IDEA，进入 **Settings → Plugins**（快捷键 `Cmd + ,`），搜索 **CC GUI** 安装即可。
 
-![IDEA 插件 CC GUI](https://oss.javaguide.cn/github/javaguide/ai/cc-guide/idea-plugin-cc-gui.png)
+![IDEA 插件 CC GUI](https://oss.javaguide.cn/github/offerkit/ai/cc-guide/idea-plugin-cc-gui.png)
 
 安装完成之后，你可以在 IDEA 右侧工具栏找到 CC GUI 入口，点击图标即可打开。
 
-![IDEA CC GUI 入口](https://oss.javaguide.cn/github/javaguide/ai/cc-guide/idea-cc-gui-entry.png)
+![IDEA CC GUI 入口](https://oss.javaguide.cn/github/offerkit/ai/cc-guide/idea-cc-gui-entry.png)
 
 首次使用会提示安装 Claude Code/Codex SDK。这是 Agent 运行的基础，点击后按界面完成安装。耗时取决于网络和本机环境。
 
-![成功安装 Claude Code/Codex SDK](https://oss.javaguide.cn/github/javaguide/ai/cc-guide/sdk-installed-success.png)
+![成功安装 Claude Code/Codex SDK](https://oss.javaguide.cn/github/offerkit/ai/cc-guide/sdk-installed-success.png)
 
 **遇到黑屏？** 部分用户在 IDEA 2026.1 上打开 CC GUI 面板时会出现黑屏。
 
@@ -81,7 +81,7 @@ Claude Code 的认证方式可参考[官方认证文档](https://code.claude.com
 
 本文截图使用导入 cc-switch 配置的方式。
 
-![直接导入 cc-switch 配置](https://oss.javaguide.cn/github/javaguide/ai/cc-guide/cc-switch-config-import.png)
+![直接导入 cc-switch 配置](https://oss.javaguide.cn/github/offerkit/ai/cc-guide/cc-switch-config-import.png)
 
 ### 第三步：开始使用
 
@@ -91,7 +91,7 @@ Claude Code 的认证方式可参考[官方认证文档](https://code.claude.com
 
 CC GUI 支持 **Skill（斜杠命令）**，可以把特定的审查流程整理成可复用说明。比如我配置了一个 `java-coding-standards` Skill，其中包含 Java 与 Spring Boot 的项目审查规则。
 
-这里我们直接以 [AI 智能面试平台](https://javaguide.cn/zhuanlan/interview-guide.html)项目为例，用的时候，直接在对话框输入：
+这里我们直接以 [AI 智能面试平台](/zhuanlan/interview-guide.html)项目为例，用的时候，直接在对话框输入：
 
 ```
 /java-coding-standards 检查一下 @infrastructure 下的代码
@@ -108,7 +108,7 @@ CC GUI 支持 **Skill（斜杠命令）**，可以把特定的审查流程整理
 | 低     | 字体资源未用 try-with-resources                      | PdfExportService              | 1 处 |
 | 低     | DateTimeFormatter 每次调用重复创建                   | FileStorageService            | 1 处 |
 
-![java-coding-standards 结构化的审查报告](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/java-coding-standards-structured-review-report.png)
+![java-coding-standards 结构化的审查报告](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/java-coding-standards-structured-review-report.png)
 
 拿到报告后，可以让 AI 逐文件生成候选修复，并在 Diff 面板逐项审查改动和原因。
 
@@ -118,22 +118,22 @@ CC GUI 支持 **Skill（斜杠命令）**，可以把特定的审查流程整理
 
 好用的 Vibe Coding Skills 推荐以及 Skills 常见问题解答，可以阅读笔者写的这两篇文章：
 
-1. [AI 编程 Skills 选型清单：需求澄清、TDD、代码审查与 UI 设计](https://javaguide.cn/ai-coding/practices/programmer-essential-skills.html)
+1. [AI 编程 Skills 选型清单：需求澄清、TDD、代码审查与 UI 设计](/ai-coding/practices/programmer-essential-skills.html)
 2. [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://mp.weixin.qq.com/s/5iaTBH12VTH55jYwo4wmwA)
 
 ## CC GUI 内置功能
 
 CC GUI 还内置了使用统计功能，可以清晰看到 Token 消耗、费用统计和使用趋势分析。
 
-![CC GUI 使用统计](https://oss.javaguide.cn/github/javaguide/ai/cc-guide/cc-gui-usage-stats.png)
+![CC GUI 使用统计](https://oss.javaguide.cn/github/offerkit/ai/cc-guide/cc-gui-usage-stats.png)
 
 还支持 Commit AI、自定义智能体、维护提示词库、添加 MCP 服务器等功能。
 
-![CC GUI Commit AI](https://oss.javaguide.cn/github/javaguide/ai/cc-guide/cc-gui-commit-ai.png)
+![CC GUI Commit AI](https://oss.javaguide.cn/github/offerkit/ai/cc-guide/cc-gui-commit-ai.png)
 
 并且，你还可以看到历史消息，支持搜索和删除：
 
-![Claude Code 历史消息](https://oss.javaguide.cn/github/javaguide/ai/cc-guide/claude-code-history.png)
+![Claude Code 历史消息](https://oss.javaguide.cn/github/offerkit/ai/cc-guide/claude-code-history.png)
 
 ## CC GUI 和 Qoder 怎么选？
 

@@ -31,13 +31,13 @@ Redis 可以通过 **`MULTI`、`EXEC`、`DISCARD` 和 `WATCH`** 等命令来实�
 ```bash
 > MULTI
 OK
-> SET PROJECT "JavaGuide"
+> SET PROJECT "OfferKit"
 QUEUED
 > GET PROJECT
 QUEUED
 > EXEC
 1) OK
-2) "JavaGuide"
+2) "OfferKit"
 ```
 
 [`MULTI`](https://redis.io/commands/multi) 命令后可以输入多个命令，Redis 不会立即执行这些命令，而是将它们放到队列，当调用了 [`EXEC`](https://redis.io/commands/exec) 命令后，再执行所有的命令。
@@ -53,7 +53,7 @@ QUEUED
 ```bash
 > MULTI
 OK
-> SET PROJECT "JavaGuide"
+> SET PROJECT "OfferKit"
 QUEUED
 > GET PROJECT
 QUEUED
@@ -71,7 +71,7 @@ OK
 OK
 > MULTI
 OK
-> SET PROJECT "JavaGuide"
+> SET PROJECT "OfferKit"
 QUEUED
 
 # 客户端 2
@@ -86,39 +86,39 @@ QUEUED
 "GoGuide"
 ```
 
-不过，如果 **WATCH** 与 **事务** 在同一个 Session 里，并且被 **WATCH** 监视的 Key 被修改的操作发生在事务内部，这个事务是可以被执行成功的（相关 issue：[WATCH 命令碰到 MULTI 命令时的不同效果](https://github.com/Snailclimb/JavaGuide/issues/1714)）。
+不过，如果 **WATCH** 与 **事务** 在同一个 Session 里，并且被 **WATCH** 监视的 Key 被修改的操作发生在事务内部，这个事务是可以被执行成功的（相关 issue：[WATCH 命令碰到 MULTI 命令时的不同效果](https://github.com/jiangshang-dev/offerkit/issues/1714)）。
 
 事务内部修改 WATCH 监视的 Key：
 
 ```bash
-> SET PROJECT "JavaGuide"
+> SET PROJECT "OfferKit"
 OK
 > WATCH PROJECT
 OK
 > MULTI
 OK
-> SET PROJECT "JavaGuide1"
+> SET PROJECT "OfferKit1"
 QUEUED
-> SET PROJECT "JavaGuide2"
+> SET PROJECT "OfferKit2"
 QUEUED
-> SET PROJECT "JavaGuide3"
+> SET PROJECT "OfferKit3"
 QUEUED
 > EXEC
 1) OK
 2) OK
 3) OK
 127.0.0.1:6379> GET PROJECT
-"JavaGuide3"
+"OfferKit3"
 ```
 
 事务外部修改 WATCH 监视的 Key：
 
 ```bash
-> SET PROJECT "JavaGuide"
+> SET PROJECT "OfferKit"
 OK
 > WATCH PROJECT
 OK
-> SET PROJECT "JavaGuide2"
+> SET PROJECT "OfferKit2"
 OK
 > MULTI
 OK
@@ -130,7 +130,7 @@ QUEUED
 
 Redis 官网相关介绍 [https://redis.io/topics/transactions](https://redis.io/topics/transactions) 如下：
 
-![Redis 事务](https://oss.javaguide.cn/github/javaguide/database/redis/redis-transactions.png)
+![Redis 事务](https://oss.javaguide.cn/github/offerkit/database/redis/redis-transactions.png)
 
 ### Redis 事务支持原子性吗？
 
@@ -145,12 +145,12 @@ Redis 事务在运行错误的情况下，除了执行过程中出现错误的�
 
 Redis 官网也解释了自己为啥不支持回滚。简单来说就是 Redis 开发者们觉得没必要支持回滚，这样更简单便捷并且性能更好。Redis 开发者觉得即使命令执行错误也应该在开发过程中就被发现而不是生产过程中。
 
-![Redis 为什么不支持回滚](https://oss.javaguide.cn/github/javaguide/database/redis/redis-rollback.png)
+![Redis 为什么不支持回滚](https://oss.javaguide.cn/github/offerkit/database/redis/redis-rollback.png)
 
 **相关 issue**：
 
-- [issue#452: 关于 Redis 事务不满足原子性的问题](https://github.com/Snailclimb/JavaGuide/issues/452)。
-- [Issue#491:关于 Redis 没有事务回滚？](https://github.com/Snailclimb/JavaGuide/issues/491)。
+- [issue#452: 关于 Redis 事务不满足原子性的问题](https://github.com/jiangshang-dev/offerkit/issues/452)。
+- [Issue#491:关于 Redis 没有事务回滚？](https://github.com/jiangshang-dev/offerkit/issues/491)。
 
 ### Redis 事务支持持久性吗？
 
@@ -189,7 +189,7 @@ Redis 从 2.6 版本开始支持执行 Lua 脚本，它的功能和事务非常�
 除了下面介绍的内容之外，再推荐两篇不错的文章：
 
 - [你的 Redis 真的变慢了吗？性能优化如何做 - 阿里开发者](https://mp.weixin.qq.com/s/nNEuYw0NlYGhuKKKKoWfcQ)。
-- [Redis 常见阻塞原因总结 - JavaGuide](https://javaguide.cn/database/redis/redis-common-blocking-problems-summary.html)。
+- [Redis 常见阻塞原因总结 - OfferKit](/database/redis/redis-common-blocking-problems-summary.html)。
 
 ### 使用批量操作减少网络传输
 
@@ -227,7 +227,7 @@ Redis 中有一些原生支持批量操作的命令，比如：
 
 > Redis Cluster 并没有使用一致性哈希，采用的是 **哈希槽分区**，每一个键值对都属于一个 **hash slot（哈希槽）**。当客户端发送命令请求的时候，需要先根据 key 通过上面的计算公式找到的对应的哈希槽，然后再查询哈希槽和节点的映射关系，即可找到目标 Redis 节点。
 >
-> 我在 [Redis 集群详解（付费）](https://javaguide.cn/database/redis/redis-cluster.html) 这篇文章中详细介绍了 Redis Cluster 这部分的内容，感兴趣地可以看看。
+> 我在 [Redis 集群详解（付费）](/database/redis/redis-cluster.html) 这篇文章中详细介绍了 Redis Cluster 这部分的内容，感兴趣地可以看看。
 
 #### pipeline
 
@@ -248,7 +248,7 @@ Redis 中有一些原生支持批量操作的命令，比如：
 
 > 事务可以看作是一个原子操作，但其实并不满足原子性。当我们提到 Redis 中的原子操作时，主要指的是这个操作（比如事务、Lua 脚本）不会被其他操作（比如其他事务、Lua 脚本）打扰，并不能完全保证这个操作中的所有写命令要么都执行要么都不执行。这主要也是因为 Redis 是不支持回滚操作。
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/redis-pipeline-vs-transaction.png)
+![](https://oss.javaguide.cn/github/offerkit/database/redis/redis-pipeline-vs-transaction.png)
 
 另外，pipeline 不适用于执行顺序有依赖关系的一批命令。就比如说，你需要将前一个命令的结果给后续的命令使用，pipeline 就没办法满足你的需求了。对于这种需求，我们可以使用 **Lua 脚本**。
 
@@ -285,7 +285,7 @@ Lua 脚本同样支持批量操作多条命令。一段 Lua 脚本可以视作�
 - String 类型的 value 超过 1MB
 - 复合类型（List、Hash、Set、Sorted Set 等）的 value 包含的元素超过 5000 个（不过，对于复合类型的 value 来说，不一定包含的元素越多，占用的内存就越多）。
 
-![bigkey 判定标准](https://oss.javaguide.cn/github/javaguide/database/redis/bigkey-criterion.png)
+![bigkey 判定标准](https://oss.javaguide.cn/github/offerkit/database/redis/bigkey-criterion.png)
 
 #### bigkey 是怎么产生的？有什么危害？
 
@@ -370,7 +370,7 @@ Biggest string found '"ballcat:oauth:refresh_auth:f6cdb384-9a9d-4f2f-af01-dc3f28
 
 这里以阿里云 Redis 为例说明，它支持 bigkey 实时分析、发现，文档地址：<https://www.alibabacloud.com/help/zh/apsaradb-for-redis/latest/use-the-real-time-key-statistics-feature>。
 
-![阿里云Key分析](https://oss.javaguide.cn/github/javaguide/database/redis/aliyun-key-analysis.png)
+![阿里云Key分析](https://oss.javaguide.cn/github/offerkit/database/redis/aliyun-key-analysis.png)
 
 #### 如何处理 bigkey？
 
@@ -457,7 +457,7 @@ OK
 
 京东零售的 [hotkey](https://gitee.com/jd-platform-opensource/hotkey) 这个项目不光支持 hotkey 的发现，还支持 hotkey 的处理。
 
-![京东零售开源的 hotkey](https://oss.javaguide.cn/github/javaguide/database/redis/jd-hotkey.png)
+![京东零售开源的 hotkey](https://oss.javaguide.cn/github/offerkit/database/redis/jd-hotkey.png)
 
 **4、根据业务情况提前预估。**
 
@@ -473,7 +473,7 @@ OK
 
 这里以阿里云 Redis 为例说明，它支持 hotkey 实时分析、发现，文档地址：<https://www.alibabacloud.com/help/zh/apsaradb-for-redis/latest/use-the-real-time-key-statistics-feature>。
 
-![阿里云Key分析](https://oss.javaguide.cn/github/javaguide/database/redis/aliyun-key-analysis.png)
+![阿里云Key分析](https://oss.javaguide.cn/github/offerkit/database/redis/aliyun-key-analysis.png)
 
 #### 如何解决 hotkey？
 
@@ -487,7 +487,7 @@ hotkey 的常见处理以及优化办法如下（这些方法可以配合起来�
 
 这里以阿里云 Redis 为例说明，它支持通过代理查询缓存功能（Proxy Query Cache）优化热点 Key 问题。
 
-![通过阿里云的Proxy Query Cache优化热点Key问题](https://oss.javaguide.cn/github/javaguide/database/redis/aliyun-hotkey-proxy-query-cache.png)
+![通过阿里云的Proxy Query Cache优化热点Key问题](https://oss.javaguide.cn/github/offerkit/database/redis/aliyun-hotkey-proxy-query-cache.png)
 
 ### 慢查询命令
 
@@ -596,7 +596,7 @@ OK
 1. 什么是内存碎片？为什么会有 Redis 内存碎片？
 2. 如何清理 Redis 内存碎片？
 
-**参考答案**：[Redis 内存碎片详解](https://javaguide.cn/database/redis/redis-memory-fragmentation.html)。
+**参考答案**：[Redis 内存碎片详解](/database/redis/redis-memory-fragmentation.html)。
 
 ## ⭐️Redis 生产问题（重要）
 
@@ -606,7 +606,7 @@ OK
 
 缓存穿透说简单点就是大量请求的 key 是不合理的，**根本不存在于缓存中，也不存在于数据库中**。这就导致这些请求直接到了数据库上，根本没有经过缓存这一层，对数据库造成了巨大的压力，可能直接就被这么多请求弄宕机了。
 
-![缓存穿透](https://oss.javaguide.cn/github/javaguide/database/redis/redis-cache-penetration.png)
+![缓存穿透](https://oss.javaguide.cn/github/offerkit/database/redis/redis-cache-penetration.png)
 
 举个例子：某个黑客故意制造一些非法的 key 发起大量请求，导致大量请求落到数据库，结果数据库上也没有查到对应的数据。也就是说这些请求最终都落到了数据库上，对数据库造成了巨大的压力。
 
@@ -647,19 +647,19 @@ public Object getObjectInclNullById(Integer id) {
 
 布隆过滤器是一个非常神奇的数据结构，通过它我们可以非常方便地判断一个给定数据是否存在于海量数据中。我们可以把它看作由二进制向量（或者说位数组）和一系列随机映射函数（哈希函数）两部分组成的数据结构。相比于我们平时常用的 List、Map、Set 等数据结构，它占用空间更少并且效率更高，但是缺点是其返回的结果是概率性的，而不是非常准确的。理论情况下添加到集合中的元素越多，误报的可能性就越大。并且，存放在布隆过滤器的数据不容易删除。
 
-![Bloom Filter 的简单原理示意图](https://oss.javaguide.cn/github/javaguide/cs-basics/algorithms/bloom-filter-simple-schematic-diagram.png)
+![Bloom Filter 的简单原理示意图](https://oss.javaguide.cn/github/offerkit/cs-basics/algorithms/bloom-filter-simple-schematic-diagram.png)
 
 Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数组中的每个元素都只占用 1 bit ，并且每个元素只能是 0 或者 1（代表 false 或者 true），这也是 Bloom Filter 节省内存的核心所在。这样来算的话，申请一个 100w 个元素的位数组只占用 1000000Bit / 8 = 125000 Byte = 125000/1024 KB ≈ 122KB 的空间。
 
-![位数组](https://oss.javaguide.cn/github/javaguide/cs-basics/algorithms/bloom-filter-bit-table.png)
+![位数组](https://oss.javaguide.cn/github/offerkit/cs-basics/algorithms/bloom-filter-bit-table.png)
 
 具体是这样做的：把所有可能存在的请求的值都存放在布隆过滤器中，当用户请求过来，先判断用户发来的请求的值是否存在于布隆过滤器中。不存在的话，直接返回请求参数错误信息给客户端，存在的话才会走下面的流程。
 
 加入布隆过滤器之后的缓存处理流程图如下：
 
-![加入布隆过滤器之后的缓存处理流程图](https://oss.javaguide.cn/github/javaguide/database/redis/redis-cache-penetration-bloom-filter.png)
+![加入布隆过滤器之后的缓存处理流程图](https://oss.javaguide.cn/github/offerkit/database/redis/redis-cache-penetration-bloom-filter.png)
 
-更多关于布隆过滤器的详细介绍可以看看我的这篇原创：[不了解布隆过滤器？一文给你整的明明白白！](https://javaguide.cn/cs-basics/data-structure/bloom-filter.html)，强烈推荐。
+更多关于布隆过滤器的详细介绍可以看看我的这篇原创：[不了解布隆过滤器？一文给你整的明明白白！](/cs-basics/data-structure/bloom-filter.html)，强烈推荐。
 
 **3）接口限流**
 
@@ -667,7 +667,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 后面提到的缓存击穿和雪崩都可以配合接口限流来解决，毕竟这些问题的关键都是有很多请求落到了数据库上造成数据库压力过大。
 
-限流的具体方案可以参考这篇文章：[服务限流详解](https://javaguide.cn/high-availability/limit-request.html)。
+限流的具体方案可以参考这篇文章：[服务限流详解](/high-availability/limit-request.html)。
 
 ### 缓存击穿
 
@@ -675,7 +675,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 缓存击穿中，请求的 key 对应的是 **热点数据**，该数据 **存在于数据库中，但不存在于缓存中（通常是因为缓存中的那份数据已经过期）**。这就可能会导致瞬时大量的请求直接打到了数据库上，对数据库造成了巨大的压力，可能直接就被这么多请求弄宕机了。
 
-![缓存击穿](https://oss.javaguide.cn/github/javaguide/database/redis/redis-cache-breakdown.png)
+![缓存击穿](https://oss.javaguide.cn/github/offerkit/database/redis/redis-cache-breakdown.png)
 
 举个例子：秒杀进行过程中，缓存中的某个秒杀商品的数据突然过期，这就导致瞬时大量对该商品的请求直接落到数据库上，对数据库造成了巨大的压力。
 
@@ -701,7 +701,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 另外，缓存服务宕机也会导致缓存雪崩现象，导致所有的请求都落到了数据库上。
 
-![缓存雪崩](https://oss.javaguide.cn/github/javaguide/database/redis/redis-cache-avalanche.png)
+![缓存雪崩](https://oss.javaguide.cn/github/offerkit/database/redis/redis-cache-avalanche.png)
 
 举个例子：缓存中的大量数据在同一时间过期，这个时候突然有大量的请求需要访问这些过期的数据。这就导致大量的请求直接落到数据库上，对数据库造成了巨大的压力。
 
@@ -709,7 +709,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 **针对 Redis 服务不可用的情况**：
 
-1. **Redis 集群**：采用 Redis 集群，避免单机出现问题整个缓存服务都没办法使用。Redis Cluster 和 Redis Sentinel 是两种最常用的 Redis 集群实现方案，详细介绍可以参考：[Redis 集群详解(付费)](https://javaguide.cn/database/redis/redis-cluster.html)。
+1. **Redis 集群**：采用 Redis 集群，避免单机出现问题整个缓存服务都没办法使用。Redis Cluster 和 Redis Sentinel 是两种最常用的 Redis 集群实现方案，详细介绍可以参考：[Redis 集群详解(付费)](/database/redis/redis-cluster.html)。
 2. **多级缓存**：设置多级缓存，例如本地缓存+Redis 缓存的二级缓存组合，当 Redis 缓存出现问题时，还可以从本地缓存中获取到部分数据。
 
 **针对大量缓存同时失效的情况**：
@@ -745,9 +745,9 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 
 图解如下：
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/cache-aside-write.png)
+![](https://oss.javaguide.cn/github/offerkit/database/redis/cache-aside-write.png)
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/cache-aside-read.png)
+![](https://oss.javaguide.cn/github/offerkit/database/redis/cache-aside-read.png)
 
 如果更新数据库成功，而删除缓存这一步失败的情况的话，简单说有两个解决方案：
 
@@ -772,7 +772,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 - 其他进程过度占用 CPU 导致 Redis 吞吐量下降。
 - 网络问题如连接拒绝、延迟高、网卡软中断等导致 Redis 阻塞。
 
-详细介绍可以阅读这篇文章：[Redis 常见阻塞原因总结](https://javaguide.cn/database/redis/redis-common-blocking-problems-summary.html)。
+详细介绍可以阅读这篇文章：[Redis 常见阻塞原因总结](/database/redis/redis-common-blocking-problems-summary.html)。
 
 ## Redis 集群
 
@@ -796,7 +796,7 @@ Bloom Filter 会使用一个较大的 bit 数组来保存所有的数据，数�
 6. Redis Cluster 扩容缩容期间可以提供服务吗？
 7. Redis Cluster 中的节点是怎么进行通信的？
 
-**参考答案**：[Redis 集群详解（付费）](https://javaguide.cn/database/redis/redis-cluster.html)。
+**参考答案**：[Redis 集群详解（付费）](/database/redis/redis-cluster.html)。
 
 ## Redis 使用规范
 

@@ -10,7 +10,7 @@ tag:
 
 一开始，我写技术博客就是简单地总结自己课堂上学习的课程比如网络、操作系统。渐渐地，我开始撰写一些更为系统化的知识点详解和面试常见问题总结。
 
-![JavaGuide 首页](https://oss.javaguide.cn/about-the-author/college-life/image-20230408131717766.png)
+![OfferKit 首页](https://oss.javaguide.cn/about-the-author/college-life/image-20230408131717766.png)
 
 许多人都想写技术博客，但却不清楚这对他们有何好处。有些人开始写技术博客，却不知道如何坚持下去，也不知道该写些什么。这篇文章我会认真聊聊我对记录技术博客的一些看法和心得，或许可以帮助你解决这些问题。
 
@@ -70,11 +70,11 @@ tag:
 
 ![网易的课程合作](https://oss.javaguide.cn/about-the-author/college-life/image-20230408115720135.png)
 
-老粉应该大部分都是通过 JavaGuide 这个项目认识我的，这是我在大三开始准备秋招面试时创建的一个项目。没想到这个项目竟然火了一把，一度霸占了 GitHub 榜单。可能当时国内这类开源文档教程类项目太少了，所以这个项目受欢迎程度非常高。
+老粉应该大部分都是通过 OfferKit 这个项目认识我的，这是我在大三开始准备秋招面试时创建的一个项目。没想到这个项目竟然火了一把，一度霸占了 GitHub 榜单。可能当时国内这类开源文档教程类项目太少了，所以这个项目受欢迎程度非常高。
 
-![JavaGuide Star 趋势](https://oss.javaguide.cn/about-the-author/college-life/image-20230408131849198.png)
+![OfferKit Star 趋势](https://oss.javaguide.cn/about-the-author/college-life/image-20230408131849198.png)
 
-项目火了之后，有一个国内比较大的云服务公司找到我，说是要赞助 JavaGuide 这个项目。我既惊又喜，担心别人是骗子，反复确认合同之后，最终确定以每月 1000 元的费用在我的项目首页加上对方公司的 banner。
+项目火了之后，有一个国内比较大的云服务公司找到我，说是要赞助 OfferKit 这个项目。我既惊又喜，担心别人是骗子，反复确认合同之后，最终确定以每月 1000 元的费用在我的项目首页加上对方公司的 banner。
 
 随着时间的推移，以及自己后来写了一些比较受欢迎、比较受众的文章，我的博客知名度也有所提升，通过写博客的收入也增加了不少。
 
@@ -123,7 +123,7 @@ tag:
 
 最重要的是一定要重视 Markdown 规范，不然内容再好也会显得不专业。
 
-详见 [Markdown 规范](../javaguide/contribution-guideline.md) （很重要，尽量按照规范来，对你工作中写文档会非常有帮助）
+详见 [Markdown 规范](../offerkit/contribution-guideline.md) （很重要，尽量按照规范来，对你工作中写文档会非常有帮助）
 
 ## 有没有什么写作技巧分享？
 

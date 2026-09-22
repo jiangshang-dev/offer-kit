@@ -14,9 +14,9 @@ head:
 
 分布式系统面试很少让你单独背一个 CAP 定义。面试官通常会从某个业务问题开始追问：服务为什么要拆到多个节点？网络超时后能不能重试？锁提前过期怎么办？跨服务的数据如何保持一致？
 
-这篇文章是 JavaGuide 分布式系统专题的复习入口，按分布式理论、RPC 与网关、分布式 ID/锁/事务、配置中心与 ZooKeeper 四部分整理。每部分只列复习时需要抓住的问题，答案和实现细节放在对应专题文章中。
+这篇文章是 OfferKit 分布式系统专题的复习入口，按分布式理论、RPC 与网关、分布式 ID/锁/事务、配置中心与 ZooKeeper 四部分整理。每部分只列复习时需要抓住的问题，答案和实现细节放在对应专题文章中。
 
-时间比较紧的话，可以先看 [分布式系统常见面试题总结](https://interview.javaguide.cn/distributed-system/distributed-system.html)，把不会的问题标出来，再回到本文补原理和工程细节。
+时间比较紧的话，可以先看 [分布式系统常见面试题总结](/distributed-system/distributed-system.html)，把不会的问题标出来，再回到本文补原理和工程细节。
 
 ## 复习时先抓住哪些问题？
 
@@ -33,17 +33,17 @@ head:
 
 先设想一个最常见的场景：同一份数据存了多个副本，节点可能宕机，节点之间的网络也可能中断。CAP、BASE 和共识算法讨论的，都是这个场景里的选择与约束。
 
-![分布式系统通信机制：中心化 vs 去中心化](https://oss.javaguide.cn/github/javaguide/distributed-system/protocol/gossip-centralized-vs-decentralized.png)
+![分布式系统通信机制：中心化 vs 去中心化](https://oss.javaguide.cn/github/offerkit/distributed-system/protocol/gossip-centralized-vs-decentralized.png)
 
 相关内容：
 
-- [CAP 理论和 BASE 理论解读](https://javaguide.cn/distributed-system/protocol/cap-and-base-theorem.html)
-- [分布式协调详解](https://javaguide.cn/distributed-system/protocol/centralized-and-decentralized.html)
-- [Paxos 算法解读](https://javaguide.cn/distributed-system/protocol/paxos-algorithm.html)
-- [Raft 算法解读](https://javaguide.cn/distributed-system/protocol/raft-algorithm.html)
-- [ZAB 协议详解](https://javaguide.cn/distributed-system/protocol/zab.html)
-- [Gossip 协议详解](https://javaguide.cn/distributed-system/protocol/gossip-protocol.html)
-- [一致性哈希算法详解](https://javaguide.cn/distributed-system/protocol/consistent-hashing.html)
+- [CAP 理论和 BASE 理论解读](/distributed-system/protocol/cap-and-base-theorem.html)
+- [分布式协调详解](/distributed-system/protocol/centralized-and-decentralized.html)
+- [Paxos 算法解读](/distributed-system/protocol/paxos-algorithm.html)
+- [Raft 算法解读](/distributed-system/protocol/raft-algorithm.html)
+- [ZAB 协议详解](/distributed-system/protocol/zab.html)
+- [Gossip 协议详解](/distributed-system/protocol/gossip-protocol.html)
+- [一致性哈希算法详解](/distributed-system/protocol/consistent-hashing.html)
 
 常见面试题：
 
@@ -62,20 +62,20 @@ RPC 处理服务之间的调用，API 网关承接外部请求。复习时可以
 
 API 网关示意图如下：
 
-![网关示意图](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/api-gateway-overview.png)
+![网关示意图](https://oss.javaguide.cn/github/offerkit/system-design/distributed-system/api-gateway-overview.png)
 
 RPC 示意图如下：
 
-![RPC 概览](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
+![RPC 概览](https://oss.javaguide.cn/github/offerkit/distributed-system/rpc/rpc-overview.png)
 
 相关内容：
 
-- [微服务面试题总结](https://javaguide.cn/distributed-system/microservices-interview-questions.html)
-- [RPC 基础常见面试题总结](https://javaguide.cn/distributed-system/rpc/rpc-intro.html)
-- [Dubbo 常见面试题总结](https://javaguide.cn/distributed-system/rpc/dubbo.html)
-- [HTTP 和 RPC 有什么区别？](https://javaguide.cn/distributed-system/rpc/http&rpc.html)
-- [API 网关基础知识总结](https://javaguide.cn/distributed-system/api-gateway.html)
-- [Spring Cloud Gateway 常见问题总结](https://javaguide.cn/distributed-system/spring-cloud-gateway-questions.html)
+- [微服务面试题总结](/distributed-system/microservices-interview-questions.html)
+- [RPC 基础常见面试题总结](/distributed-system/rpc/rpc-intro.html)
+- [Dubbo 常见面试题总结](/distributed-system/rpc/dubbo.html)
+- [HTTP 和 RPC 有什么区别？](/distributed-system/rpc/http&rpc.html)
+- [API 网关基础知识总结](/distributed-system/api-gateway.html)
+- [Spring Cloud Gateway 常见问题总结](/distributed-system/spring-cloud-gateway-questions.html)
 
 常见面试题：
 
@@ -93,11 +93,11 @@ RPC 示意图如下：
 
 相关内容：
 
-- [分布式ID介绍&实现方案总结](https://javaguide.cn/distributed-system/distributed-id.html)
-- [分布式 ID 设计指南](https://javaguide.cn/distributed-system/distributed-id-design.html)
-- [分布式锁介绍](https://javaguide.cn/distributed-system/distributed-lock.html)
-- [分布式锁常见实现方案总结](https://javaguide.cn/distributed-system/distributed-lock-implementations.html)
-- [分布式事务解决方案总结](https://javaguide.cn/distributed-system/distributed-transaction.html)
+- [分布式ID介绍&实现方案总结](/distributed-system/distributed-id.html)
+- [分布式 ID 设计指南](/distributed-system/distributed-id-design.html)
+- [分布式锁介绍](/distributed-system/distributed-lock.html)
+- [分布式锁常见实现方案总结](/distributed-system/distributed-lock-implementations.html)
+- [分布式事务解决方案总结](/distributed-system/distributed-transaction.html)
 
 常见面试题：
 
@@ -117,9 +117,9 @@ RPC 示意图如下：
 
 相关内容：
 
-- [分布式配置中心面试题总结](https://javaguide.cn/distributed-system/distributed-configuration-center.html)
-- [ZooKeeper相关概念总结(入门)](https://javaguide.cn/distributed-system/distributed-process-coordination/zookeeper/zookeeper-intro.html)
-- [ZooKeeper相关概念总结(进阶)](https://javaguide.cn/distributed-system/distributed-process-coordination/zookeeper/zookeeper-plus.html)
+- [分布式配置中心面试题总结](/distributed-system/distributed-configuration-center.html)
+- [ZooKeeper相关概念总结(入门)](/distributed-system/distributed-process-coordination/zookeeper/zookeeper-intro.html)
+- [ZooKeeper相关概念总结(进阶)](/distributed-system/distributed-process-coordination/zookeeper/zookeeper-plus.html)
 
 常见面试题：
 
@@ -133,7 +133,7 @@ RPC 示意图如下：
 
 | 剩余时间 | 建议安排                                                                                                                                              | 复习目标                                       |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| 1～2 天  | 先过一遍 [分布式系统常见面试题总结](https://interview.javaguide.cn/distributed-system/distributed-system.html)，优先补分布式 ID、锁、事务、RPC 和网关 | 高频问题能给出完整回答，知道各方案最主要的限制 |
+| 1～2 天  | 先过一遍 [分布式系统常见面试题总结](/distributed-system/distributed-system.html)，优先补分布式 ID、锁、事务、RPC 和网关 | 高频问题能给出完整回答，知道各方案最主要的限制 |
 | 3～7 天  | 在高频题之外，补 CAP/BASE、Raft、一致性哈希，并画出网关到 RPC 服务的调用链路                                                                          | 能解释方案背后的取舍，遇到追问不会停在定义上   |
 | 1 周以上 | 按本文顺序阅读专题文章，再结合自己的项目整理异常案例和选型依据                                                                                        | 能从业务约束讲到方案、故障处理和扩展方式       |
 

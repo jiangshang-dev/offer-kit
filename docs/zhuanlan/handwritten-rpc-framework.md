@@ -19,7 +19,7 @@ head:
 
 只记住“RPC 让远程调用像本地调用一样简单”，遇到这些追问很难往下讲。《手写 RPC 框架》围绕一个可以运行的 Java 项目，把动态代理、网络通信、自定义协议、序列化、注册中心、负载均衡、异步调用和异常处理串在一起。
 
-如果你还不熟悉 RPC 的概念和调用流程，可以先阅读 JavaGuide 的免费文章：[RPC 远程过程调用详解](../distributed-system/rpc/rpc-intro.md)。
+如果你还不熟悉 RPC 的概念和调用流程，可以先阅读 OfferKit 的免费文章：[RPC 远程过程调用详解](../distributed-system/rpc/rpc-intro.md)。
 
 ## 项目介绍
 
@@ -30,11 +30,11 @@ head:
 - GitHub：<https://github.com/Snailclimb/guide-rpc-framework>
 - Gitee：<https://gitee.com/SnailClimb/guide-rpc-framework>
 
-项目代码完全开源。配套教程是 JavaGuide 知识星球内部小册，当前包含 15 篇正文，以及一篇简历写法和面试常见问题解答。
+项目代码完全开源。配套教程是 OfferKit 知识星球内部小册，当前包含 15 篇正文，以及一篇简历写法和面试常见问题解答。
 
 ## 一次 RPC 调用经过了什么
 
-![Guide RPC Framework 整体架构](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/guide-rpc-framework-architecture.webp)
+![Guide RPC Framework 整体架构](https://oss.javaguide.cn/github/offerkit/distributed-system/rpc/guide-rpc-framework-architecture.webp)
 
 以 `@RpcReference` 注入的服务接口为例，一次调用会经过这些环节：
 
@@ -170,7 +170,7 @@ ZooKeeper 服务发现
 
 ### 配套教程在哪里阅读？
 
-配套教程是 JavaGuide 知识星球内部小册，通过语雀文档在线阅读，不单独对外出售。
+配套教程是 OfferKit 知识星球内部小册，通过语雀文档在线阅读，不单独对外出售。
 
 ### 教程是视频还是文字？
 
@@ -182,7 +182,7 @@ ZooKeeper 服务发现
 
 ## 加入学习
 
-如果你只想阅读源码，直接访问开源仓库即可。如果你希望按调用链学习实现过程，同时准备简历写法和项目追问，可以加入 [JavaGuide 知识星球](../about-the-author/zhishixingqiu-two-years.md) 阅读完整教程。
+如果你只想阅读源码，直接访问开源仓库即可。如果你希望按调用链学习实现过程，同时准备简历写法和项目追问，可以加入 [OfferKit 知识星球](../about-the-author/zhishixingqiu-two-years.md) 阅读完整教程。
 
 星球内还提供一对一提问、简历修改、Java 面试资料、系统设计与场景题、源码阅读等内容，可以和这套 RPC 项目一起使用。
 

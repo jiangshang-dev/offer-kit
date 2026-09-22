@@ -1,8 +1,8 @@
 {
-  "name": "lingxi",
+  "name": "offerkit",
   "version": "2.0.0-alpha.40",
   "private": true,
-  "description": "灵犀面试：Java 面试与后端知识体系",
+  "description": "OfferKit：Java 面试与后端知识体系",
   "license": "MIT",
   "author": "姜小白",
   "pnpm": {

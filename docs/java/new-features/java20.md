@@ -26,7 +26,7 @@ JDK 20 共有 7 个新特性，这篇文章会挑选其中较为重要的一些�
 
 下图是从 JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间：
 
-![ JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间](https://oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
+![ JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间](https://oss.javaguide.cn/github/offerkit/java/new-features/jdk8~jdk24.png)
 
 ## JEP 429: Scoped Values（作用域值，第一次孵化）
 
@@ -221,7 +221,7 @@ JDK 20 中是第二次预览，由 [JEP 434](https://openjdk.org/jeps/434) 提�
 
 虚拟线程、平台线程和系统内核线程的关系图如下所示（图源：[How to Use Java 19 Virtual Threads](https://medium.com/javarevisited/how-to-use-java-19-virtual-threads-c16a32bad5f7)）：
 
-![虚拟线程、平台线程和系统内核线程的关系](https://oss.javaguide.cn/github/javaguide/java/new-features/virtual-threads-platform-threads-kernel-threads-relationship.png)
+![虚拟线程、平台线程和系统内核线程的关系](https://oss.javaguide.cn/github/offerkit/java/new-features/virtual-threads-platform-threads-kernel-threads-relationship.png)
 
 关于平台线程和系统内核线程的对应关系多提一点：在 Windows 和 Linux 等主流操作系统中，Java 线程采用的是一对一的线程模型，也就是一个平台线程对应一个系统内核线程。Solaris 系统是一个特例，HotSpot VM 在 Solaris 上支持多对多和一对一。具体可以参考 R 大的回答: [JVM 中的线程模型是用户级的么？](https://www.zhihu.com/question/23096638/answer/29617153)。
 
@@ -233,7 +233,7 @@ JDK 20 中是第二次预览，由 [JEP 434](https://openjdk.org/jeps/434) 提�
 
 Java 虚拟线程的详细解读和原理可以看下面这几篇文章：
 
-- [虚拟线程极简入门](https://javaguide.cn/java/concurrent/virtual-thread.html)
+- [虚拟线程极简入门](/java/concurrent/virtual-thread.html)
 - [Java19 正式 GA！看虚拟线程如何大幅提高系统吞吐量](https://mp.weixin.qq.com/s/yyApBXxpXxVwttr01Hld6Q)
 - [虚拟线程 - VirtualThread 源码透视](https://www.cnblogs.com/throwable/p/16758997.html)
 

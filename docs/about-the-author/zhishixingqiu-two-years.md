@@ -1,17 +1,17 @@
 ---
-title: JavaGuide 知识星球介绍：Java 面试资料、简历修改与实战项目
-description: JavaGuide知识星球介绍，提供Java面试指北、后端面试资料、简历修改、一对一答疑、Java实战项目和大模型项目教程，已帮助9000+球友提升求职竞争力。
+title: OfferKit 知识星球介绍：Java 面试资料、简历修改与实战项目
+description: OfferKit知识星球介绍，提供Java面试指北、后端面试资料、简历修改、一对一答疑、Java实战项目和大模型项目教程，已帮助9000+球友提升求职竞争力。
 category: 知识星球
 star: 2
 head:
   - - meta
     - name: keywords
-      content: JavaGuide知识星球,Java知识星球,Java面试资料,Java面试指北,Java后端面试,简历修改,简历优化,一对一答疑,Java实战项目,后端实战项目,大模型实战项目,AI面试项目,JavaGuide星球
+      content: OfferKit知识星球,Java知识星球,Java面试资料,Java面试指北,Java后端面试,简历修改,简历优化,一对一答疑,Java实战项目,后端实战项目,大模型实战项目,AI面试项目,OfferKit星球
 ---
 
-JavaGuide 知识星球是我长期维护的 **Java 后端面试与求职成长社群**，主要面向正在准备校招、社招、转行和技术进阶的同学。星球里会持续更新 **Java 面试资料、后端高频面试题、简历修改、一对一答疑、实战项目教程、源码解析专栏** 等内容，目标很简单：帮你少走弯路，更高效地准备面试和提升项目竞争力。
+OfferKit 知识星球是我长期维护的 **Java 后端面试与求职成长社群**，主要面向正在准备校招、社招、转行和技术进阶的同学。星球里会持续更新 **Java 面试资料、后端高频面试题、简历修改、一对一答疑、实战项目教程、源码解析专栏** 等内容，目标很简单：帮你少走弯路，更高效地准备面试和提升项目竞争力。
 
-如果你正在找系统的 Java 面试资料、想优化简历、需要一个能写进简历的 Java 实战项目，或者希望有人结合你的情况给出具体建议，这篇文章会完整介绍 JavaGuide 知识星球能提供什么、适合哪些人、为什么值得加入。
+如果你正在找系统的 Java 面试资料、想优化简历、需要一个能写进简历的 Java 实战项目，或者希望有人结合你的情况给出具体建议，这篇文章会完整介绍 OfferKit 知识星球能提供什么、适合哪些人、为什么值得加入。
 
 在 **2019 年 12 月 29 号**，经过了大概一年左右的犹豫期，我正式确定要开始做一个自己的星球，帮助学习 Java 和准备 Java 面试的同学。一转眼，已经六年了。感谢大家一路陪伴，我会信守承诺，继续认真维护这个纯粹的 Java 知识星球，不让信任我的读者失望。
 
@@ -59,8 +59,8 @@ JavaGuide 知识星球是我长期维护的 **Java 后端面试与求职成长�
 
 星球已经推出的实战项目如下：
 
-- [⭐AI 智能面试辅助平台 + RAG 知识库](https://javaguide.cn/zhuanlan/interview-guide.html)：基于 Spring Boot 4.0 + Java 21 + Spring AI 2.0 开发。非常适合作为学习和简历项目，学习门槛低，帮助提升求职竞争力，是主打就业的实战项目。
-- [手写 RPC 框架](https://javaguide.cn/zhuanlan/handwritten-rpc-framework.html)：从零开始基于 Netty+Kyro+Zookeeper 实现一个简易的 RPC 框架。麻雀虽小五脏俱全，项目代码注释详细，结构清晰。
+- [⭐AI 智能面试辅助平台 + RAG 知识库](/zhuanlan/interview-guide.html)：基于 Spring Boot 4.0 + Java 21 + Spring AI 2.0 开发。非常适合作为学习和简历项目，学习门槛低，帮助提升求职竞争力，是主打就业的实战项目。
+- [手写 RPC 框架](/zhuanlan/handwritten-rpc-framework.html)：从零开始基于 Netty+Kyro+Zookeeper 实现一个简易的 RPC 框架。麻雀虽小五脏俱全，项目代码注释详细，结构清晰。
 
 今年陆续还会推出更多企业级实战案例（预告一下，下一个是大家期待的：**企业智能客服**）！
 
@@ -94,8 +94,8 @@ JavaGuide 知识星球是我长期维护的 **Java 后端面试与求职成长�
 
 星球已经推出的实战项目如下：
 
-- [⭐AI 智能面试辅助平台 + RAG 知识库](https://javaguide.cn/zhuanlan/interview-guide.html)：基于 Spring Boot 4.0 + Java 21 + Spring AI 2.0 开发。非常适合作为学习和简历项目，学习门槛低，帮助提升求职竞争力，是主打就业的实战项目。
-- [手写 RPC 框架](https://javaguide.cn/zhuanlan/handwritten-rpc-framework.html)：从零开始基于 Netty+Kyro+Zookeeper 实现一个简易的 RPC 框架。麻雀虽小五脏俱全，项目代码注释详细，结构清晰。
+- [⭐AI 智能面试辅助平台 + RAG 知识库](/zhuanlan/interview-guide.html)：基于 Spring Boot 4.0 + Java 21 + Spring AI 2.0 开发。非常适合作为学习和简历项目，学习门槛低，帮助提升求职竞争力，是主打就业的实战项目。
+- [手写 RPC 框架](/zhuanlan/handwritten-rpc-framework.html)：从零开始基于 Netty+Kyro+Zookeeper 实现一个简易的 RPC 框架。麻雀虽小五脏俱全，项目代码注释详细，结构清晰。
 
 今年陆续还会推出更多企业级实战案例！并且，星球还分享了很多高频项目经历的优化版介绍和面试准备（持续更新中）。
 
@@ -119,7 +119,7 @@ JavaGuide 知识星球是我长期维护的 **Java 后端面试与求职成长�
 
 加入星球之后，一定要记得抽时间把星球精华主题看看，相信你一定会有所收货！
 
-JavaGuide 知识星球优质主题汇总传送门：<https://www.yuque.com/snailclimb/rpkqw1/ncxpnfmlng08wlf1>（为了避免这里成为知识杂货铺，我会对严格筛选入选的优质主题）。
+OfferKit 知识星球优质主题汇总传送门：<https://www.yuque.com/snailclimb/rpkqw1/ncxpnfmlng08wlf1>（为了避免这里成为知识杂货铺，我会对严格筛选入选的优质主题）。
 
 ![星球优质主题汇总](https://oss.javaguide.cn/xingqiu/Xnip2023-04-21_15-48-13.png)
 

@@ -14,9 +14,9 @@ export default defineUserConfig({
   // 本地开发默认根路径；部署到 GitHub Pages 子目录时可设 BASE=/blog/
   base: process.env.BASE ?? "/",
 
-  title: "灵犀面试",
+  title: "OfferKit",
   description:
-    "灵犀面试是姜小白整理的后端面试与知识体系，覆盖 Java、数据库/MySQL、Redis、分布式、高并发、高可用、系统设计等核心知识。",
+    "OfferKit 是姜小白整理的后端面试与知识体系，覆盖 Java、数据库/MySQL、Redis、分布式、高并发、高可用、系统设计等核心知识。",
   lang: "zh-CN",
 
   head: [
@@ -28,7 +28,7 @@ export default defineUserConfig({
     //   {
     //     name: "keywords",
     //     content:
-    //       "JavaGuide, 后端面试, 后端开发, Java面试, Java基础, 并发编程, JVM, 数据库, MySQL, Redis, Spring, 分布式, 高并发, 高性能, 高可用, 系统设计, 消息队列, 缓存, 计算机网络, Linux",
+    //       "OfferKit, 后端面试, 后端开发, Java面试, Java基础, 并发编程, JVM, 数据库, MySQL, Redis, Spring, 分布式, 高并发, 高性能, 高可用, 系统设计, 消息队列, 缓存, 计算机网络, Linux",
     //   },
     // ],
     // [
@@ -36,7 +36,7 @@ export default defineUserConfig({
     //   {
     //     name: "description",
     //     content:
-    //       "JavaGuide 是一份面向后端开发/后端面试的学习与复习指南，覆盖 Java、数据库/MySQL、Redis、分布式、高并发、高可用、系统设计等核心知识。",
+    //       "OfferKit 是一份面向后端开发/后端面试的学习与复习指南，覆盖 Java、数据库/MySQL、Redis、分布式、高并发、高可用、系统设计等核心知识。",
     //   },
     // ],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],

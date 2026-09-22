@@ -9,7 +9,7 @@ icon: "mdi:book-open-page-variant-outline"
 
 ## Java 基础与进阶
 
-- [JavaGuide](https://github.com/Snailclimb/JavaGuide "JavaGuide")：覆盖 Java 核心知识、数据库、系统设计、分布式、高性能和面试准备的学习指南。
+- [OfferKit](https://github.com/jiangshang-dev/offerkit "OfferKit")：覆盖 Java 核心知识、数据库、系统设计、分布式、高性能和面试准备的学习指南。
 - [toBeBetterJavaer](https://github.com/itwanger/toBeBetterJavaer)：一份通俗易懂、风趣幽默的 Java 学习指南，内容涵盖 Java 基础、Java 集合框架、Java 并发编程、JVM、Java 企业级开发（Git、SSM、Spring Boot）等知识点。
 - [advanced-java](https://github.com/doocs/advanced-java "advanced-java")：涵盖高并发、分布式、高可用、微服务和海量数据处理等 Java 工程师进阶知识。
 - [bestJavaer](https://github.com/crisxuan/bestJavaer)：Java 基础、JVM、并发、数据库和中间件等主题的系列教程。

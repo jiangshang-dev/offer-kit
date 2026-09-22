@@ -148,7 +148,7 @@ head:
 import com.google.common.util.concurrent.RateLimiter;
 
 /**
- * 微信搜 JavaGuide 回复"面试突击"即可免费领取个人原创的 Java 面试手册
+ * 微信搜 OfferKit 回复"面试突击"即可免费领取个人原创的 Java 面试手册
  *
  * @author Guide哥
  * @date 2021/10/08 19:12
@@ -191,7 +191,7 @@ import com.google.common.util.concurrent.RateLimiter;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 微信搜 JavaGuide 回复"面试突击"即可免费领取个人原创的 Java 面试手册
+ * 微信搜 OfferKit 回复"面试突击"即可免费领取个人原创的 Java 面试手册
  *
  * @author Guide哥
  * @date 2021/10/08 19:12
@@ -267,7 +267,7 @@ Resilience4j 不仅提供限流，还提供了熔断、负载保护、自动重�
 
 > ShenYu 地址: <https://github.com/apache/incubator-shenyu>
 
-![ShenYu 限流脚本](https://oss.javaguide.cn/github/javaguide/high-availability/limit-request/shenyu-ratelimit-lua-scripts.png)
+![ShenYu 限流脚本](https://oss.javaguide.cn/github/offerkit/high-availability/limit-request/shenyu-ratelimit-lua-scripts.png)
 
 另外，如果不想自己写 Lua 脚本的话，也可以直接利用 Redisson 中的 `RRateLimiter` 来实现分布式限流，其底层实现就是基于 Lua 代码+令牌桶算法。
 
@@ -278,8 +278,8 @@ Redisson 是一个开源的 Java 语言 Redis 客户端，提供了很多开箱�
 ```java
 // 创建一个 Redisson 客户端实例
 RedissonClient redissonClient = Redisson.create();
-// 获取一个名为 "javaguide.limiter" 的限流器对象
-RRateLimiter rateLimiter = redissonClient.getRateLimiter("javaguide.limiter");
+// 获取一个名为 "offerkit.limiter" 的限流器对象
+RRateLimiter rateLimiter = redissonClient.getRateLimiter("offerkit.limiter");
 // 尝试设置限流器的速率为每小时 100 次
 // RateType 有两种，OVERALL 是全局限流，PER_CLIENT 是单 Client 限流（可以认为就是单机限流）
 rateLimiter.trySetRate(RateType.OVERALL, 100, 1, RateIntervalUnit.HOURS);

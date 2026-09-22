@@ -63,14 +63,14 @@ try (InputStream fis = new FileInputStream("input.txt")) {
 
 `input.txt` 文件内容：
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220419155214614.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220419155214614.png)
 
 输出：
 
 ```plain
 Number of remaining bytes:11
 The actual number of bytes skipped:2
-The content read from file:JavaGuide
+The content read from file:OfferKit
 ```
 
 不过，一般我们是不会直接单独使用 `FileInputStream`，通常会配合 `BufferedInputStream`（字节缓冲输入流，后文会讲到）来使用。
@@ -125,7 +125,7 @@ input.close();
 
 ```java
 try (FileOutputStream output = new FileOutputStream("output.txt")) {
-    byte[] array = "JavaGuide".getBytes();
+    byte[] array = "OfferKit".getBytes();
     output.write(array);
 } catch (IOException e) {
     e.printStackTrace();
@@ -134,7 +134,7 @@ try (FileOutputStream output = new FileOutputStream("output.txt")) {
 
 运行结果：
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220419155514392.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220419155514392.png)
 
 类似于 `FileInputStream`，`FileOutputStream` 通常也会配合 `BufferedOutputStream`（字节缓冲输出流，后文会讲到）来使用。
 
@@ -158,7 +158,7 @@ dataOutputStream.writeByte(1);
 
 ```java
 ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("file.txt"));
-Person person = new Person("Guide哥", "JavaGuide作者");
+Person person = new Person("Guide哥", "OfferKit作者");
 output.writeObject(person);
 ```
 
@@ -173,7 +173,7 @@ output.writeObject(person);
 
 乱码问题这个很容易就可以复现，我们只需要将上面提到的 `FileInputStream` 代码示例中的 `input.txt` 文件内容改为中文即可，原代码不需要改动。
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220419154632551.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220419154632551.png)
 
 输出：
 
@@ -234,7 +234,7 @@ try (FileReader fileReader = new FileReader("input.txt");) {
 
 `input.txt` 文件内容：
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220419154632551.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220419154632551.png)
 
 输出：
 
@@ -282,7 +282,7 @@ try (Writer output = new FileWriter("output.txt")) {
 
 输出结果：
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220419155802288.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220419155802288.png)
 
 ## 字节缓冲流
 
@@ -437,7 +437,7 @@ class BufferedInputStream extends FilterInputStream {
 
 ```java
 try (BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("output.txt"))) {
-    byte[] array = "JavaGuide".getBytes();
+    byte[] array = "OfferKit".getBytes();
     bos.write(array);
 } catch (IOException e) {
     e.printStackTrace();
@@ -517,7 +517,7 @@ System.out.println("读取之前的偏移量：" + randomAccessFile.getFilePoint
 
 `input.txt` 文件内容：
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220421162050158.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220421162050158.png)
 
 输出：
 
@@ -542,11 +542,11 @@ randomAccessFile.write(new byte[]{'H', 'I', 'J', 'K'});
 
 `RandomAccessFile` 可以帮助我们合并文件分片，示例代码如下：
 
-![](https://oss.javaguide.cn/github/javaguide/java/io/20210609164749122.png)
+![](https://oss.javaguide.cn/github/offerkit/java/io/20210609164749122.png)
 
-我在[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html)中详细介绍了大文件的上传问题。
+我在[《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html)中详细介绍了大文件的上传问题。
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220428104115362.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220428104115362.png)
 
 `RandomAccessFile` 的实现依赖于 `FileDescriptor`（文件描述符） 和 `FileChannel`（内存映射文件）。
 

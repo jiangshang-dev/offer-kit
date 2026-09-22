@@ -97,7 +97,7 @@ AI 不能替代好的测试判断。它能帮你更快地产出候选用例和�
 
 测开问计网时，经常会贴近排障场景。比如页面加载慢怎么查，接口偶发超时怎么定位，App 抓包看到 401 / 403 / 500 分别可能是什么原因。你不能只背概念，要能顺着请求链路说。
 
-可以配合 JavaGuide 里的内容学习：
+可以配合 OfferKit 里的内容学习：
 
 - [计算机网络常见面试题](../cs-basics/network/other-network-questions.md)
 - [操作系统常见面试题](../cs-basics/operating-system/operating-system-basic-questions-01.md)
@@ -354,7 +354,7 @@ AI 应用测试可以先分成四类：
 
 工具上可以了解 DeepEval、RAGAS、promptfoo 这类评测框架，也可以先自己写一个轻量脚本：读取测试集，批量调用应用接口，保存问题、答案、引用、耗时、Token 成本和人工打分。
 
-JavaGuide 里和这块相关的内容可以看：
+OfferKit 里和这块相关的内容可以看：
 
 - [大模型 API 调用工程实践](../ai/llm-basis/llm-api-engineering.md)
 - [大模型结构化输出详解](../ai/llm-basis/structured-output-function-calling.md)

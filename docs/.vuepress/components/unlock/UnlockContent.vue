@@ -68,7 +68,7 @@ const props = defineProps({
 const isUnlocked = ref(false);
 const inputCode = ref("");
 const showError = ref(false);
-const globalUnlockKey = `lingxi_site_unlocked_${unlockConfig.unlockVersion ?? "v1"}`;
+const globalUnlockKey = `offerkit_site_unlocked_${unlockConfig.unlockVersion ?? "v1"}`;
 
 onMounted(() => {
   isUnlocked.value = localStorage.getItem(globalUnlockKey) === "true";

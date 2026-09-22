@@ -32,7 +32,7 @@ export default sidebar({
       text: "项目介绍",
       icon: ICONS.STAR,
       collapsible: true,
-      prefix: "javaguide/",
+      prefix: "offerkit/",
       children: ["intro", "use-suggestion", "contribution-guideline", "faq"],
     },
     {
@@ -57,7 +57,7 @@ export default sidebar({
         },
         {
           text: "Java 面试 + 后端面试 PDF 资料",
-          link: "pdf-interview-javaguide",
+          link: "pdf-interview-offerkit",
         },
         { text: "Java 学习路线", link: "java-roadmap" },
         { text: "⭐项目经验指南", link: "project-experience-guide" },
@@ -481,7 +481,7 @@ export default sidebar({
         },
         {
           text: "⭐设计模式常见面试题总结",
-          link: "https://interview.javaguide.cn/system-design/design-pattern.html",
+          link: "/system-design/design-pattern.html",
         },
         "schedule-task",
         "web-real-time-message-push",

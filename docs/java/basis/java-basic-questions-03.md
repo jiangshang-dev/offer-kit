@@ -14,7 +14,7 @@ head:
 
 **Java 异常类层次结构图概览**：
 
-![Java 异常类层次结构图](https://oss.javaguide.cn/github/javaguide/java/basis/types-of-exceptions-in-java.png)
+![Java 异常类层次结构图](https://oss.javaguide.cn/github/offerkit/java/basis/types-of-exceptions-in-java.png)
 
 ### Exception 和 Error 有什么区别？
 
@@ -34,7 +34,7 @@ head:
 
 比如下面这段 IO 操作的代码：
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/checked-exception.png)
+![](https://oss.javaguide.cn/github/offerkit/java/basis/checked-exception.png)
 
 除了 `RuntimeException` 及其子类以外，其他的 `Exception` 类及其子类都属于受检查异常。常见的受检查异常有：IO 相关的异常、`ClassNotFoundException`、`SQLException`...。
 
@@ -52,7 +52,7 @@ head:
 - `UnsupportedOperationException`（不支持的操作错误比如重复创建同一用户）
 - ……
 
-![](https://oss.javaguide.cn/github/javaguide/java/basis/unchecked-exception.png)
+![](https://oss.javaguide.cn/github/offerkit/java/basis/unchecked-exception.png)
 
 ### 你更倾向于使用 Checked Exception 还是 Unchecked Exception？
 
@@ -150,7 +150,7 @@ Catch Exception -> RuntimeException
 
 另外，如果 JVM 进程被强制终止，例如调用 `Runtime.halt()`、操作系统直接结束进程或机器掉电，`finally` 块也可能来不及执行。普通的未捕获异常即使最终导致当前线程结束，在线程结束前仍会按语言规则执行 `finally`。
 
-相关 issue：<https://github.com/Snailclimb/JavaGuide/issues/190>。
+相关 issue：<https://github.com/jiangshang-dev/offerkit/issues/190>。
 
 🧗🏻 进阶一下：从字节码角度分析 `try catch finally` 这个语法糖背后的实现原理。
 
@@ -325,7 +325,7 @@ printArray( stringArray  );
 
 ## ⭐️ 反射
 
-关于反射的详细解读，请看这篇文章 [Java 反射机制详解](https://javaguide.cn/java/basis/reflection.html)。
+关于反射的详细解读，请看这篇文章 [Java 反射机制详解](/java/basis/reflection.html)。
 
 ### 什么是反射？
 
@@ -391,7 +391,7 @@ public class DebugInvocationHandler implements InvocationHandler {
 
 ## 代理
 
-关于 Java 代理的详细介绍，可以看看笔者写的 [Java 代理模式详解](https://javaguide.cn/java/basis/proxy.html) 这篇文章。
+关于 Java 代理的详细介绍，可以看看笔者写的 [Java 代理模式详解](/java/basis/proxy.html) 这篇文章。
 
 ### 如何实现动态代理？
 
@@ -437,7 +437,7 @@ AOP（Aspect-Oriented Programming:面向切面编程）能够将那些与业务�
 
 Spring AOP 就是基于动态代理的，如果要代理的对象，实现了某个接口，那么 Spring AOP 会使用 **JDK Proxy**，去创建代理对象，而对于没有实现接口的对象，就无法使用 JDK Proxy 去进行代理了，这时候 Spring AOP 会使用 **Cglib** 生成一个被代理对象的子类来作为代理，如下图所示：
 
-![SpringAOPProcess](https://oss.javaguide.cn/github/javaguide/system-design/framework/spring/230ae587a322d6e4d09510161987d346.jpeg)
+![SpringAOPProcess](https://oss.javaguide.cn/github/offerkit/system-design/framework/spring/230ae587a322d6e4d09510161987d346.jpeg)
 
 ## 注解
 
@@ -470,7 +470,7 @@ JDK 提供了很多内置的注解（比如 `@Override`、`@Deprecated`），同
 
 ## ⭐️ SPI
 
-关于 SPI 的详细解读，请看这篇文章 [Java SPI 机制详解](https://javaguide.cn/java/basis/spi.html)。
+关于 SPI 的详细解读，请看这篇文章 [Java SPI 机制详解](/java/basis/spi.html)。
 
 ### 何谓 SPI?
 
@@ -480,7 +480,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 很多框架都使用了 Java 的 SPI 机制，比如：Spring 框架、数据库加载驱动、日志接口、以及 Dubbo 的扩展实现等等。
 
-<img src="https://oss.javaguide.cn/github/javaguide/java/basis/spi/22e1830e0b0e4115a882751f6c417857tplv-k3u1fbpfcp-zoom-1.jpeg" style="zoom:50%;" />
+<img src="https://oss.javaguide.cn/github/offerkit/java/basis/spi/22e1830e0b0e4115a882751f6c417857tplv-k3u1fbpfcp-zoom-1.jpeg" style="zoom:50%;" />
 
 ### SPI 和 API 有什么区别？
 
@@ -488,7 +488,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 说到 SPI 就不得不说一下 API（Application Programming Interface） 了，从广义上来说它们都属于接口，而且很容易混淆。下面先用一张图说明一下：
 
-![SPI VS API](https://oss.javaguide.cn/github/javaguide/java/basis/spi-vs-api.png)
+![SPI VS API](https://oss.javaguide.cn/github/offerkit/java/basis/spi-vs-api.png)
 
 一般模块之间都是通过接口进行通讯，因此我们在服务调用方和服务实现方（也称服务提供者）之间引入一个“接口”。
 
@@ -506,7 +506,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 ## ⭐️ 序列化和反序列化
 
-关于序列化和反序列化的详细解读，请看这篇文章 [Java 序列化详解](https://javaguide.cn/java/basis/serialization.html)，里面涉及到的知识点和面试题更全面。
+关于序列化和反序列化的详细解读，请看这篇文章 [Java 序列化详解](/java/basis/serialization.html)，里面涉及到的知识点和面试题更全面。
 
 ### 什么是序列化？什么是反序列化？
 
@@ -532,7 +532,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 
 综上：**序列化的主要目的是把对象转换为适合网络传输或持久化到文件系统、数据库、缓存等介质的表示。**
 
-![](https://oss.javaguide.cn/github/javaguide/a478c74d-2c48-40ae-9374-87aacf05188c.png)
+![](https://oss.javaguide.cn/github/offerkit/a478c74d-2c48-40ae-9374-87aacf05188c.png)
 
 <p style="text-align:right;font-size:13px;color:gray">https://www.corejavaguru.com/java/serialization/interview-questions-1</p>
 
@@ -545,7 +545,7 @@ SPI 将服务接口和具体的服务实现分离开来，将服务调用方和�
 3. 网络层
 4. 网络接口层
 
-![TCP/IP 四层模型](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png)
+![TCP/IP 四层模型](https://oss.javaguide.cn/github/offerkit/cs-basics/network/tcp-ip-4-model.png)
 
 如上图所示，OSI 七层协议模型中，表示层做的事情主要就是对应用层的用户数据进行处理转换为二进制流。反过来的话，就是将二进制流转换成应用层的用户数据。这不就对应的是序列化和反序列化么？
 
@@ -581,9 +581,9 @@ JDK 自带的序列化方式一般不会用，因为序列化效率低并且存�
 
 关于 I/O 的详细解读，请看下面这几篇文章，里面涉及到的知识点和面试题更全面。
 
-- [Java IO 基础知识总结](https://javaguide.cn/java/io/io-basis.html)
-- [Java IO 设计模式总结](https://javaguide.cn/java/io/io-design-patterns.html)
-- [Java IO 模型详解](https://javaguide.cn/java/io/io-model.html)
+- [Java IO 基础知识总结](/java/io/io-basis.html)
+- [Java IO 设计模式总结](/java/io/io-design-patterns.html)
+- [Java IO 模型详解](/java/io/io-model.html)
 
 ### Java IO 流了解吗？
 
@@ -605,11 +605,11 @@ Java IO 流的 40 多个类都是从如下 4 个抽象类基类中派生出来�
 
 ### Java IO 中的设计模式有哪些？
 
-参考答案：[Java IO 设计模式总结](https://javaguide.cn/java/io/io-design-patterns.html)
+参考答案：[Java IO 设计模式总结](/java/io/io-design-patterns.html)
 
 ### ⭐️ BIO、NIO 和 AIO 的区别？
 
-参考答案：[Java IO 模型详解](https://javaguide.cn/java/io/io-model.html)
+参考答案：[Java IO 模型详解](/java/io/io-model.html)
 
 ## 语法糖
 
@@ -620,7 +620,7 @@ Java IO 流的 40 多个类都是从如下 4 个抽象类基类中派生出来�
 举个例子，Java 中的 `for-each` 就是一个常用的语法糖，其原理其实就是基于普通的 for 循环和迭代器。
 
 ```java
-String[] strs = {"JavaGuide", "公众号：JavaGuide", "博客：https://javaguide.cn/"};
+String[] strs = {"OfferKit", "公众号：OfferKit", "博客：/"};
 for (String s : strs) {
     System.out.println(s);
 }

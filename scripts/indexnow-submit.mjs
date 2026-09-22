@@ -3,7 +3,7 @@ import path from "node:path";
 
 const endpoint =
   process.env.INDEXNOW_ENDPOINT || "https://api.indexnow.org/IndexNow";
-const host = process.env.INDEXNOW_HOST || "javaguide.cn";
+const host = process.env.INDEXNOW_HOST || "offerkit.cn";
 const key = process.env.INDEXNOW_KEY;
 const keyLocation =
   process.env.INDEXNOW_KEY_LOCATION ||

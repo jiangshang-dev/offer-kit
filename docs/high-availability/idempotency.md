@@ -63,7 +63,7 @@ head:
 
 在 Java 中，可以使用 `ReentrantLock` 类、`synchronized` 关键字这类 JDK 自带的悲观锁来保证同一时刻只有一个线程能够进行修改。不过，JDK 自带的锁属于本地锁，分布式环境下无法使用。
 
-![本地锁](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-lock/jvm-local-lock.png)
+![本地锁](https://oss.javaguide.cn/github/offerkit/distributed-system/distributed-lock/jvm-local-lock.png)
 
 除了利用 JDK 提供的悲观锁之外，数据库自身也自带排他锁（X 锁）。排他锁又称写锁/独占锁，事务在修改记录的时候获取排他锁，不允许多个事务同时获取。如果一条记录已经被加了排他锁，其他事务不能再对这条记录加不兼容的锁。
 
@@ -132,7 +132,7 @@ CREATE TABLE deduplication_table (
 
 分布式系统下，不同的服务/客户端通常运行在独立的 JVM 进程上。如果需要跨 JVM 串行化同一业务资源的操作，就可以考虑使用**分布式锁**。
 
-![分布式锁](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-lock/distributed-lock.png)
+![分布式锁](https://oss.javaguide.cn/github/offerkit/distributed-system/distributed-lock/distributed-lock.png)
 
 基于 MySQL 虽然也能实现分布式锁（如利用 `SELECT ... FOR UPDATE` 或唯一索引），但性能和可靠性通常不如专门的协调服务，生产中较少采用。
 
@@ -142,8 +142,8 @@ CREATE TABLE deduplication_table (
 
 关于分布式锁的详细介绍以及如何基于 Redis 和 ZooKeeper 实现分布式锁，我写过专门的文章介绍，推荐看看：
 
-- [分布式锁介绍](https://javaguide.cn/distributed-system/distributed-lock.html)
-- [分布式锁常见实现方案总结](https://javaguide.cn/distributed-system/distributed-lock-implementations.html)
+- [分布式锁介绍](/distributed-system/distributed-lock.html)
+- [分布式锁常见实现方案总结](/distributed-system/distributed-lock-implementations.html)
 
 需要注意的是，这里的分布式锁是根据唯一标识（比如订单号）生成的。获取到锁只说明当前可以进入临界区，不代表历史上没有处理过。进入临界区后仍必须查询业务状态或幂等记录。例如支付接口要检查订单是否已支付、交易流水号是否已处理，再决定执行业务逻辑还是直接返回历史结果。
 
@@ -200,7 +200,7 @@ Token 机制的核心思想是为每一次操作生成一个唯一性的凭证 t
 
 得物技术的[分布式系统设计中的并发访问解决方案](https://mp.weixin.qq.com/s/yvKASWcRLfOok-NFPrIRsw)这篇文章把这个过程图解得挺清晰。
 
-![](https://oss.javaguide.cn/github/javaguide/distributed-system/idempotent-token.png)
+![](https://oss.javaguide.cn/github/offerkit/distributed-system/idempotent-token.png)
 
 先执行业务逻辑再删除 token 还是先删除 token 再执行业务逻辑呢？两者似乎都有风险：
 

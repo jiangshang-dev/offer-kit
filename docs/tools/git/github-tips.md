@@ -44,7 +44,7 @@ GitHub 目前支持在个人主页自定义展示一些内容。展示效果如�
 
 ## 自定义项目徽章
 
-你在 GitHub 上看到的项目徽章都是通过 [https://shields.io/](https://shields.io/) 这个网站生成的。我的 JavaGuide 这个项目的徽章如下图所示。
+你在 GitHub 上看到的项目徽章都是通过 [https://shields.io/](https://shields.io/) 这个网站生成的。我的 OfferKit 这个项目的徽章如下图所示。
 
 ![项目徽章](https://oss.javaguide.cn/2020-11/image-20201107143136559.png)
 
@@ -101,7 +101,7 @@ GitHub Codespaces 可以提供类似 VS Code 的在线开发环境，适合临�
 先把项目克隆到本地，然后使用自己喜欢的 IDE 来阅读。想深入理解一个项目，首选这种方式。
 
 ```bash
-git clone https://github.com/Snailclimb/JavaGuide.git
+git clone https://github.com/jiangshang-dev/offerkit.git
 ```
 
 ## 扩展 GitHub 的功能
@@ -134,7 +134,7 @@ GitHub 自带的 Explore 是一个非常强大且好用的功能，适合用来�
 4. GitHub Collections 类似一个收藏夹集合。比如 [Teaching materials for computational social science](https://github.com/collections/teaching-computational-social-science) 这个收藏夹就汇总了计算机课程相关的开源资源，[Learn to Code](https://github.com/collections/learn-to-code) 这个收藏夹就汇总了对你学习编程有帮助的一些仓库；
 5. ……
 
-![](https://oss.javaguide.cn/github/javaguide/github-explore.png)
+![](https://oss.javaguide.cn/github/offerkit/github-explore.png)
 
 ## GitHub Actions 很强大
 
@@ -144,7 +144,7 @@ GitHub 自带的 Explore 是一个非常强大且好用的功能，适合用来�
 
 GitHub Actions 有一个官方市场，上面有很多别人提交的 Actions，可以直接复用。
 
-![](https://oss.javaguide.cn/github/javaguide/image-20211227100147433.png)
+![](https://oss.javaguide.cn/github/offerkit/image-20211227100147433.png)
 
 ## 后记
 

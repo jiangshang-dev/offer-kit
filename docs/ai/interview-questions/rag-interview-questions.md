@@ -12,7 +12,7 @@ head:
       content: RAG面试题,RAG面试,检索增强生成面试题,Embedding面试题,向量数据库面试题,GraphRAG面试题,RAG优化面试题,Chunk面试题,Hybrid Search面试题,Rerank面试题
 ---
 
-一条 RAG 链路要处理文档解析、Chunk、Embedding、索引、召回、重排、上下文组装和生成。系统运行一段时间后，还会遇到文档版本、权限变化、索引重建和效果评测等问题。题目按 JavaGuide RAG 专题的章节分组，每组都附有详细文章。
+一条 RAG 链路要处理文档解析、Chunk、Embedding、索引、召回、重排、上下文组装和生成。系统运行一段时间后，还会遇到文档版本、权限变化、索引重建和效果评测等问题。题目按 OfferKit RAG 专题的章节分组，每组都附有详细文章。
 
 ## RAG 基础
 

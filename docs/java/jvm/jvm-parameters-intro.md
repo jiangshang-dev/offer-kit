@@ -10,7 +10,7 @@ head:
       content: JVM 参数,堆大小,栈大小,GC 设置,性能调优,XX 参数
 ---
 
-> 本文由 JavaGuide 翻译自 [https://www.baeldung.com/jvm-parameters](https://www.baeldung.com/jvm-parameters)，并对文章进行了大量的完善补充。
+> 本文由 OfferKit 翻译自 [https://www.baeldung.com/jvm-parameters](https://www.baeldung.com/jvm-parameters)，并对文章进行了大量的完善补充。
 > 文档参数 [https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/java.html)
 >
 > JDK 版本：1.8 为主，也会补充新版本常用参数
@@ -106,7 +106,7 @@ JDK 1.8 之前永久代还没被彻底移除的时候通常通过下面这些参
 -XX:MaxMetaspaceSize=N #设置 Metaspace 的最大大小
 ```
 
-**🐛 修正（参见：[issue#1947](https://github.com/Snailclimb/JavaGuide/issues/1947)）**：
+**🐛 修正（参见：[issue#1947](https://github.com/jiangshang-dev/offerkit/issues/1947)）**：
 
 **1、`-XX:MetaspaceSize` 并非初始容量：** Metaspace 的初始容量并不是 `-XX:MetaspaceSize` 设置，无论 `-XX:MetaspaceSize` 配置什么值，对于 64 位 JVM，元空间的初始容量通常是一个固定的较小值（Oracle 文档提到约 12MB 到 20MB 之间，实际观察约 20.8MB）。
 
@@ -130,13 +130,13 @@ void MetaspaceGC::initialize() {
 
 **3、`-XX:MaxMetaspaceSize` 的作用：**如果不显式设置 `-XX:MaxMetaspaceSize`，元空间默认没有固定上限，持续增长的类元数据可能消耗大量本地内存。是否设置该参数以及设置多大，应结合类元数据使用情况和进程的本地内存预算决定。上限过小会增加元数据 GC 的频率，也可能提前触发 `OutOfMemoryError: Metaspace`，因此不存在适用于所有应用的推荐值。
 
-相关阅读：[issue 更正：MaxMetaspaceSize 如果不指定大小的话，不会耗尽内存 #1204](https://github.com/Snailclimb/JavaGuide/issues/1204)。
+相关阅读：[issue 更正：MaxMetaspaceSize 如果不指定大小的话，不会耗尽内存 #1204](https://github.com/jiangshang-dev/offerkit/issues/1204)。
 
 ## 垃圾收集相关
 
 ### 选择垃圾回收器
 
-选择合适的垃圾收集器（Garbage Collector, GC）对于应用的吞吐量和响应延迟至关重要。关于垃圾收集算法和收集器的详细介绍，可以看笔者写的这篇：[JVM 垃圾回收详解（重点）](https://javaguide.cn/java/jvm/jvm-garbage-collection.html)。
+选择合适的垃圾收集器（Garbage Collector, GC）对于应用的吞吐量和响应延迟至关重要。关于垃圾收集算法和收集器的详细介绍，可以看笔者写的这篇：[JVM 垃圾回收详解（重点）](/java/jvm/jvm-garbage-collection.html)。
 
 JVM 提供了多种 GC 实现，适用于不同的场景：
 
@@ -248,6 +248,6 @@ JDK 9 及之后应使用统一 JVM 日志框架 `-Xlog`。例如，下面的配�
 4. **OOM 故障排查：** 说明了如何通过 `-XX:+HeapDumpOnOutOfMemoryError` 等参数在发生 OOM 时自动生成堆转储文件，以便进行后续的内存泄漏分析。
 5. **其他参数：** 简要介绍了如字符串去重等其他有用参数，并指出了部分旧参数的现状。
 
-具体的问题排查和调优案例，可以参考笔者整理的这篇文章：[JVM 线上问题排查和性能调优案例](https://javaguide.cn/java/jvm/jvm-in-action.html)。
+具体的问题排查和调优案例，可以参考笔者整理的这篇文章：[JVM 线上问题排查和性能调优案例](/java/jvm/jvm-in-action.html)。
 
 <!-- @include: @article-footer.snippet.md -->

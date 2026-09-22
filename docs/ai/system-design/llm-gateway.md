@@ -26,13 +26,13 @@ LLM Gateway 更像是：**API 网关能力 + 模型调用控制面**。
 
 传统 API 网关是位于客户端与后端服务之间的**统一入口**，所有客户端请求先经过网关，再由网关路由到具体的目标服务，主要管 HTTP 流量：鉴权、限流、转发、日志、熔断。
 
-![传统 API 网关示意图](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/api-gateway-overview.png)
+![传统 API 网关示意图](https://oss.javaguide.cn/github/offerkit/system-design/distributed-system/api-gateway-overview.png)
 
 LLM Gateway 则面对的是大模型调用，它除了处理普通 API 问题，还要处理模型特有的问题：模型选择、Token 预算、上下文长度、供应商差异、流式输出、工具调用、结构化响应、成本统计、Prompt 版本和输出质量。
 
 更准确地说，**LLM Gateway 是应用层和模型供应商之间的一层治理入口**。它不一定替代企业已有的 API 网关，但会把模型调用相关的路由、预算、审计和适配逻辑收口。
 
-![LLM 网关示意图](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-overview.png)
+![LLM 网关示意图](https://oss.javaguide.cn/github/offerkit/ai/llm/llm-gateway-overview.png)
 
 业务代码不直接关心 OpenAI、Anthropic、Gemini、Qwen、DeepSeek、私有化模型分别怎么调，而是统一向 Gateway 发一个标准请求。Gateway 根据场景、预算、延迟、模型可用性和业务策略，决定调用哪个模型、走哪个供应商、是否需要重试、是否需要降级、怎么记录日志。
 
@@ -129,11 +129,11 @@ Gateway 在同机房完成路由、Token 估算和日志写入，耗时相对有
 
 这时需要的未必是一个很重的平台，但模型调用应该有唯一入口。可以先让统一模块维护模型名、密钥、调用日志和错误处理，再逐步接入路由、预算和限流；当多个业务线共用模型、需要按租户计费，或需要管理 Prompt 留存和敏感内容时，再把它演进为完整的 LLM Gateway。
 
-我的 [AI 面试平台](https://javaguide.cn/zhuanlan/interview-guide.html)走的就是这条路。项目没有单独部署网关，也没有引入专门的 LLM Gateway 组件，而是在应用内通过 `LlmProviderRegistry` 统一管理不同 Provider 的配置、默认模型、API Key、`ChatClient` 和 Embedding 模型，再用 `StructuredOutputInvoker` 收口结构化输出的校验、修复、重试和指标。这已经具备了轻量 LLM 网关的核心形态，能够满足当前项目的需求。
+我的 [AI 面试平台](/zhuanlan/interview-guide.html)走的就是这条路。项目没有单独部署网关，也没有引入专门的 LLM Gateway 组件，而是在应用内通过 `LlmProviderRegistry` 统一管理不同 Provider 的配置、默认模型、API Key、`ChatClient` 和 Embedding 模型，再用 `StructuredOutputInvoker` 收口结构化输出的校验、修复、重试和指标。这已经具备了轻量 LLM 网关的核心形态，能够满足当前项目的需求。
 
 不过，它还不是本文后面所说的完整生产级网关：跨 Provider 自动 Fallback、Token 预算、按调用成本归因、网关级多维限流和智能路由等能力，仍要等业务确实需要时再补。这个边界也说明了一件事：LLM Gateway 首先是一组需要集中治理的职责，不一定非要对应一个独立服务或第三方组件。
 
-![LLM Gateway 演进路径](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-evolution-path.webp)
+![LLM Gateway 演进路径](https://oss.javaguide.cn/github/offerkit/ai/llm/llm-gateway-evolution-path.webp)
 
 是否收口要看一次模型策略修改会影响多少服务，以及一次故障需要排查多少调用链。调用集中在一个模块时，后续增加模型、切换供应商或补审计都只改这一处；调用散进各个业务服务后，即使流量不大，也应先建立统一入口。
 
@@ -190,7 +190,7 @@ LLM Router 的任务，是给每个请求选一个合适模型。
 
 ## LLM Gateway 需要具备哪些能力？
 
-![LLM 网关示意图](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-overview.png)
+![LLM 网关示意图](https://oss.javaguide.cn/github/offerkit/ai/llm/llm-gateway-overview.png)
 
 ### 多模型统一接入
 
@@ -351,7 +351,7 @@ public class RuleBasedModelRouter {
 
 这段代码不复杂，重点在职责边界：路由器只负责选模型，不负责调模型；健康检查只提供状态，不掺业务逻辑；预算判断单独放出来，后续替换估算方式也方便。
 
-![LLM Gateway 模型路由决策图](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-routing-decision.webp)
+![LLM Gateway 模型路由决策图](https://oss.javaguide.cn/github/offerkit/ai/llm/llm-gateway-routing-decision.webp)
 
 ### 优雅降级
 
@@ -373,7 +373,7 @@ Fallback 不是失败就换一个模型再试这么简单。
 
 流式调用还要单独处理用户取消、TTFT 超时、连接断开和客户端重连。Gateway 需要保存流式响应的状态、序号和终止原因，避免把断流请求记成成功，也不能在重连后重复返回已经发送的片段。
 
-![流式调用异常处理](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-streaming-exceptions.webp)
+![流式调用异常处理](https://oss.javaguide.cn/github/offerkit/ai/llm/llm-api-engineering-streaming-exceptions.webp)
 
 一个 Fallback 链可以写成这样：
 
@@ -392,7 +392,7 @@ Fallback 不是失败就换一个模型再试这么简单。
 
 并发请求还需要原子占用。可以使用数据库唯一约束、条件更新或 Redis `SET NX` 创建 `running` 记录，只有抢到 claim 的请求可以调用模型；其他请求等待、返回冲突或复用 `completed` 结果。`failed`、超时 `running` 和租约接管也要定义清楚，不能用“先查、再写”实现幂等。日志与缓存还要遵守租户隔离、敏感数据和留存策略。
 
-![模型调用重试与幂等处理流程](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-api-engineering-retry-idempotency.webp)
+![模型调用重试与幂等处理流程](https://oss.javaguide.cn/github/offerkit/ai/llm/llm-api-engineering-retry-idempotency.webp)
 
 ### 限流与配额
 
@@ -443,7 +443,7 @@ Token 估算不可能完全准，但粗估也比不估强。尤其是 RAG、长�
 
 这里更推荐按四步走：**estimate → reserve → 真实 usage → reconcile**。先用估算值占住预算，调用结束后再用供应商返回的真实 `usage` 对账修正。不同供应商、不同模型的 tokenizer 和 usage 字段并不完全一致，生产里通常会先用统一近似器扣预算，再用真实 `input_tokens`、`output_tokens` 修正。如果直接按估算落库，长时间跑下来，成本和配额统计很容易积累出偏差。
 
-![Token 预算预留与对账闭环](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-token-budget-lifecycle.webp)
+![Token 预算预留与对账闭环](https://oss.javaguide.cn/github/offerkit/ai/llm/llm-gateway-token-budget-lifecycle.webp)
 
 ### 成本统计
 
@@ -566,7 +566,7 @@ Token 估算和路由紧接着发生。网关为候选模型预留输入与最�
 
 发生网络错误、429 或解析失败时，错误分类决定重试、切候选、排队还是直接失败。每次新 attempt 都重新预留预算；调用结束后再按真实 usage 结算，写入模型、供应商、Prompt 版本、路由原因、延迟和错误信息，最后才把统一结果交回业务服务。
 
-![LLM Gateway 请求生命周期](https://oss.javaguide.cn/github/javaguide/ai/llm/llm-gateway-request-lifecycle.webp)
+![LLM Gateway 请求生命周期](https://oss.javaguide.cn/github/offerkit/ai/llm/llm-gateway-request-lifecycle.webp)
 
 ### 路由策略怎么从简单演进到智能？
 
@@ -699,7 +699,7 @@ LLM Gateway 做得好不好，不能只看“接了多少模型”。模型接�
 
 LLM Gateway 让业务服务从供应商协议、模型路由、限流、缓存、Token 预算和审计细节中退出，只保留一次统一的模型调用入口。
 
-但对大多数项目来说，这个入口完全可以是应用内自己写的一个轻量模块，不需要为了“用了 LLM Gateway”而专门引入额外组件。我的 [AI 面试平台](https://javaguide.cn/zhuanlan/interview-guide.html)目前就是这么做的：先用统一的 Provider 注册表和调用封装解决眼前问题，后续再由真实流量和治理需求决定是否补齐路由、预算、Fallback 和成本统计，或者演进为独立网关。
+但对大多数项目来说，这个入口完全可以是应用内自己写的一个轻量模块，不需要为了“用了 LLM Gateway”而专门引入额外组件。我的 [AI 面试平台](/zhuanlan/interview-guide.html)目前就是这么做的：先用统一的 Provider 注册表和调用封装解决眼前问题，后续再由真实流量和治理需求决定是否补齐路由、预算、Fallback 和成本统计，或者演进为独立网关。
 
 第一版先验证三件事：请求是否被正确适配、每次调用是否可以按真实模型和 usage 回放、故障是否按预期兜底。配额、成本治理和缓存应由实际流量推动；分类或学习型路由则要等稳定评测集、线上 Trace 和回滚机制具备后再引入。
 

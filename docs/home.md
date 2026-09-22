@@ -1,7 +1,7 @@
 ---
 icon: "mdi:head-lightbulb-outline"
-title: Java 面试指南（灵犀面试）
-description: 灵犀面试 Java 面试指南，系统整理 Java 八股文和后端面试题，覆盖 Java 基础、集合、并发、JVM、Spring、MySQL、Redis、系统设计与分布式，适用于校招和社招复习。
+title: Java 面试指南（OfferKit）
+description: OfferKit Java 面试指南，系统整理 Java 八股文和后端面试题，覆盖 Java 基础、集合、并发、JVM、Spring、MySQL、Redis、系统设计与分布式，适用于校招和社招复习。
 sitemap:
   changefreq: weekly
   priority: 1
@@ -15,7 +15,7 @@ head:
 
 <!-- markdownlint-disable MD024 -->
 
-灵犀面试是一份系统化的 **Java 面试指南** 和**后端通用面试复习资料**，内容覆盖 Java 基础、集合、并发编程、JVM、Spring/Spring Boot、MySQL、Redis、分布式、高并发、高可用和系统设计等核心知识点。
+OfferKit 是一份系统化的 **Java 面试指南** 和**后端通用面试复习资料**，内容覆盖 Java 基础、集合、并发编程、JVM、Spring/Spring Boot、MySQL、Redis、分布式、高并发、高可用和系统设计等核心知识点。
 
 如果你正在准备校招、社招或跳槽面试，可以从 [Java 后端面试通关计划](./interview-preparation/backend-interview-plan.md) 开始，再按下面的模块逐步复习高频 Java 八股文和后端面试题。
 
@@ -229,7 +229,7 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8](https://docs.oracle.
 ## 系统设计
 
 - [⭐系统设计常见面试题总结](./system-design/system-design-questions.md)
-- [⭐设计模式常见面试题总结](https://interview.javaguide.cn/system-design/design-pattern.html)
+- [⭐设计模式常见面试题总结](/system-design/design-pattern.html)
 
 ### 基础
 
@@ -289,7 +289,7 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8](https://docs.oracle.
 
 ## 分布式
 
-- [⭐分布式高频面试题](https://interview.javaguide.cn/distributed-system/distributed-system.html)
+- [⭐分布式高频面试题](/distributed-system/distributed-system.html)
 - [分布式系统面试准备](./distributed-system/distributed-system-interview-questions.md)
 - [微服务面试准备](./distributed-system/microservices-interview-questions.md)
 - [分布式系统入门](./distributed-system/distributed-system-intro.md)
@@ -329,8 +329,8 @@ JVM 这部分内容主要参考 [JVM 虚拟机规范-Java8](https://docs.oracle.
 
 ### 分布式锁
 
-- [分布式锁介绍](https://javaguide.cn/distributed-system/distributed-lock.html)
-- [分布式锁常见实现方案总结](https://javaguide.cn/distributed-system/distributed-lock-implementations.html)
+- [分布式锁介绍](/distributed-system/distributed-lock.html)
+- [分布式锁常见实现方案总结](/distributed-system/distributed-lock-implementations.html)
 
 ### 分布式事务
 

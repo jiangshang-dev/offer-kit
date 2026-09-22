@@ -14,9 +14,9 @@ head:
 
 消息队列面试通常从“为什么使用 MQ”开始，随后沿着一条消息的生命周期继续追问：生产者发送超时后能不能重试？Broker 返回成功是否代表消息不会丢？消费者处理成功但确认失败会发生什么？重复消费、顺序错乱和消息积压又该怎样处理？
 
-这篇文章是 JavaGuide 消息队列专题的复习入口，按使用场景、消息可靠性、主流中间件和技术选型四部分整理。每部分只列复习时需要抓住的问题，完整答案和实现细节放在对应专题文章中。
+这篇文章是 OfferKit 消息队列专题的复习入口，按使用场景、消息可靠性、主流中间件和技术选型四部分整理。每部分只列复习时需要抓住的问题，完整答案和实现细节放在对应专题文章中。
 
-时间比较紧的话，可以先看面试突击版的[消息队列常见面试题总结](https://interview.javaguide.cn/high-performance/message-queue-interview-questions.html)，把讲不清楚的问题标出来，再回到本文补原理和工程细节。
+时间比较紧的话，可以先看面试突击版的[消息队列常见面试题总结](/high-performance/message-queue-interview-questions.html)，把讲不清楚的问题标出来，再回到本文补原理和工程细节。
 
 ## 复习时先抓住哪些问题？
 
@@ -33,7 +33,7 @@ head:
 
 消息队列把生产者和消费者之间的同步调用改成异步消息传递。主链路可以更快返回，突发流量也能暂存在 Broker 中，但系统同时增加了消息中间件、异步状态和故障恢复流程。
 
-![通过异步处理提高系统性能](https://oss.javaguide.cn/github/javaguide/Asynchronous-message-queue.png)
+![通过异步处理提高系统性能](https://oss.javaguide.cn/github/offerkit/Asynchronous-message-queue.png)
 
 相关内容：
 
@@ -55,7 +55,7 @@ head:
 
 消息可靠性可以沿着生产者、Broker、消费者和业务处理四段来回答。生产者要确认消息是否被接收，Broker 要考虑持久化与副本，消费者要在业务完成后确认，业务侧还要处理重复和结果不确定。
 
-![队列模型](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/message-queue-queue-model.png)
+![队列模型](https://oss.javaguide.cn/github/offerkit/high-performance/message-queue/message-queue-queue-model.png)
 
 相关内容：
 
@@ -80,7 +80,7 @@ head:
 
 Kafka 的高频题主要围绕分区、副本、消费组、可靠性和高吞吐设计展开。回答时要把 Producer、Broker、Partition、Replica、Consumer Group 和 Offset 放到同一条读写链路中。
 
-![Kafka Topic 分区布局](https://oss.javaguide.cn/github/javaguide/high-performance/message-queue/KafkaTopicPartionsLayout.png)
+![Kafka Topic 分区布局](https://oss.javaguide.cn/github/offerkit/high-performance/message-queue/KafkaTopicPartionsLayout.png)
 
 相关内容：[Kafka 常见问题总结](./kafka-questions-01.md)
 
@@ -120,7 +120,7 @@ RocketMQ 面试通常更贴近业务消息场景，事务消息、延时消息�
 
 RabbitMQ 重点考察 AMQP 路由模型、确认机制、死信与延迟队列，以及不同队列类型的可靠性。Exchange、Routing Key、Binding 和 Queue 的关系必须先讲清楚。
 
-![RabbitMQ 核心架构与消息生命周期](https://oss.javaguide.cn/github/javaguide/high-performance/rabbitmq/rabbitmq-core-architecture-and-message-lifecycle-flow.png)
+![RabbitMQ 核心架构与消息生命周期](https://oss.javaguide.cn/github/offerkit/high-performance/rabbitmq/rabbitmq-core-architecture-and-message-lifecycle-flow.png)
 
 相关内容：[RabbitMQ 常见问题总结](./rabbitmq-questions.md)
 
@@ -161,7 +161,7 @@ Publisher Confirm 只说明 Broker 已经处理这次发布，消息是否进入
 
 | 剩余时间 | 建议安排                                                                                                                                                 | 复习目标                           |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| 1～2 天  | 先过一遍[消息队列常见面试题总结](https://interview.javaguide.cn/high-performance/message-queue-interview-questions.html)，优先补可靠性、幂等、顺序和积压 | 能沿消息生命周期回答高频问题       |
+| 1～2 天  | 先过一遍[消息队列常见面试题总结](/high-performance/message-queue-interview-questions.html)，优先补可靠性、幂等、顺序和积压 | 能沿消息生命周期回答高频问题       |
 | 3～7 天  | 在通用问题之外，重点学习项目实际使用的一种 MQ，再补另外两种产品的定位和主要差异                                                                          | 能回答产品原理、异常处理和选型追问 |
 | 1 周以上 | 按本文顺序阅读专题文章，画出生产、存储、复制、消费、确认和补偿链路，并结合项目整理监控与故障恢复过程                                                     | 能从业务要求讲到配置、取舍和运维   |
 

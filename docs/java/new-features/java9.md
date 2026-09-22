@@ -24,7 +24,7 @@ JDK 9 不是 LTS（长期支持版）。Oracle 当前列出的 LTS 版本包括 
 
 下图是从 JDK 8 到 JDK 25 每个版本的更新带来的新特性数量和更新时间：
 
-![](https://oss.javaguide.cn/github/javaguide/java/new-features/jdk8~jdk24.png)
+![](https://oss.javaguide.cn/github/offerkit/java/new-features/jdk8~jdk24.png)
 
 ## JEP 222: Java Shell Tool (JShell)
 

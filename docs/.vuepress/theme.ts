@@ -17,7 +17,7 @@ const docsearchOptions =
         indexName: docsearchIndexName,
         locales: {
           "/": {
-            placeholder: "搜索灵犀面试",
+            placeholder: "搜索 OfferKit",
           },
         },
       }
@@ -94,7 +94,7 @@ const segmentDisplayNames = {
   "interview-preparation": "面试准备",
   io: "Java IO",
   java: "Java",
-  javaguide: "灵犀面试",
+  offerkit: "OfferKit",
   jvm: "JVM",
   "message-queue": "消息队列",
   mysql: "MySQL",
@@ -200,17 +200,17 @@ const buildSeoDescription = (page, app) => {
 
   if (page.path === "/")
     return trimDescription(
-      "灵犀面试是一份面向 Java 后端开发者和面试准备人群的学习指南，系统覆盖 Java 基础、集合、并发、JVM、MySQL、Redis、分布式、高并发、高可用、系统设计、消息队列、计算机基础和 AI 应用开发等核心知识，适合校招社招复习、查缺补漏和规划学习路线。",
+      "OfferKit 是一份面向 Java 后端开发者和面试准备人群的学习指南，系统覆盖 Java 基础、集合、并发、JVM、MySQL、Redis、分布式、高并发、高可用、系统设计、消息队列、计算机基础和 AI 应用开发等核心知识，适合校招社招复习、查缺补漏和规划学习路线。",
     );
 
   if (page.path === "/home.html")
     return trimDescription(
-      "灵犀面试首页聚合 Java 后端学习路线、核心知识体系和高频面试题入口，覆盖 Java 基础、并发、JVM、数据库、Redis、分布式、系统设计、高性能、高可用、计算机基础和 AI 应用开发，帮助读者快速定位重点内容。",
+      "OfferKit 首页聚合 Java 后端学习路线、核心知识体系和高频面试题入口，覆盖 Java 基础、并发、JVM、数据库、Redis、分布式、系统设计、高性能、高可用、计算机基础和 AI 应用开发，帮助读者快速定位重点内容。",
     );
 
   if (page.path === "/404.html")
     return trimDescription(
-      "灵犀面试页面未找到提示页，帮助读者返回 Java 面试指南、后端通用面试知识、计算机基础、数据库、Redis、分布式、系统设计和 AI 应用开发等核心内容入口，继续定位学习资料、面试题总结和实践文章。",
+      "OfferKit 页面未找到提示页，帮助读者返回 Java 面试指南、后端通用面试知识、计算机基础、数据库、Redis、分布式、系统设计和 AI 应用开发等核心内容入口，继续定位学习资料、面试题总结和实践文章。",
     );
 
   const title = normalizeDescriptionText(page.title);
@@ -223,12 +223,12 @@ const buildSeoDescription = (page, app) => {
     .slice(0, 4);
   const headers = getHeaderTitles(page);
   const focusItems = [...headers, ...tags].filter(Boolean).slice(0, 5);
-  const topic = getPathTopic(page) || title || category[0] || "灵犀面试";
+  const topic = getPathTopic(page) || title || category[0] || "OfferKit";
   const pageText = getPageText(page, app);
   const parts = [
     existingDescription || (title ? `${title}：` : ""),
     focusItems.length ? `重点围绕 ${focusItems.join("、")} 等内容展开。` : "",
-    `结合灵犀面试知识体系梳理 ${topic} 的核心概念、实践方法、常见问题和高频面试考点，覆盖原理分析、使用场景、方案对比与经验总结，适合后端开发者系统学习、面试复习、快速定位重点内容和查缺补漏。`,
+    `结合 OfferKit知识体系梳理 ${topic} 的核心概念、实践方法、常见问题和高频面试考点，覆盖原理分析、使用场景、方案对比与经验总结，适合后端开发者系统学习、面试复习、快速定位重点内容和查缺补漏。`,
     pageText && !existingDescription.includes(pageText.slice(0, 24))
       ? pageText
       : "",
@@ -257,7 +257,7 @@ export default hopeTheme({
   breadcrumb: false,
   navbar,
   sidebar,
-  footer: "灵犀面试 · 姜小白的后端面试笔记",
+  footer: "OfferKit · 姜小白的后端面试笔记",
   displayFooter: true,
 
   pageInfo: ["Author", "Category", "Tag", "Original", "Word", "ReadingTime"],
@@ -315,12 +315,12 @@ export default hopeTheme({
             JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              name: "灵犀面试",
+              name: "OfferKit",
               alternateName: "Java 面试指南",
               url: "https://alibabap8developer.github.io/myblog/",
               inLanguage: "zh-CN",
               description:
-                "灵犀面试是一份 Java 面试和后端通用面试指南，覆盖 Java、MySQL、Redis、Spring、分布式和系统设计等核心知识。",
+                "OfferKit 是一份 Java 面试和后端通用面试指南，覆盖 Java、MySQL、Redis、Spring、分布式和系统设计等核心知识。",
               publisher: {
                 "@type": "Person",
                 name: "姜小白",
@@ -342,49 +342,49 @@ export default hopeTheme({
                   "@type": "ListItem",
                   position: 1,
                   name: "Java 基础面试题",
-                  url: "https://javaguide.cn/java/basis/java-basic-questions-01.html",
+                  url: "/java/basis/java-basic-questions-01.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "Java 集合面试题",
-                  url: "https://javaguide.cn/java/collection/java-collection-questions-01.html",
+                  url: "/java/collection/java-collection-questions-01.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
                   name: "Java 并发面试题",
-                  url: "https://javaguide.cn/java/concurrent/java-concurrent-questions-01.html",
+                  url: "/java/concurrent/java-concurrent-questions-01.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 4,
                   name: "JVM 面试题",
-                  url: "https://javaguide.cn/java/jvm/memory-area.html",
+                  url: "/java/jvm/memory-area.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 5,
                   name: "Spring 面试题",
-                  url: "https://javaguide.cn/system-design/framework/spring/spring-knowledge-and-questions-summary.html",
+                  url: "/system-design/framework/spring/spring-knowledge-and-questions-summary.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 6,
                   name: "MySQL 面试题",
-                  url: "https://javaguide.cn/database/mysql/mysql-questions-01.html",
+                  url: "/database/mysql/mysql-questions-01.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 7,
                   name: "Redis 面试题",
-                  url: "https://javaguide.cn/database/redis/redis-questions-01.html",
+                  url: "/database/redis/redis-questions-01.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 8,
                   name: "系统设计面试题",
-                  url: "https://javaguide.cn/system-design/system-design-questions.html",
+                  url: "/system-design/system-design-questions.html",
                 },
               ],
             }),
@@ -403,37 +403,37 @@ export default hopeTheme({
                   "@type": "ListItem",
                   position: 1,
                   name: "AI 应用开发面试指南",
-                  url: "https://javaguide.cn/ai/interview-questions/ai-interview-guide.html",
+                  url: "/ai/interview-questions/ai-interview-guide.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "大模型基础面试题",
-                  url: "https://javaguide.cn/ai/interview-questions/llm-interview-questions.html",
+                  url: "/ai/interview-questions/llm-interview-questions.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
                   name: "AI Agent 面试题",
-                  url: "https://javaguide.cn/ai/interview-questions/agent-interview-questions.html",
+                  url: "/ai/interview-questions/agent-interview-questions.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 4,
                   name: "RAG 面试题",
-                  url: "https://javaguide.cn/ai/interview-questions/rag-interview-questions.html",
+                  url: "/ai/interview-questions/rag-interview-questions.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 5,
                   name: "AI 系统设计面试题",
-                  url: "https://javaguide.cn/ai/interview-questions/ai-system-design-interview-questions.html",
+                  url: "/ai/interview-questions/ai-system-design-interview-questions.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 6,
                   name: "AI 应用系统设计",
-                  url: "https://javaguide.cn/ai/system-design/ai-application-architecture.html",
+                  url: "/ai/system-design/ai-application-architecture.html",
                 },
               ],
             }),
@@ -452,37 +452,37 @@ export default hopeTheme({
                   "@type": "ListItem",
                   position: 1,
                   name: "计算机网络常见面试题",
-                  url: "https://javaguide.cn/cs-basics/network/other-network-questions.html",
+                  url: "/cs-basics/network/other-network-questions.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 2,
                   name: "操作系统常见面试题",
-                  url: "https://javaguide.cn/cs-basics/operating-system/operating-system-basic-questions-01.html",
+                  url: "/cs-basics/operating-system/operating-system-basic-questions-01.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 3,
                   name: "线性数据结构",
-                  url: "https://javaguide.cn/cs-basics/data-structure/linear-data-structure.html",
+                  url: "/cs-basics/data-structure/linear-data-structure.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 4,
                   name: "十大经典排序算法",
-                  url: "https://javaguide.cn/cs-basics/algorithms/10-classical-sorting-algorithms.html",
+                  url: "/cs-basics/algorithms/10-classical-sorting-algorithms.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 5,
                   name: "HTTP 与 HTTPS",
-                  url: "https://javaguide.cn/cs-basics/network/http-vs-https.html",
+                  url: "/cs-basics/network/http-vs-https.html",
                 },
                 {
                   "@type": "ListItem",
                   position: 6,
                   name: "TCP 三次握手和四次挥手",
-                  url: "https://javaguide.cn/cs-basics/network/tcp-connection-and-disconnection.html",
+                  url: "/cs-basics/network/tcp-connection-and-disconnection.html",
                 },
               ],
             }),

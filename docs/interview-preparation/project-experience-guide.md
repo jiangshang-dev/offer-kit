@@ -10,7 +10,7 @@ head:
 ---
 
 ::: tip 友情提示
-本文节选自 **[《Java 面试指北》](../zhuanlan/java-mian-shi-zhi-bei.md)**。这是一份教你如何更高效地准备面试的专栏，内容和 JavaGuide 互补，涵盖常见八股文（系统设计、常见框架、分布式、高并发 ……）、优质面经等内容。
+本文节选自 **[《Java 面试指北》](../zhuanlan/java-mian-shi-zhi-bei.md)**。这是一份教你如何更高效地准备面试的专栏，内容和 OfferKit 互补，涵盖常见八股文（系统设计、常见框架、分布式、高并发 ……）、优质面经等内容。
 :::
 
 ## 没有项目经验怎么办?
@@ -43,7 +43,7 @@ head:
 
 GitHub 或者码云上面有很多实战类别项目，你可以选择一个来研究，为了让自己对这个项目更加理解，在理解原有代码的基础上，你可以对原有项目进行改进或者增加功能。
 
-你可以参考 [Java 优质开源实战项目](https://javaguide.cn/open-source-project/practical-project.html "Java 优质开源实战项目") 上面推荐的实战类开源项目，质量都很高，项目类型也比较全面，涵盖博客/论坛系统、考试/刷题系统、商城系统、权限管理系统、快速开发脚手架以及各种轮子。
+你可以参考 [Java 优质开源实战项目](/open-source-project/practical-project.html "Java 优质开源实战项目") 上面推荐的实战类开源项目，质量都很高，项目类型也比较全面，涵盖博客/论坛系统、考试/刷题系统、商城系统、权限管理系统、快速开发脚手架以及各种轮子。
 
 ![Java 优质开源实战项目](https://oss.javaguide.cn/javamianshizhibei/javaguide-practical-project.png)
 

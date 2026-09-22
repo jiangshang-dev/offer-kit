@@ -13,7 +13,7 @@
         <mxCell id="WVfZq0yCbzVCR4_tBo_1-29" value="SOLID" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;shadow=0;sketch=0;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;" parent="1" vertex="1">
           <mxGeometry x="306" y="360" width="90" height="20" as="geometry" />
         </mxCell>
-        <mxCell id="WVfZq0yCbzVCR4_tBo_1-34" value="公众号：JavaGuide&lt;br style=&quot;font-size: 16px;&quot;&gt;作者：Guide哥" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;fontSize=16;fontColor=#B3B3B3;rotation=0;sketch=0;shadow=0;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;" parent="1" vertex="1">
+        <mxCell id="WVfZq0yCbzVCR4_tBo_1-34" value="公众号：OfferKit&lt;br style=&quot;font-size: 16px;&quot;&gt;作者：姜小白" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;labelBackgroundColor=none;fontSize=16;fontColor=#B3B3B3;rotation=0;sketch=0;shadow=0;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;" parent="1" vertex="1">
           <mxGeometry x="700" y="560" width="180" height="10" as="geometry" />
         </mxCell>
         <mxCell id="WVfZq0yCbzVCR4_tBo_1-35" value="单一职责" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=1;fontSize=16;fillColor=#ffe6cc;strokeColor=none;shadow=0;sketch=0;fontFamily=JetBrains Mono;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DJetBrains%2BMono;" parent="1" vertex="1">

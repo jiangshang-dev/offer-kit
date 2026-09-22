@@ -12,7 +12,7 @@ sitemap:
 head:
   - - meta
     - name: keywords
-      content: 面试准备,Java面试,后端面试,校招,社招,简历,项目经验,Java学习路线,面试重点,面经,JavaGuide
+      content: 面试准备,Java面试,后端面试,校招,社招,简历,项目经验,Java学习路线,面试重点,面经,OfferKit
 ---
 
 <!-- @include: @small-advertisement.snippet.md -->
@@ -63,7 +63,7 @@ head:
 ### 技术重点与资料
 
 - [2026 最新版 Java 后端面试重点总结](./key-points-of-interview.md)：梳理 Java 基础、集合、并发、MySQL、Redis、Spring、JVM 和项目经验等高频重点。
-- [2026 最新 Java 面试 + 后端面试 PDF 资料](./pdf-interview-javaguide.md)：整理 JavaGuide 后端面试 PDF 资料，适合集中复习和离线查阅。
+- [2026 最新 Java 面试 + 后端面试 PDF 资料](./pdf-interview-offerkit.md)：整理 OfferKit 后端面试 PDF 资料，适合集中复习和离线查阅。
 - [常见面试题自测](./self-test-of-common-interview-questions.md)：按面试提问方式整理高频问题，适合面前自查掌握程度。
 
 ### 面经复盘与临场状态

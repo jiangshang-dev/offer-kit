@@ -58,7 +58,7 @@ head:
 - 技术名词最好规范大小写比较好，比如 java->Java ，spring boot -> Spring Boot 。这个虽然有些面试官不会介意，但是很多面试官都会在意这个细节的。
 - 中文和数字英文之间加上空格的话看起来会舒服一点。
 
-另外，知识星球里还有真实的简历模板可供参考，地址：<https://t.zsxq.com/12ypxGNzU> （需加入[知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)获取）。
+另外，知识星球里还有真实的简历模板可供参考，地址：<https://t.zsxq.com/12ypxGNzU> （需加入[知识星球](/about-the-author/zhishixingqiu-two-years.html)获取）。
 
 ![](https://oss.javaguide.cn/javamianshizhibei/image-20230918073550606.png)
 
@@ -151,7 +151,7 @@ head:
 
 **2、技术架构直接写技术名词就行，不要再介绍技术是干嘛的了，没意义，属于无效介绍。**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/46c92fbc5160e65dd85c451143177144.png)
+![](https://oss.javaguide.cn/github/offerkit/interview-preparation/46c92fbc5160e65dd85c451143177144.png)
 
 **3、尽量减少纯业务的个人职责介绍，对于面试不太友好。尽量再多挖掘一些亮点（6~8 条个人职责介绍差不多了，做好筛选），最好可以体现自己的综合素质，比如你是如何协调项目组成员协同开发的或者在遇到某一个棘手的问题的时候你是如何解决的又或者说你在这个项目优化了某个模块的性能。**
 
@@ -187,7 +187,7 @@ head:
 
 **4、如果你觉得你的项目技术比较落后的话，可以自己私下进行改进。重要的是让项目比较有亮点，通过什么方式就无所谓了。**
 
-项目经历这部分对于简历来说非常重要，[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html)的面试准备篇有好几篇关于优化项目经历的文章，建议你仔细阅读一下，应该会对你有帮助。
+项目经历这部分对于简历来说非常重要，[《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html)的面试准备篇有好几篇关于优化项目经历的文章，建议你仔细阅读一下，应该会对你有帮助。
 
 ![](https://oss.javaguide.cn/zhishixingqiu/4e11dbc842054e53ad6c5f0445023eb5~tplv-k3u1fbpfcp-zoom-1.png)
 
@@ -197,7 +197,7 @@ head:
 
 **6、避免模糊性描述，介绍要具体（技术+场景+效果），也要注意精简语言（避免堆砌技术词，省略不必要的描述）。**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/project-experience-avoiding-ambiguity-descriptio.png)
+![](https://oss.javaguide.cn/github/offerkit/interview-preparation/project-experience-avoiding-ambiguity-descriptio.png)
 
 ### 荣誉奖项（可选）
 
@@ -285,7 +285,7 @@ FAB 法则由下面 3 个单词组成（FAB 法则的名字就是由它们的首
 
 ## 简历修改
 
-到目前为止，我至少帮助 **6000+** 位球友提供了免费的简历修改服务。由于个人精力有限，修改简历仅限加入星球的读者，需要帮看简历的话，可以加入 [**JavaGuide 官方知识星球**](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html#%E7%AE%80%E5%8E%86%E4%BF%AE%E6%94%B9)（点击链接查看详细介绍）。
+到目前为止，我至少帮助 **6000+** 位球友提供了免费的简历修改服务。由于个人精力有限，修改简历仅限加入星球的读者，需要帮看简历的话，可以加入 [**OfferKit 官方知识星球**](/about-the-author/zhishixingqiu-two-years.html#%E7%AE%80%E5%8E%86%E4%BF%AE%E6%94%B9)（点击链接查看详细介绍）。
 
 ![img](https://oss.javaguide.cn/xingqiu/%E7%AE%80%E5%8E%86%E4%BF%AE%E6%94%B92.jpg)
 

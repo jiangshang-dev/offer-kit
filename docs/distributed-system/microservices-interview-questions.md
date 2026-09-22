@@ -14,9 +14,9 @@ head:
 
 微服务面试很少停在“什么是微服务”。面试官通常会从一次架构拆分继续追问：服务为什么这样划分？跨服务调用失败怎么办？多个服务各自管理数据后怎样查询和保证一致性？服务上线、扩容和故障恢复又如何处理？
 
-这篇文章是 JavaGuide 微服务内容的复习入口，按架构拆分、服务通信、数据一致性、稳定性与可观测性组织现有文章。它不会重复展开所有答案，而是帮助你确定复习范围，并把分散在分布式、高可用、消息队列和安全专题中的知识串起来。
+这篇文章是 OfferKit 微服务内容的复习入口，按架构拆分、服务通信、数据一致性、稳定性与可观测性组织现有文章。它不会重复展开所有答案，而是帮助你确定复习范围，并把分散在分布式、高可用、消息队列和安全专题中的知识串起来。
 
-时间比较紧的话，可以先看面试突击版的[微服务常见面试题总结](https://interview.javaguide.cn/distributed-system/microservices-interview-questions.html)，标出不会的问题，再回到本文对应的专题文章补细节。
+时间比较紧的话，可以先看面试突击版的[微服务常见面试题总结](/distributed-system/microservices-interview-questions.html)，标出不会的问题，再回到本文对应的专题文章补细节。
 
 ## 复习时先抓住哪些问题？
 
@@ -34,7 +34,7 @@ head:
 
 微服务是一种按业务能力组织服务的架构方式。一个系统进程很多，并不等于服务边界合理；如果多个服务必须一起修改、一起发布，还直接共享数据库表，最终往往得到一个运维成本更高的分布式单体。
 
-![单体到分布式电商](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/monolith-to-distributed-ecommerce.webp)
+![单体到分布式电商](https://oss.javaguide.cn/github/offerkit/system-design/distributed-system/monolith-to-distributed-ecommerce.webp)
 
 相关内容：
 
@@ -57,9 +57,9 @@ head:
 
 服务拆开以后，原来的进程内调用会变成网络通信。同步调用需要处理超时和结果不确定，异步消息需要处理重复、顺序和最终一致性；注册发现、网关和配置中心则负责支撑服务数量增加后的寻址、流量入口和配置变更。
 
-![RPC 调用流程与核心能力](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/rpc-overview.png)
+![RPC 调用流程与核心能力](https://oss.javaguide.cn/github/offerkit/distributed-system/rpc/rpc-overview.png)
 
-![API 网关的职责与部署位置](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/api-gateway-overview.png)
+![API 网关的职责与部署位置](https://oss.javaguide.cn/github/offerkit/system-design/distributed-system/api-gateway-overview.png)
 
 相关内容：
 
@@ -87,7 +87,7 @@ head:
 
 服务独立演进通常要求数据归属也清晰。多个服务直接读写同一张表虽然省掉了接口调用，但任何一方修改表结构或数据语义，都可能影响其他服务，服务也很难真正独立发布。
 
-![订单服务与库存服务形成的分布式事务](https://oss.javaguide.cn/github/javaguide/distributed-system/distributed-transaction/distributed-transaction-with-two-services.png)
+![订单服务与库存服务形成的分布式事务](https://oss.javaguide.cn/github/offerkit/distributed-system/distributed-transaction/distributed-transaction-with-two-services.png)
 
 相关内容：
 
@@ -112,7 +112,7 @@ head:
 
 微服务把一次请求分散到多个节点，局部故障发生的频率会随调用环节增加。超时限制等待时间，重试处理短暂错误，熔断阻止持续调用异常下游，限流和隔离保护有限资源；这些机制需要放在同一条调用链中设置。
 
-![熔断器状态机](https://oss.javaguide.cn/github/javaguide/high-availability/fallback-and-circuit-breaker-fuse-state-machine.png)
+![熔断器状态机](https://oss.javaguide.cn/github/offerkit/high-availability/fallback-and-circuit-breaker-fuse-state-machine.png)
 
 相关内容：
 
@@ -173,7 +173,7 @@ head:
 
 | 剩余时间 | 建议安排                                                                                                                                                         | 复习目标                                   |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| 1～2 天  | 先过一遍[微服务常见面试题总结](https://interview.javaguide.cn/distributed-system/microservices-interview-questions.html)，优先补服务拆分、通信、数据一致性和容错 | 能讲清微服务的收益、代价和一条完整调用链   |
+| 1～2 天  | 先过一遍[微服务常见面试题总结](/distributed-system/microservices-interview-questions.html)，优先补服务拆分、通信、数据一致性和容错 | 能讲清微服务的收益、代价和一条完整调用链   |
 | 3～7 天  | 补 RPC、网关、配置中心、分布式事务、消息队列和超时熔断，并画出一次下单或支付请求经过的服务与数据变化                                                             | 能回答失败路径、方案取舍和常见基础设施追问 |
 | 1 周以上 | 结合项目整理一次服务拆分或架构设计，补充接口兼容、灰度发布、监控告警、容量和回滚方案                                                                             | 能从业务约束讲到服务、数据、交付和运维     |
 

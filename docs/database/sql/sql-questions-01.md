@@ -1117,7 +1117,7 @@ GROUP BY cust_id
 ORDER BY total_ordered DESC
 ```
 
-关于写法一详细介绍可以参考： [issue#2402：写法 1 存在的错误以及修改方法](https://github.com/Snailclimb/JavaGuide/issues/2402)。
+关于写法一详细介绍可以参考： [issue#2402：写法 1 存在的错误以及修改方法](https://github.com/jiangshang-dev/offerkit/issues/2402)。
 
 ### 从 Products 表中检索所有的产品名称以及对应的销售总数
 
@@ -1222,7 +1222,7 @@ SQL 允许在 `JOIN` 左边加上一些修饰性的关键词，从而形成不�
 
 下图展示了 LEFT JOIN、RIGHT JOIN、INNER JOIN、OUTER JOIN 相关的 7 种用法。
 
-![](https://oss.javaguide.cn/github/javaguide/csdn/d1794312b448516831369f869814ab39.png)
+![](https://oss.javaguide.cn/github/offerkit/csdn/d1794312b448516831369f869814ab39.png)
 
 如果不加任何修饰词，只写 `JOIN`，那么默认为 `INNER JOIN`
 

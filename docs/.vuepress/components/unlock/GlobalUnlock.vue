@@ -80,7 +80,7 @@ const showError = ref(false);
 const showDialog = ref(false);
 const hasAppliedLock = ref(false);
 const teleportTargetSelector = ref<string | null>(null);
-const globalUnlockKey = `lingxi_site_unlocked_${config.unlockVersion ?? "v1"}`;
+const globalUnlockKey = `offerkit_site_unlocked_${config.unlockVersion ?? "v1"}`;
 
 const normalizePath = (path: string) =>
   path.replace(/\/$/, "").replace(".html", "").toLowerCase();

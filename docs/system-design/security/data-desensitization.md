@@ -36,7 +36,7 @@ head:
 - 删除：将敏感数据中的部分内容随机删除。比如，将电话号码的随机 3 位数字进行删除。
 - 重排：将原始数据中的某些字符或字段的顺序打乱。例如，将身份证号码的随机位交错互换。
 - 加噪：在数据中注入一些误差或者噪音，达到对数据脱敏的效果。例如，在敏感数据中添加一些随机生成的字符。
-- 加密或令牌化（常用）：需要恢复原文时，可以使用带完整性保护的加密算法；不需要恢复原文时，可以根据用途选择截断、令牌化或带独立密钥的 HMAC。MD5、SHA-256 等哈希函数不是加密算法，直接对银行卡号这类结构化数据做无密钥哈希还可能被枚举。常见加密算法总结可以参考这篇文章：<https://javaguide.cn/system-design/security/encryption-algorithms.html> 。
+- 加密或令牌化（常用）：需要恢复原文时，可以使用带完整性保护的加密算法；不需要恢复原文时，可以根据用途选择截断、令牌化或带独立密钥的 HMAC。MD5、SHA-256 等哈希函数不是加密算法，直接对银行卡号这类结构化数据做无密钥哈希还可能被枚举。常见加密算法总结可以参考这篇文章：</system-design/security/encryption-algorithms.html> 。
 - ……
 
 ## 常用脱敏工具
@@ -86,7 +86,7 @@ Hutool 一个 Java 基础工具类，对文件、流、加密解密、转码、�
 
 Hutool 提供的脱敏方法如下图所示：
 
-![](https://oss.javaguide.cn/github/javaguide/system-design/security/2023-08-01-10-2119fnVCIDozqHgRGx.png)
+![](https://oss.javaguide.cn/github/offerkit/system-design/security/2023-08-01-10-2119fnVCIDozqHgRGx.png)
 
 注意：Hutool 脱敏是通过 \* 来代替敏感信息的，具体实现是在 StrUtil.hide 方法中，如果我们想要自定义隐藏符号，则可以把 Hutool 的源码拷出来，重新实现即可。
 
@@ -348,7 +348,7 @@ public class TestController {
 }
 ```
 
-![](https://oss.javaguide.cn/github/javaguide/system-design/security/2023-08-02-16-497DdCBy8vbf2D69g.png)
+![](https://oss.javaguide.cn/github/offerkit/system-design/security/2023-08-02-16-497DdCBy8vbf2D69g.png)
 
 可以看到我们成功实现了数据脱敏。
 

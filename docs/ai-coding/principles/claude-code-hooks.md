@@ -37,7 +37,7 @@ head:
 
 这两者的差别，可以先用一张图概括：
 
-![Prompt 提醒依赖上下文和模型记忆，Hooks 卡点通过自动触发、脚本审计和风险阻断保证动作发生](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hooks-vs-prompts-guarantee.webp)
+![Prompt 提醒依赖上下文和模型记忆，Hooks 卡点通过自动触发、脚本审计和风险阻断保证动作发生](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/hooks-vs-prompts-guarantee.webp)
 
 我更愿意把 Hooks 理解成 Claude Code 工作流里的固定卡点。会话开始、用户提交 Prompt、工具调用前后、上下文压缩前后，都可以挂上对应的处理动作。
 
@@ -51,7 +51,7 @@ handler 也不限于 shell command，官方还支持 HTTP endpoint、MCP 工具�
 
 下图标出了常用触发点：
 
-![Claude Code Hooks 围绕 SessionStart、UserPromptSubmit、PreToolUse、PostToolUse、PermissionRequest 和 PreCompact 等生命周期节点自动执行](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/claude-code-hooks-lifecycle-map.webp)
+![Claude Code Hooks 围绕 SessionStart、UserPromptSubmit、PreToolUse、PostToolUse、PermissionRequest 和 PreCompact 等生命周期节点自动执行](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/claude-code-hooks-lifecycle-map.webp)
 
 Hook handler 主要有五类：
 
@@ -71,11 +71,11 @@ Hook handler 主要有五类：
 
 五类 handler 的关系如下：
 
-![Hook handler 包括 command、http、mcp_tool、prompt 和 agent，优先使用稳定可审计的 command 脚本](https://oss.javaguide.cn/github/javaguide/ai/coding/claudecode/hook-handler-types.webp)
+![Hook handler 包括 command、http、mcp_tool、prompt 和 agent，优先使用稳定可审计的 command 脚本](https://oss.javaguide.cn/github/offerkit/ai/coding/claudecode/hook-handler-types.webp)
 
 ## Hooks 到底解决了什么问题
 
-假设 `CLAUDE.md` 里写着“改完代码请运行 Prettier”。这条说明会进入上下文，Claude 通常会照做；任务变长、期间插入新要求后，它也可能漏掉。项目规则还没整理清楚时，可以先看 [CLAUDE.md 最佳实践](https://javaguide.cn/ai-coding/practices/claude-md-best-practices.html)。
+假设 `CLAUDE.md` 里写着“改完代码请运行 Prettier”。这条说明会进入上下文，Claude 通常会照做；任务变长、期间插入新要求后，它也可能漏掉。项目规则还没整理清楚时，可以先看 [CLAUDE.md 最佳实践](/ai-coding/practices/claude-md-best-practices.html)。
 
 “不要修改 `.env`”也有相同问题。自然语言可以说明意图，却无法在每次文件写入前强制检查路径。把规则接到 `PreToolUse` 后，脚本可以读取目标文件并在命中敏感路径时直接阻断；格式化则可以放在 `PostToolUse`，只处理刚修改的文件。
 
@@ -269,7 +269,7 @@ Claude Code 会在每个退出码下检查 stdout。如果去掉开头空白后�
 
 `Stop` 不等于“任务完成”，它只是 Claude 准备结束本轮响应时触发。如果你用 Stop hook 做质量门禁，要防止循环。官方提供了 `stop_hook_active` 字段帮助判断当前是否已经由 Stop hook 继续过；连续阻断达到 8 次后，Claude Code 会忽略 Hook 的阻断并结束本轮响应。
 
-`PreCompact` 可以阻止压缩，`PostCompact` 不能改变已经完成的压缩结果。压缩后重新注入规则，更常见的做法是用 `SessionStart` 搭配 `compact` matcher。上下文压缩和规则补回属于 Context Engineering 的一部分，想继续展开可以看 [上下文工程实战指南](https://javaguide.cn/ai/agent/context-engineering.html)。
+`PreCompact` 可以阻止压缩，`PostCompact` 不能改变已经完成的压缩结果。压缩后重新注入规则，更常见的做法是用 `SessionStart` 搭配 `compact` matcher。上下文压缩和规则补回属于 Context Engineering 的一部分，想继续展开可以看 [上下文工程实战指南](/ai/agent/context-engineering.html)。
 
 ## 三个最小可用示例
 
@@ -440,9 +440,9 @@ chmod +x .claude/hooks/guard.sh
 
 官方 Skills 文档说，Skills 通过 `SKILL.md` 扩展 Claude 的能力。Claude 会在相关时使用 skill，你也可以用 `/skill-name` 显式调用。Skill 的正文只有在使用时才加载进上下文，所以很适合沉淀长流程、检查清单、项目知识、脚本和参考资料。
 
-如果想系统理解 Skills 和 Prompt、MCP、Function Calling 的分工，可以看 [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](https://javaguide.cn/ai/agent/skills.html)。
+如果想系统理解 Skills 和 Prompt、MCP、Function Calling 的分工，可以看 [Agent Skills 是什么？和 Prompt、MCP 到底差在哪？](/ai/agent/skills.html)。
 
-![Agent 执行链路](https://oss.javaguide.cn/github/javaguide/ai/skills/skill-agent-execution-link.webp)
+![Agent 执行链路](https://oss.javaguide.cn/github/offerkit/ai/skills/skill-agent-execution-link.webp)
 
 Hooks 在生命周期节点上自动执行动作，Skills 则把完成某类任务所需的说明、脚本和参考资料交给 Claude。两者可以按下表区分：
 

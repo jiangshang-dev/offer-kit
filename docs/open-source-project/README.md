@@ -15,7 +15,7 @@ head:
 
 这份 **Java 开源项目精选** 面向 Java 后端学习、项目实战和工具选型，整理 GitHub 和 Gitee 上仍在维护的 Java/JVM 项目。
 
-项目数量不是越多越好。这里更看重代码活跃度、文档质量和可运行性，也会尽量说明项目适合解决什么问题。欢迎在 [JavaGuide Issues 区](https://github.com/Snailclimb/JavaGuide/issues) 推荐你认可的项目。
+项目数量不是越多越好。这里更看重代码活跃度、文档质量和可运行性，也会尽量说明项目适合解决什么问题。欢迎在 [OfferKit Issues 区](https://github.com/jiangshang-dev/offerkit/issues) 推荐你认可的项目。
 
 ## 目录导航
 

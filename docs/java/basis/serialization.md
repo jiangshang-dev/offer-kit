@@ -34,7 +34,7 @@ head:
 
 综上：**序列化的主要目的是把对象转换为适合网络传输或持久化到文件系统、数据库、缓存等介质的表示。**
 
-![](https://oss.javaguide.cn/github/javaguide/a478c74d-2c48-40ae-9374-87aacf05188c.png)
+![](https://oss.javaguide.cn/github/offerkit/a478c74d-2c48-40ae-9374-87aacf05188c.png)
 
 <p style="text-align:right;font-size:13px;color:gray">https://www.corejavaguru.com/java/serialization/interview-questions-1</p>
 
@@ -47,7 +47,7 @@ head:
 3. 网络层
 4. 网络接口层
 
-![TCP/IP 四层模型](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png)
+![TCP/IP 四层模型](https://oss.javaguide.cn/github/offerkit/cs-basics/network/tcp-ip-4-model.png)
 
 如上图所示，OSI 七层协议模型中，表示层做的事情主要就是对应用层的用户数据进行处理转换为二进制流。反过来的话，就是将二进制流转换成应用层的用户数据。这不就对应的是序列化和反序列化么？
 
@@ -88,7 +88,7 @@ public class RpcRequest implements Serializable {
 
 ~~`static` 修饰的变量是静态变量，位于方法区，本身是不会被序列化的。 `static` 变量是属于类的而不是对象。你反序列之后，`static` 变量的值就像是默认赋予给了对象一样，看着就像是 `static` 变量被序列化，实际只是假象罢了。~~
 
-**🐛 修正（参见：[issue#2174](https://github.com/Snailclimb/JavaGuide/issues/2174)）**：
+**🐛 修正（参见：[issue#2174](https://github.com/jiangshang-dev/offerkit/issues/2174)）**：
 
 通常情况下，`static` 变量是属于类的，不属于任何单个对象实例，所以它们本身不会被包含在对象序列化的数据流里。序列化保存的是对象的状态（也就是实例变量的值）。然而，`serialVersionUID` 是一个特例，`serialVersionUID` 的序列化做了特殊处理。关键在于，`serialVersionUID` 不是作为对象状态的一部分被序列化的，而是被序列化机制本身用作一个特殊的“指纹”或“版本号”。
 
@@ -217,7 +217,7 @@ GitHub 地址：[https://github.com/protostuff/protostuff](https://github.com/pr
 
 Hessian 是一个轻量级的，自定义描述的二进制 RPC 协议。Hessian 是一个比较老的序列化实现了，并且同样也是跨语言的。
 
-![](https://oss.javaguide.cn/github/javaguide/8613ec4c-bde5-47bf-897e-99e0f90b9fa3.png)
+![](https://oss.javaguide.cn/github/offerkit/8613ec4c-bde5-47bf-897e-99e0f90b9fa3.png)
 
 Dubbo2.x 默认启用的序列化方式是 Hessian2 ,但是，Dubbo 对 Hessian2 进行了修改，不过大体结构还是差不多。
 
@@ -225,7 +225,7 @@ Dubbo2.x 默认启用的序列化方式是 Hessian2 ,但是，Dubbo 对 Hessian2
 
 Kryo 是专门针对 Java 语言序列化方式并且性能非常好，如果你的应用是专门针对 Java 语言的话可以考虑使用，并且 Dubbo 官网的一篇文章中提到说推荐使用 Kryo 作为生产环境的序列化方式。(文章地址：<https://cn.dubbo.apache.org/zh-cn/docsv2.7/user/serialization/>）。
 
-![](https://oss.javaguide.cn/github/javaguide/java/569e541a-22b2-4846-aa07-0ad479f07440-20230814090158124.png)
+![](https://oss.javaguide.cn/github/offerkit/java/569e541a-22b2-4846-aa07-0ad479f07440-20230814090158124.png)
 
 像 Protobuf、 ProtoStuff、hessian 这类都是跨语言的序列化方式，如果有跨语言需求的话可以考虑使用。
 

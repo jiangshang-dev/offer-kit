@@ -509,7 +509,7 @@ com.example.OrderMapper.selectById
 - [MyBatis 3 官方文档：Dynamic SQL](https://mybatis.org/mybatis-3/dynamic-sql.html)
 - [MyBatis 3 官方文档：Java API](https://mybatis.org/mybatis-3/java-api.html)
 - [MyBatis-Spring 官方文档：Using an SqlSession](https://mybatis.org/spring/sqlsession.html)
-- [MyBatis Mapper 方法重载讨论](https://github.com/Snailclimb/JavaGuide/issues/1122)
+- [MyBatis Mapper 方法重载讨论](https://github.com/jiangshang-dev/offerkit/issues/1122)
 
 ## 文章推荐
 

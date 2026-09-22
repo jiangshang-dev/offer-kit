@@ -29,9 +29,9 @@ head:
 
 POP 的编程方式通常更为简单和直接，适合处理一些较简单的任务。
 
-POP 和 OOP 的性能差异主要取决于它们的运行机制，而不仅仅是编程范式本身。因此，简单地比较两者的性能是一个常见的误区（相关 issue : [面向过程：面向过程性能比面向对象高？？](https://github.com/Snailclimb/JavaGuide/issues/431)）。
+POP 和 OOP 的性能差异主要取决于它们的运行机制，而不仅仅是编程范式本身。因此，简单地比较两者的性能是一个常见的误区（相关 issue : [面向过程：面向过程性能比面向对象高？？](https://github.com/jiangshang-dev/offerkit/issues/431)）。
 
-![ POP 和 OOP  性能比较不合适](https://oss.javaguide.cn/github/javaguide/java/basis/pop-vs-oop-performance.png)
+![ POP 和 OOP  性能比较不合适](https://oss.javaguide.cn/github/offerkit/java/basis/pop-vs-oop-performance.png)
 
 在选择编程范式时，性能并不是唯一的考虑因素。代码的可维护性、可扩展性和开发效率同样重要。
 
@@ -404,7 +404,7 @@ System.out.println(person1.getAddress() == person1Copy.getAddress());
 
 我专门画了一张图来描述浅拷贝、深拷贝和引用拷贝：
 
-![图解浅拷贝、深拷贝和引用拷贝](https://oss.javaguide.cn/github/javaguide/java/basis/shallow&deep-copy.png)
+![图解浅拷贝、深拷贝和引用拷贝](https://oss.javaguide.cn/github/offerkit/java/basis/shallow&deep-copy.png)
 
 ## ⭐️ Object
 
@@ -530,7 +530,7 @@ public boolean equals(Object anObject) {
 
 `hashCode()` 的作用是获取哈希码（`int` 整数），也称为散列码。这个哈希码的作用是确定该对象在哈希表中的索引位置。
 
-![hashCode() 方法](https://oss.javaguide.cn/github/javaguide/java/basis/java-hashcode-method.png)
+![hashCode() 方法](https://oss.javaguide.cn/github/offerkit/java/basis/java-hashcode-method.png)
 
 `hashCode()` 定义在 JDK 的 `Object` 类中，这就意味着 Java 中的任何类都包含有 `hashCode()` 函数。另外需要注意的是：`Object` 的 `hashCode()` 方法是本地方法，也就是用 C 语言或 C++ 实现的。
 
@@ -627,7 +627,7 @@ abstract class AbstractStringBuilder implements Appendable, CharSequence {
 
 `String` 中的对象是不可变的，也就可以理解为常量，线程安全。`AbstractStringBuilder` 是 `StringBuilder` 与 `StringBuffer` 的公共父类，定义了一些字符串的基本操作，如 `expandCapacity`、`append`、`insert`、`indexOf` 等公共方法。`StringBuffer` 对方法加了同步锁或者对调用的方法加了同步锁，所以是线程安全的。`StringBuilder` 并没有对方法进行加同步锁，所以是非线程安全的。
 
-<img src="https://oss.javaguide.cn/github/javaguide/java/basis/stringbuffer-methods.png" style="zoom:50%;" />
+<img src="https://oss.javaguide.cn/github/offerkit/java/basis/stringbuffer-methods.png" style="zoom:50%;" />
 
 **性能**
 
@@ -664,7 +664,7 @@ public final class String implements java.io.Serializable, Comparable<String>, C
 >
 > 相关阅读：[如何理解 String 类型值的不可变？ - 知乎提问](https://www.zhihu.com/question/20618891/answer/114125846)
 >
-> 补充（来自[issue 675](https://github.com/Snailclimb/JavaGuide/issues/675)）：在 Java 9 之后，`String`、`StringBuilder` 与 `StringBuffer` 的实现改用 `byte` 数组存储字符串。
+> 补充（来自[issue 675](https://github.com/jiangshang-dev/offerkit/issues/675)）：在 Java 9 之后，`String`、`StringBuilder` 与 `StringBuffer` 的实现改用 `byte` 数组存储字符串。
 >
 > ```java
 > public final class String implements java.io.Serializable,Comparable<String>, CharSequence {
@@ -685,7 +685,7 @@ public final class String implements java.io.Serializable, Comparable<String>, C
 >
 > JDK 官方就说了绝大部分字符串对象只包含 Latin-1 可表示的字符。
 >
-> ![](https://oss.javaguide.cn/github/javaguide/jdk9-string-latin1.png)
+> ![](https://oss.javaguide.cn/github/offerkit/jdk9-string-latin1.png)
 >
 > 如果字符串包含 Latin-1 无法表示的字符（例如汉字），内部会使用 UTF-16，每个代码单元使用两个字节。
 >
@@ -704,7 +704,7 @@ String str4 = str1 + str2 + str3;
 
 上面的代码对应的字节码如下：
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220422161637929.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220422161637929.png)
 
 对于这里展示的 JDK 8 字节码，字符串“+”拼接被 `javac` 转换为 `StringBuilder.append()` 调用。JDK 9 起，`javac` 默认改用 `invokedynamic` 和 `StringConcatFactory`，因此不能把 `StringBuilder` 视为所有版本都必须采用的实现方式。
 
@@ -721,7 +721,7 @@ System.out.println(s);
 
 `StringBuilder` 对象是在循环内部被创建的，这意味着每循环一次就会创建一个 `StringBuilder` 对象。
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220422161320823.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220422161320823.png)
 
 如果直接使用 `StringBuilder` 对象进行字符串拼接的话，就不会存在这个问题了。
 
@@ -734,11 +734,11 @@ for (String value : arr) {
 System.out.println(s);
 ```
 
-![](https://oss.javaguide.cn/github/javaguide/java/image-20220422162327415.png)
+![](https://oss.javaguide.cn/github/offerkit/java/image-20220422162327415.png)
 
 如果你使用 IDEA 的话，IDEA 自带的代码检查机制也会提示你修改代码。
 
-在 JDK 9 中，字符串相加“+”改为用动态方法 `makeConcatWithConstants()` 来实现，通过提前分配空间从而减少了部分临时对象的创建。然而这种优化主要针对简单的字符串拼接，如： `a+b+c`。对于循环中的大量拼接操作，仍然会逐个动态分配内存（类似于两个两个 append 的概念），并不如手动使用 StringBuilder 来进行拼接效率高。这个改进是 JDK9 的 [JEP 280](https://openjdk.org/jeps/280) 提出的，关于这部分改进的详细介绍，推荐阅读这篇文章：还在无脑用 [StringBuilder？来重温一下字符串拼接吧](https://juejin.cn/post/7182872058743750715) 以及参考 [issue#2442](https://github.com/Snailclimb/JavaGuide/issues/2442)。
+在 JDK 9 中，字符串相加“+”改为用动态方法 `makeConcatWithConstants()` 来实现，通过提前分配空间从而减少了部分临时对象的创建。然而这种优化主要针对简单的字符串拼接，如： `a+b+c`。对于循环中的大量拼接操作，仍然会逐个动态分配内存（类似于两个两个 append 的概念），并不如手动使用 StringBuilder 来进行拼接效率高。这个改进是 JDK9 的 [JEP 280](https://openjdk.org/jeps/280) 提出的，关于这部分改进的详细介绍，推荐阅读这篇文章：还在无脑用 [StringBuilder？来重温一下字符串拼接吧](https://juejin.cn/post/7182872058743750715) 以及参考 [issue#2442](https://github.com/jiangshang-dev/offerkit/issues/2442)。
 
 ### String#equals() 和 Object#equals() 有何区别？
 
@@ -757,7 +757,7 @@ String bb = "ab";
 System.out.println(aa==bb); // true
 ```
 
-更多关于字符串常量池的介绍可以看一下 [Java 内存区域详解](https://javaguide.cn/java/jvm/memory-area.html) 这篇文章。
+更多关于字符串常量池的介绍可以看一下 [Java 内存区域详解](/java/jvm/memory-area.html) 这篇文章。
 
 ### ⭐️ String s1 = new String("abc");这句话创建了几个字符串对象？
 
@@ -888,7 +888,7 @@ System.out.println(str4 == str5);//false
 
 在编译过程中，Javac 编译器（下文中统称为编译器）会进行一个叫做 **常量折叠(Constant Folding)** 的代码优化。《深入理解 Java 虚拟机》中是也有介绍到：
 
-![](https://oss.javaguide.cn/javaguide/image-20210817142715396.png)
+![](https://oss.javaguide.cn/offerkit/image-20210817142715396.png)
 
 常量折叠会把常量表达式的值求出来作为常量嵌在最终生成的代码中，这是 Javac 编译器会对源代码做的极少量优化措施之一（代码优化几乎都在即时编译器中进行）。
 

@@ -8,7 +8,7 @@ head:
       content: Maven坐标,Maven仓库,Maven生命周期,Maven多模块管理,Maven Wrapper,依赖管理
 ---
 
-> 本文由 JavaGuide 翻译并完善，原文地址：<https://medium.com/@AlexanderObregon/maven-best-practices-tips-and-tricks-for-java-developers-438eca03f72b> 。
+> 本文由 OfferKit 翻译并完善，原文地址：<https://medium.com/@AlexanderObregon/maven-best-practices-tips-and-tricks-for-java-developers-438eca03f72b> 。
 
 Maven 是一种广泛使用的 Java 项目构建自动化工具。它简化了构建过程，并帮助我们管理依赖关系。Maven 详细介绍可以参考这篇文章：[Maven 核心概念总结](./maven-core-concepts.md)。
 

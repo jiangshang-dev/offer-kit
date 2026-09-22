@@ -1,22 +1,22 @@
 ---
 title: 贡献指南
-description: JavaGuide开源项目贡献指南，讲解如何参与项目维护、提交PR及成为Contributor的完整流程。
+description: OfferKit开源项目贡献指南，讲解如何参与项目维护、提交PR及成为Contributor的完整流程。
 category: 走近项目
 icon: "mdi:compass-outline"
 ---
 
-你好，我是 Guide！欢迎来到 JavaGuide 的“开源实验室”。
+你好，我是 Guide！欢迎来到 OfferKit 的“开源实验室”。
 
 参与开源项目的维护，不仅是一次技术实战，更是一场“技术反哺”的修行。
 
 在这里，你的每一行文字和代码，都会被全球几十万的开发者看到。
 
-## 为什么要参与 JavaGuide 的维护？
+## 为什么要参与 OfferKit 的维护？
 
-很多小伙伴觉得开源社区门槛高，其实不然。参与 JavaGuide 维护的收益非常务实：
+很多小伙伴觉得开源社区门槛高，其实不然。参与 OfferKit 维护的收益非常务实：
 
 1. **深度对齐知识点**：在纠错或完善内容的过程中，你会强迫自己进行“穿透式学习”，这种记忆远比死记硬背八股文要深刻。
-2. **影响力背书**：JavaGuide 已经接近 160k Star 了。如果你的 `PR` 被采纳，你的名字将永久留在 `Contributor` 列表中。这在求职面试时，是一份非常有说服力的**“开源实战证明”**。
+2. **影响力背书**：OfferKit 已经接近 160k Star 了。如果你的 `PR` 被采纳，你的名字将永久留在 `Contributor` 列表中。这在求职面试时，是一份非常有说服力的**“开源实战证明”**。
 3. **实物奖励**：我会不定期给高频贡献的小伙伴寄送耳机、机械键盘等硬核周边，甚至还有直接的现金激励。
 
 ## 可以从哪些方向进行贡献？
@@ -39,24 +39,24 @@ icon: "mdi:compass-outline"
 
 这种方式最适合修正笔误或小范围的内容优化。
 
-![](https://oss.javaguide.cn/github/javaguide/about/javaguide-contribution-edit-page.png)
+![](https://oss.javaguide.cn/github/offerkit/about/javaguide-contribution-edit-page.png)
 
 ### 进阶模式：Fork + PR（标准开源流程）
 
 如果你想进行大篇幅的重构或新增内容，建议走标准的 GitHub 工作流：
 
-1. **Fork 仓库**：点击[原仓库](https://github.com/Snailclimb/JavaGuide)右上角的 `Fork`，将 JavaGuide 复制一份副本到你的账户名下。
+1. **Fork 仓库**：点击[原仓库](https://github.com/jiangshang-dev/offerkit)右上角的 `Fork`，将 OfferKit 复制一份副本到你的账户名下。
 2. **本地开发**：你可以将项目克隆到本地，在本地自由修改，编写内容。内容修改或者编写完成之后，直接提交到副本仓库即可。
-3. **发起 PR**：提交完成后，点击 `New Pull Request`，将你的修改请求合并到 JavaGuide 的主分支。
+3. **发起 PR**：提交完成后，点击 `New Pull Request`，将你的修改请求合并到 OfferKit 的主分支。
 
-![](https://oss.javaguide.cn/github/javaguide/about/javaguide-contribution-pr.png)
+![](https://oss.javaguide.cn/github/offerkit/about/javaguide-contribution-pr.png)
 
 Git 相关的技能非常重要，建议在正式工作之前一定要熟练掌握。
 
 我写过两篇相关的文章，推荐看看：
 
-- [Git 核心概念总结](https://javaguide.cn/tools/git/git-intro.html)
-- [Github 实用小技巧总结](https://javaguide.cn/tools/git/github-tips.html)
+- [Git 核心概念总结](/tools/git/git-intro.html)
+- [Github 实用小技巧总结](/tools/git/github-tips.html)
 
 ### 提交 Issue 开启讨论
 
@@ -71,7 +71,7 @@ Git 相关的技能非常重要，建议在正式工作之前一定要熟练掌�
 > 1. **方案对比**：详细对比“先更新数据库再删缓存”、“延迟双删”、“订阅 binlog 异步删除”等方案的优缺点。
 > 2. **极端场景分析**：分析在主从延迟或网络抖动下，如何最大程度保障最终一致性。
 >
-> **认领意向**：我对该领域有深入研究，并整理了一份对比表格和流程图，希望能将其贡献到 JavaGuide。
+> **认领意向**：我对该领域有深入研究，并整理了一份对比表格和流程图，希望能将其贡献到 OfferKit。
 
 ## 贡献要求
 
@@ -92,4 +92,4 @@ Git 相关的技能非常重要，建议在正式工作之前一定要熟练掌�
 
 ## 写在最后
 
-开源不是一个人的单打独斗，而是一群人的砥砺前行。 **准备 Java 面试，首选 JavaGuide！** 期待在 Contributor 列表中看到你的名字。
+开源不是一个人的单打独斗，而是一群人的砥砺前行。 **准备 Java 面试，首选 OfferKit！** 期待在 Contributor 列表中看到你的名字。

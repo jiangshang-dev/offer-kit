@@ -27,7 +27,7 @@ export default defineClientConfig({
       if (!CHUNK_LOAD_ERROR_PATTERN.test(message)) return;
 
       const target = to?.fullPath || getCurrentLocation();
-      const reloadKey = `lingxi:chunk-reload:${target}`;
+      const reloadKey = `offerkit:chunk-reload:${target}`;
 
       if (window.sessionStorage.getItem(reloadKey) === "1") return;
 
@@ -37,7 +37,7 @@ export default defineClientConfig({
 
     router.afterEach((to) => {
       if (typeof window === "undefined") return;
-      window.sessionStorage.removeItem(`lingxi:chunk-reload:${to.fullPath}`);
+      window.sessionStorage.removeItem(`offerkit:chunk-reload:${to.fullPath}`);
     });
   },
   rootComponents: [

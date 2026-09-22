@@ -10,7 +10,7 @@ head:
       content: MySQL学习笔记,MySQL命令大全,SQL语法,数据库操作,表操作,索引,视图,存储过程,触发器
 ---
 
-> 原文地址：<https://shockerli.net/post/1000-line-mysql-note/> ，JavaGuide 对本文进行了简答排版，新增了目录。
+> 原文地址：<https://shockerli.net/post/1000-line-mysql-note/> ，OfferKit 对本文进行了简答排版，新增了目录。
 
 非常不错的总结，强烈建议保存下来，需要的时候看一看。
 

@@ -10,7 +10,7 @@ head:
 ---
 
 ::: tip 友情提示
-本文节选自 **[《Java 面试指北》](../zhuanlan/java-mian-shi-zhi-bei.md)**。这是一份教你如何更高效地准备面试的专栏，内容和 JavaGuide 互补，涵盖常见八股文（系统设计、常见框架、分布式、高并发 ……）、优质面经等内容。
+本文节选自 **[《Java 面试指北》](../zhuanlan/java-mian-shi-zhi-bei.md)**。这是一份教你如何更高效地准备面试的专栏，内容和 OfferKit 互补，涵盖常见八股文（系统设计、常见框架、分布式、高并发 ……）、优质面经等内容。
 :::
 
 你身边是否有这样的朋友：编程能力比你强，求职结果却不如你？其实**技术好≠面试能过** —— 如今的面试早已不是 “会写代码就行”，不做准备就去面，大概率是 “撞枪口”。
@@ -85,15 +85,15 @@ head:
 
 **1.个人介绍没太多实用的信息。**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/format,png.png)
+![](https://oss.javaguide.cn/github/offerkit/interview-preparation/format,png.png)
 
 技术博客、GitHub 以及在校获奖经历的话，能写就尽量写在这里。 你可以参考下面 👇 的模板进行修改：
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/format,png-20230309224235808.png)
+![](https://oss.javaguide.cn/github/offerkit/interview-preparation/format,png-20230309224235808.png)
 
 **2.项目经历过于简单，完全没有质量可言**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/format,png-20230309224240305.png)
+![](https://oss.javaguide.cn/github/offerkit/interview-preparation/format,png-20230309224240305.png)
 
 每一个项目经历真的就一两句话可以描述了么？还是自己不想写？还是说不是自己做的，不敢多写。
 
@@ -108,17 +108,17 @@ head:
 
 **3.计算机二级这个证书对于计算机专业完全不用写了，没有含金量的。**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/format,png-20230309224247261.png)
+![](https://oss.javaguide.cn/github/offerkit/interview-preparation/format,png-20230309224247261.png)
 
 **4.技能介绍问题太大。**
 
-![](https://oss.javaguide.cn/github/javaguide/interview-preparation/93da1096fb02e19071ba13b4f6a7471c.png)
+![](https://oss.javaguide.cn/github/offerkit/interview-preparation/93da1096fb02e19071ba13b4f6a7471c.png)
 
 - 技术名词最好规范大小写比较好，比如 java->Java ，spring boot -> Spring Boot 。这个虽然有些面试官不会介意，但是很多面试官都会在意这个细节的。
 - 技能介绍太杂，没有亮点。不需要全才，某个领域做得好就行了！
 - 对 Java 后台开发的部分技能比如 Spring Boot 的熟悉度仅仅为了解，无法满足企业的要求。
 
-详细的程序员简历编写指南请参考：[程序员简历到底该怎么写？](https://javaguide.cn/interview-preparation/resume-guide.html)。
+详细的程序员简历编写指南请参考：[程序员简历到底该怎么写？](/interview-preparation/resume-guide.html)。
 
 ## 岗位匹配度很重要
 
@@ -135,13 +135,13 @@ head:
 - 自己面试中可能涉及哪些知识点、那些知识点是重点。
 - 面试中哪些问题会被经常问到、面试中自己该如何回答。(强烈不推荐死记硬背，第一：通过背这种方式你能记住多少？能记住多久？第二：背题的方式的学习很难坚持下去！)
 
-Java 后端面试复习的重点请看这篇文章：[Java 面试重点总结(重要)](https://javaguide.cn/interview-preparation/key-points-of-interview.html)。
+Java 后端面试复习的重点请看这篇文章：[Java 面试重点总结(重要)](/interview-preparation/key-points-of-interview.html)。
 
 不同类型的公司对于技能的要求侧重点是不同的比如腾讯、字节可能更重视计算机基础比如网络、操作系统这方面的内容。阿里、美团这种可能更重视你的项目经历、实战能力。
 
 一定不要抱着一种思想，觉得八股文或者基础问题的考查意义不大。如果你抱着这种思想复习的话，那效果可能不会太好。实际上，个人认为还是很有意义的，八股文或者基础性的知识在日常开发中也会需要经常用到。例如，线程池这块的拒绝策略、核心参数配置什么的，如果你不了解，实际项目中使用线程池可能就用的不是很明白，容易出现问题。而且，其实这种基础性的问题是最容易准备的，像各种底层原理、系统设计、场景题以及深挖你的项目这类才是最难的！
 
-八股文资料首推我的 [《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) (配合 JavaGuide 使用，会根据每一年的面试情况对内容进行更新完善)和 [JavaGuide](https://javaguide.cn/) 。里面不仅仅是原创八股文，还有很多对实际开发有帮助的干货。除了我的资料之外，你还可以去网上找一些其他的优质的文章、视频来看。
+八股文资料首推我的 [《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html) (配合 OfferKit 使用，会根据每一年的面试情况对内容进行更新完善)和 [OfferKit](/) 。里面不仅仅是原创八股文，还有很多对实际开发有帮助的干货。除了我的资料之外，你还可以去网上找一些其他的优质的文章、视频来看。
 
 ![《Java 面试指北》内容概览](https://oss.javaguide.cn/javamianshizhibei/javamianshizhibei-content-overview.png)
 
@@ -153,7 +153,7 @@ Java 后端面试复习的重点请看这篇文章：[Java 面试重点总结(�
 
 社招往往是在技术面试的最后，面试官给你一个算法题目让你做。
 
-关于如何准备算法面试[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html) 的面试准备篇有详细介绍到。
+关于如何准备算法面试[《Java 面试指北》](/zhuanlan/java-mian-shi-zhi-bei.html) 的面试准备篇有详细介绍到。
 
 ![《Java 面试指北》面试准备篇](https://oss.javaguide.cn/javamianshizhibei/preparation-for-interview.png)
 

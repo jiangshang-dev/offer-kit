@@ -18,9 +18,9 @@ head:
 
 高可用面试题经常从一句“系统怎么保证不挂”开始，随后追问单点故障、限流熔断、超时重试、接口幂等和异地容灾。只罗列组件通常答不完整，还要说明故障如何被发现、影响怎样被控制、服务如何恢复，以及数据能否保持正确。
 
-这篇文章是 JavaGuide 高可用专题的复习入口，按高可用基础、冗余与容灾、限流降级熔断、超时重试幂等、性能测试与故障治理五部分整理。答案和实现细节放在对应专题文章中。
+这篇文章是 OfferKit 高可用专题的复习入口，按高可用基础、冗余与容灾、限流降级熔断、超时重试幂等、性能测试与故障治理五部分整理。答案和实现细节放在对应专题文章中。
 
-时间比较紧的话，可以先看 [高可用系统常见面试题总结](https://interview.javaguide.cn/high-availability/high-availability-system-interview-questions.html)，把暂时讲不清的问题标出来，再回到本文补原理和工程细节。
+时间比较紧的话，可以先看 [高可用系统常见面试题总结](/high-availability/high-availability-system-interview-questions.html)，把暂时讲不清的问题标出来，再回到本文补原理和工程细节。
 
 ## 复习时先抓住哪些问题？
 
@@ -38,9 +38,9 @@ head:
 
 高可用并不等于永不故障。系统设计要回答的是：怎样减少故障，故障发生后如何限制影响，以及多久能够恢复服务。多部署几个实例只能减少应用层单点，数据库、缓存、消息队列、配置中心、DNS 和负载均衡仍可能成为故障源。
 
-![提高系统可用性的三层方法](https://oss.javaguide.cn/github/javaguide/high-availability/ha-interview-availability-methods.png)
+![提高系统可用性的三层方法](https://oss.javaguide.cn/github/offerkit/high-availability/ha-interview-availability-methods.png)
 
-相关内容：[高可用系统设计指南](https://javaguide.cn/high-availability/high-availability-system-design.html)
+相关内容：[高可用系统设计指南](/high-availability/high-availability-system-design.html)
 
 常见面试题：
 
@@ -57,9 +57,9 @@ head:
 
 冗余解决“备用资源在哪里”，容灾还要处理检测、切换、数据复制和恢复。对无状态服务，自动摘除故障实例通常比较容易；数据库主切、跨地域切流和资金链路涉及数据风险，往往需要更谨慎的确认与回切方案。
 
-![RTO 与 RPO](https://oss.javaguide.cn/github/javaguide/high-availability/redundancy-optimized-rto-rpo-timeline.png)
+![RTO 与 RPO](https://oss.javaguide.cn/github/offerkit/high-availability/redundancy-optimized-rto-rpo-timeline.png)
 
-相关内容：[冗余设计详解](https://javaguide.cn/high-availability/redundancy.html)
+相关内容：[冗余设计详解](/high-availability/redundancy.html)
 
 常见面试题：
 
@@ -78,12 +78,12 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 这三种机制处理的问题不同。限流控制进入系统的请求量，降级根据业务优先级减少服务能力，熔断在下游持续异常时停止调用。隔离则把线程、连接或并发额度分开，避免一个依赖占满全部资源。
 
-![熔断器状态机](https://oss.javaguide.cn/github/javaguide/high-availability/fallback-and-circuit-breaker-fuse-state-machine.png)
+![熔断器状态机](https://oss.javaguide.cn/github/offerkit/high-availability/fallback-and-circuit-breaker-fuse-state-machine.png)
 
 相关内容：
 
-- [服务限流详解](https://javaguide.cn/high-availability/limit-request.html)
-- [降级&熔断详解](https://javaguide.cn/high-availability/fallback-and-circuit-breaker.html)
+- [服务限流详解](/high-availability/limit-request.html)
+- [降级&熔断详解](/high-availability/fallback-and-circuit-breaker.html)
 
 常见面试题：
 
@@ -106,12 +106,12 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 超时只表示调用方在期限内没有收到结果，不能证明服务端执行失败。查询请求可以在总时间预算内有限重试；支付、下单和库存扣减等写请求，必须先用幂等键、唯一约束或状态机控制重复执行。
 
-![重试前必须先判断：错误类型 + 操作幂等](https://oss.javaguide.cn/github/javaguide/high-availability/timeout-and-retry-optimized-retry-idempotency-decision.png)
+![重试前必须先判断：错误类型 + 操作幂等](https://oss.javaguide.cn/github/offerkit/high-availability/timeout-and-retry-optimized-retry-idempotency-decision.png)
 
 相关内容：
 
-- [超时&重试详解](https://javaguide.cn/high-availability/timeout-and-retry.html)
-- [接口幂等方案总结](https://javaguide.cn/high-availability/idempotency.html)
+- [超时&重试详解](/high-availability/timeout-and-retry.html)
+- [接口幂等方案总结](/high-availability/idempotency.html)
 
 常见面试题：
 
@@ -134,9 +134,9 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 没有容量数据和演练结果，高可用方案只能停留在设计稿。压测用于观察系统在不同流量下的延迟、吞吐和资源变化，故障演练则验证节点宕机、依赖变慢或网络分区后，保护和恢复机制是否按预期工作。
 
-![性能压测主流程](https://oss.javaguide.cn/github/javaguide/high-availability/ha-interview-performance-test-flow.png)
+![性能压测主流程](https://oss.javaguide.cn/github/offerkit/high-availability/ha-interview-performance-test-flow.png)
 
-相关内容：[性能测试入门](https://javaguide.cn/high-availability/performance-test.html)
+相关内容：[性能测试入门](/high-availability/performance-test.html)
 
 常见面试题：
 
@@ -155,7 +155,7 @@ RTO/RPO 给出容灾目标，完成配置并不能证明系统已经达到目标
 
 | 剩余时间 | 建议安排                                                                                                                                                                | 复习目标                                        |
 | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
-| 1～2 天  | 先过一遍 [高可用系统常见面试题总结](https://interview.javaguide.cn/high-availability/high-availability-system-interview-questions.html)，优先补限流熔断、超时重试和幂等 | 能回答高频问题，并说出主要风险和限制            |
+| 1～2 天  | 先过一遍 [高可用系统常见面试题总结](/high-availability/high-availability-system-interview-questions.html)，优先补限流熔断、超时重试和幂等 | 能回答高频问题，并说出主要风险和限制            |
 | 3～7 天  | 补 RTO/RPO、故障转移、隔离、容量评估和缓存高可用，再画一条完整调用链                                                                                                    | 能解释各机制怎样配合，遇到故障场景可以继续推演  |
 | 1 周以上 | 阅读全部专题文章，结合自己的项目整理一次发布、超时、流量突增或依赖故障案例                                                                                              | 能从业务 SLA 讲到方案选择、观测指标、恢复和复盘 |
 

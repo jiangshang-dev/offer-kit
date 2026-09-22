@@ -44,7 +44,7 @@ head:
 
 如下图所示，包括任务执行机制的核心接口 **`Executor`**，以及继承自 `Executor` 接口的 **`ExecutorService` 接口。`ThreadPoolExecutor`** 和 **`ScheduledThreadPoolExecutor`** 这两个关键类实现了 **`ExecutorService`** 接口。
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/executor-class-diagram.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/executor-class-diagram.png)
 
 这里提了很多底层的类关系，但是，实际上我们需要更多关注的是 `ThreadPoolExecutor` 这个类，这个类在我们实际使用线程池的过程中，使用频率还是非常高的。
 
@@ -134,7 +134,7 @@ public class ScheduledThreadPoolExecutor
 
 下面这张图可以加深你对线程池中各个参数的相互关系的理解（图片来源：《Java 性能调优实战》）：
 
-![线程池各个参数的关系](https://oss.javaguide.cn/github/javaguide/java/concurrent/relationship-between-thread-pool-parameters.png)
+![线程池各个参数的关系](https://oss.javaguide.cn/github/offerkit/java/concurrent/relationship-between-thread-pool-parameters.png)
 
 ### 线程池生命周期状态
 
@@ -209,7 +209,7 @@ public static class CallerRunsPolicy implements RejectedExecutionHandler {
 
 **方式一：通过 `ThreadPoolExecutor` 构造函数直接创建（推荐）**
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/threadpoolexecutor-construtors.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/threadpoolexecutor-construtors.png)
 
 图中的“默认线程工厂”和“默认拒绝策略”，指的是当前构造函数没有显式传入对应参数时，`ThreadPoolExecutor` 会使用默认实现，并不是方法和说明错位。
 
@@ -219,7 +219,7 @@ public static class CallerRunsPolicy implements RejectedExecutionHandler {
 
 `Executors` 工具类提供的创建线程池的方法如下图所示：
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/executors-new-thread-pool-methods.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/executors-new-thread-pool-methods.png)
 
 可以看出，通过 `Executors` 工具类可以创建多种类型的线程池，包括：
 
@@ -466,7 +466,7 @@ Finished all threads  // 任务全部执行完了才会跳出来，因为executo
 
 > **补充说明**：很多人误以为非核心线程只在任务队列满的时候才会被创建，之后就“闲着”等销毁。实际上，非核心线程执行完初始任务后，并不会立刻销毁，而是会**主动从任务队列中拉取任务执行**（通过 `getTask()` 方法）。具体来说，核心线程使用 `workQueue.take()` 阻塞等待任务，而非核心线程使用 `workQueue.poll(keepAliveTime, unit)` ——如果在存活时间内从队列中取到了任务，就会继续执行；只有超时没有取到任务，非核心线程才会被回收。这意味着，即使新任务被放入了队列，空闲的非核心线程也会抢先从队列中取走任务来执行，而不是等队列满了才被动响应。
 
-![图解线程池实现原理](https://oss.javaguide.cn/github/javaguide/java/concurrent/thread-pool-principle.png)
+![图解线程池实现原理](https://oss.javaguide.cn/github/offerkit/java/concurrent/thread-pool-principle.png)
 
 在 `execute` 方法中，多次调用 `addWorker` 方法。`addWorker` 这个方法主要用来创建新的工作线程，如果返回 true 说明创建和启动工作线程成功，否则的话返回的就是 false。
 
@@ -864,11 +864,11 @@ public class ScheduledThreadPoolExecutor
 - `Timer` 只有一个执行线程，因此长时间运行的任务可以延迟其他任务。 `ScheduledThreadPoolExecutor` 可以配置任意数量的线程。 此外，如果你想（通过提供 `ThreadFactory`），你可以完全控制创建的线程;
 - 在 `TimerTask` 中抛出的运行时异常会终止 `Timer` 的唯一线程，后续计划任务也无法继续运行。`ScheduledThreadPoolExecutor` 中某个任务抛出异常不会终止其他任务；周期任务抛出异常后，后续执行会被抑制。通过 `submit()` 或定时调度方法提交的任务通常会把异常保存在 `Future` 中，调用方可通过 `Future.get()` 获取；若在 `afterExecute()` 中统一检查，也需要从传入的 `Future` 中读取异常。
 
-关于定时任务的详细介绍，可以看这篇文章：[Java 定时任务详解](https://javaguide.cn/system-design/schedule-task.html)。
+关于定时任务的详细介绍，可以看这篇文章：[Java 定时任务详解](/system-design/schedule-task.html)。
 
 ## 线程池最佳实践
 
-[Java 线程池最佳实践](https://javaguide.cn/java/concurrent/java-thread-pool-best-practices.html)这篇文章总结了一些使用线程池的时候应该注意的东西，实际项目使用线程池之前可以看看。
+[Java 线程池最佳实践](/java/concurrent/java-thread-pool-best-practices.html)这篇文章总结了一些使用线程池的时候应该注意的东西，实际项目使用线程池之前可以看看。
 
 ## 参考
 

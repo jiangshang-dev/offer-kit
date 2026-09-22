@@ -24,7 +24,7 @@ head:
 
 **OSI 七层模型** 是国际标准化组织提出的一个网络分层模型，其大体结构以及每一层提供的功能如下图所示：
 
-![OSI 七层模型各层功能划分](https://oss.javaguide.cn/github/javaguide/cs-basics/network/osi-7-model.png)
+![OSI 七层模型各层功能划分](https://oss.javaguide.cn/github/offerkit/cs-basics/network/osi-7-model.png)
 
 每一层都专注做一件事情，并且每一层都需要使用下一层提供的功能比如传输层需要使用网络层提供的路由和寻址功能，这样传输层才知道把数据传输到哪里去。
 
@@ -32,7 +32,7 @@ head:
 
 上面这种图可能比较抽象，再来一个比较生动的图片。下面这个图片是我在国外的一个网站上看到的，非常赞！
 
-![osi七层模型2](https://oss.javaguide.cn/github/javaguide/osi七层模型2.png)
+![osi七层模型2](https://oss.javaguide.cn/github/offerkit/osi七层模型2.png)
 
 #### ⭐️ TCP/IP 四层模型是什么？每一层的作用是什么？
 
@@ -45,9 +45,9 @@ head:
 
 需要注意的是，我们并不能将 TCP/IP 四层模型 和 OSI 七层模型完全精确地匹配起来，不过可以简单将两者对应起来，如下图所示：
 
-![TCP/IP 四层模型与 OSI 模型的对应关系](https://oss.javaguide.cn/github/javaguide/cs-basics/network/tcp-ip-4-model.png)
+![TCP/IP 四层模型与 OSI 模型的对应关系](https://oss.javaguide.cn/github/offerkit/cs-basics/network/tcp-ip-4-model.png)
 
-关于每一层作用的详细介绍，请看 [OSI 和 TCP/IP 网络分层模型详解（基础）](https://javaguide.cn/cs-basics/network/osi-and-tcp-ip-model.html) 这篇文章。
+关于每一层作用的详细介绍，请看 [OSI 和 TCP/IP 网络分层模型详解（基础）](/cs-basics/network/osi-and-tcp-ip-model.html) 这篇文章。
 
 #### 为什么网络要分层？
 
@@ -73,7 +73,7 @@ head:
 
 #### ⭐️ 应用层有哪些常见的协议？
 
-![应用层常见协议](https://oss.javaguide.cn/github/javaguide/cs-basics/network/application-layer-protocol.png)
+![应用层常见协议](https://oss.javaguide.cn/github/offerkit/cs-basics/network/application-layer-protocol.png)
 
 - **HTTP（Hypertext Transfer Protocol，超文本传输协议）**：是一种用于传输超文本和多媒体内容的应用层协议，主要为 Web 客户端与服务器之间的通信而设计。HTTP/1.x 和 HTTP/2 通常基于 TCP，HTTP/3 则运行在基于 UDP 的 QUIC 之上。
 - **SMTP（Simple Mail Transfer Protocol，简单邮件发送协议）**：基于 TCP 协议，是一种用于发送电子邮件的协议。注意 ⚠️：SMTP 协议只负责邮件的发送，而不是接收。要从邮件服务器接收邮件，需要使用 POP3 或 IMAP 协议。
@@ -88,7 +88,7 @@ head:
 
 #### 传输层有哪些常见的协议？
 
-![传输层常见协议](https://oss.javaguide.cn/github/javaguide/cs-basics/network/transport-layer-protocol.png)
+![传输层常见协议](https://oss.javaguide.cn/github/offerkit/cs-basics/network/transport-layer-protocol.png)
 
 - **TCP（Transmission Control Protocol，传输控制协议）**：提供 **面向连接** 的，**可靠** 的数据传输服务。
 - **UDP（User Datagram Protocol，用户数据协议）**：提供 **无连接** 的，**尽最大努力** 的数据传输服务（不保证数据传输的可靠性），简单高效。
@@ -113,7 +113,7 @@ head:
 
 先来看一张图（来源于《图解 HTTP》）：
 
-<img src="https://oss.javaguide.cn/github/javaguide/url%E8%BE%93%E5%85%A5%E5%88%B0%E5%B1%95%E7%A4%BA%E5%87%BA%E6%9D%A5%E7%9A%84%E8%BF%87%E7%A8%8B.jpg" alt="从输入 URL 到页面展示的完整流程" style="zoom:50%" />
+<img src="https://oss.javaguide.cn/github/offerkit/url%E8%BE%93%E5%85%A5%E5%88%B0%E5%B1%95%E7%A4%BA%E5%87%BA%E6%9D%A5%E7%9A%84%E8%BF%87%E7%A8%8B.jpg" alt="从输入 URL 到页面展示的完整流程" style="zoom:50%" />
 
 上图有一个错误需要注意：是 OSPF 不是 OPSF。OSPF（Open Shortest Path First，ospf）开放最短路径优先协议，是由 Internet 工程任务组开发的路由选择协议
 
@@ -127,15 +127,15 @@ head:
 6. 浏览器收到 HTTP 响应报文后，解析响应体中的 HTML 代码，渲染网页的结构和样式，同时根据 HTML 中的其他资源的 URL（如图片、CSS、JS 等），再次发起 HTTP 请求，获取这些资源的内容，直到网页完全加载显示。
 7. 浏览器在不需要和服务器通信时，可以主动关闭 TCP 连接，或者等待服务器的关闭请求。
 
-详细介绍可以查看这篇文章：[访问网页的全过程（知识串联）](https://javaguide.cn/cs-basics/network/the-whole-process-of-accessing-web-pages.html)（强烈推荐）。
+详细介绍可以查看这篇文章：[访问网页的全过程（知识串联）](/cs-basics/network/the-whole-process-of-accessing-web-pages.html)（强烈推荐）。
 
 ### ⭐️ HTTP 状态码有哪些？
 
 HTTP 状态码用于描述 HTTP 请求的结果，比如 2xx 就代表请求被成功处理。
 
-![常见 HTTP 状态码](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-status-code.png)
+![常见 HTTP 状态码](https://oss.javaguide.cn/github/offerkit/cs-basics/network/http-status-code.png)
 
-关于 HTTP 状态码更详细的总结，可以看我写的这篇文章：[HTTP 常见状态码总结（应用层）](https://javaguide.cn/cs-basics/network/http-status-codes.html)。
+关于 HTTP 状态码更详细的总结，可以看我写的这篇文章：[HTTP 常见状态码总结（应用层）](/cs-basics/network/http-status-codes.html)。
 
 ### HTTP Header 中常见的字段有哪些？
 
@@ -176,14 +176,14 @@ HTTP 状态码用于描述 HTTP 请求的结果，比如 2xx 就代表请求被�
 
 ### ⭐️ HTTP 和 HTTPS 有什么区别？（重要）
 
-![HTTP 和 HTTPS 对比](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-vs-https.png)
+![HTTP 和 HTTPS 对比](https://oss.javaguide.cn/github/offerkit/cs-basics/network/http-vs-https.png)
 
 - **端口号**：HTTP 默认是 80，HTTPS 默认是 443。
 - **URL 前缀**：HTTP 的 URL 前缀是 `http://`，HTTPS 的 URL 前缀是 `https://`。
 - **安全性和传输方式**：未使用 TLS 的 HTTP 默认不提供机密性、完整性和对端身份认证。HTTPS 使用 TLS 保护 HTTP；HTTP/1.1 和 HTTP/2 通常使用 TLS over TCP，HTTP/3 使用集成 TLS 1.3 的 QUIC。TLS 握手负责认证对端并建立流量密钥，后续数据由对称 AEAD 算法保护。证书主要用于身份认证，不能笼统地说“证书加密了对称密钥”。
 - **SEO（搜索引擎优化）**：搜索引擎通常会更青睐使用 HTTPS 协议的网站，因为 HTTPS 能够提供更高的安全性和用户隐私保护。使用 HTTPS 协议的网站在搜索结果中可能会被优先显示，从而对 SEO 产生影响。
 
-关于 HTTP 和 HTTPS 更详细的对比总结，可以看我写的这篇文章：[HTTP vs HTTPS（应用层）](https://javaguide.cn/cs-basics/network/http-vs-https.html)。
+关于 HTTP 和 HTTPS 更详细的对比总结，可以看我写的这篇文章：[HTTP vs HTTPS（应用层）](/cs-basics/network/http-vs-https.html)。
 
 ### HTTPS 握手里的 RSA 和 ECDHE，到底差在哪？（应用层）
 
@@ -220,7 +220,7 @@ HTTP 能调服务，RPC 也能调服务。真正的区别在于，你是想把�
 
 ### HTTP/1.0 和 HTTP/1.1 有什么区别？
 
-![HTTP/1.0 和 HTTP/1.1 对比](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http1.0-vs-http1.1.png)
+![HTTP/1.0 和 HTTP/1.1 对比](https://oss.javaguide.cn/github/offerkit/cs-basics/network/http1.0-vs-http1.1.png)
 
 - **连接方式**：HTTP/1.0 为短连接，HTTP/1.1 支持长连接。HTTP 协议的长连接和短连接，实质上是 TCP 协议的长连接和短连接。
 - **状态响应码**：HTTP/1.1 中新加入了大量的状态码，光是错误响应状态码就新增了 24 种。比如说，`100 (Continue)`——允许客户端在发送较大请求体前确认服务器愿意继续接收，`206 (Partial Content)`——范围请求的标识码，`409 (Conflict)`——请求与当前资源的规定冲突，`410 (Gone)`——目标资源已不再可用，这种状态很可能是永久的，并且服务器不知道可用的转发地址。
@@ -228,11 +228,11 @@ HTTP 能调服务，RPC 也能调服务。真正的区别在于，你是想把�
 - **带宽**：HTTP/1.0 中，存在一些浪费带宽的现象，例如客户端只是需要某个对象的一部分，而服务器却将整个对象送过来了，并且不支持断点续传功能，HTTP/1.1 则在请求头引入了 range 头域，它允许只请求资源的某个部分，即返回码是 206（Partial Content），这样就方便了开发者自由的选择以便于充分利用带宽和连接。
 - **Host 头（Host Header）处理**：HTTP/1.1 引入了 Host 头字段，允许在同一 IP 地址上托管多个域名，从而支持虚拟主机的功能。而 HTTP/1.0 没有 Host 头字段，无法实现虚拟主机。
 
-关于 HTTP/1.0 和 HTTP/1.1 更详细的对比总结，可以看我写的这篇文章：[HTTP/1.0 vs HTTP/1.1（应用层）](https://javaguide.cn/cs-basics/network/http1.0-vs-http1.1.html)。
+关于 HTTP/1.0 和 HTTP/1.1 更详细的对比总结，可以看我写的这篇文章：[HTTP/1.0 vs HTTP/1.1（应用层）](/cs-basics/network/http1.0-vs-http1.1.html)。
 
 ### ⭐️ HTTP/1.1 和 HTTP/2.0 有什么区别？
 
-![HTTP/1.0 和 HTTP/1.1 对比](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http1.1-vs-http2.0.png)
+![HTTP/1.0 和 HTTP/1.1 对比](https://oss.javaguide.cn/github/offerkit/cs-basics/network/http1.1-vs-http2.0.png)
 
 - **多路复用（Multiplexing）**：HTTP/2.0 在同一连接上可以同时传输多个请求和响应（可以看作是 HTTP/1.1 中长链接的升级版本），互不干扰。HTTP/1.1 则使用串行方式，每个请求和响应都需要独立的连接，而浏览器为了控制资源会有 6-8 个 TCP 连接的限制。这使得 HTTP/2.0 在处理多个请求时更加高效，减少了网络延迟和提高了性能。
 - **二进制帧（Binary Frames）**：HTTP/2.0 使用二进制帧进行数据传输，而 HTTP/1.1 则使用文本格式的报文。二进制帧更加紧凑和高效，减少了传输的数据量和带宽消耗。
@@ -242,13 +242,13 @@ HTTP 能调服务，RPC 也能调服务。真正的区别在于，你是想把�
 
 HTTP/2.0 多路复用效果图（图源： [HTTP/2 For Web Developers](https://blog.cloudflare.com/http-2-for-web-developers/)）：
 
-![HTTP/2 在单个 TCP 连接上多路复用多个请求和响应](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http2.0-multiplexing.png)
+![HTTP/2 在单个 TCP 连接上多路复用多个请求和响应](https://oss.javaguide.cn/github/offerkit/cs-basics/network/http2.0-multiplexing.png)
 
 可以看到，HTTP/2 的多路复用机制允许多个请求和响应共享一个 TCP 连接，从而避免了 HTTP/1.1 在应对并发请求时需要建立多个并行连接的情况，减少了重复连接建立和维护的额外开销。而在 HTTP/1.1 中，尽管支持持久连接，但为了缓解队头阻塞问题，浏览器通常会为同一域名建立多个并行连接。
 
 ### HTTP/2.0 和 HTTP/3.0 有什么区别？
 
-![HTTP/2.0 和 HTTP/3.0 对比](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http2.0-vs-http3.0.png)
+![HTTP/2.0 和 HTTP/3.0 对比](https://oss.javaguide.cn/github/offerkit/cs-basics/network/http2.0-vs-http3.0.png)
 
 - **传输协议**：HTTP/2 基于 TCP，HTTP/3 则把 HTTP 语义映射到 QUIC。QUIC 构建在 UDP 之上，在传输层实现可靠交付、拥塞控制、流量控制和 TLS 1.3 安全保护。
 - **连接建立**：HTTP/2 的 HTTPS 连接需要先建立 TCP 连接，再完成 TLS 握手；HTTP/3 把传输参数协商和 TLS 1.3 握手结合在 QUIC 建连过程中。新的 QUIC 连接通常使用 1-RTT；0-RTT 只适用于客户端持有先前连接状态的恢复场景，而且早期数据存在重放风险。比较延迟时还要统一采用“何时可发送首个请求”或“何时收到首字节”等同一个指标。
@@ -260,11 +260,11 @@ HTTP/2.0 多路复用效果图（图源： [HTTP/2 For Web Developers](https://b
 
 HTTP/1.0、HTTP/2.0 和 HTTP/3.0 的协议栈比较：
 
-![HTTP/1、HTTP/2 和 HTTP/3 协议栈对比](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http-3-implementation.png)
+![HTTP/1、HTTP/2 和 HTTP/3 协议栈对比](https://oss.javaguide.cn/github/offerkit/cs-basics/network/http-3-implementation.png)
 
 下图是一个更详细的 HTTP/2.0 和 HTTP/3.0 对比图：
 
-![HTTP/2.0 和 HTTP/3.0 详细对比图](https://oss.javaguide.cn/github/javaguide/cs-basics/network/http2-and-http3-stacks-comparison.png)
+![HTTP/2.0 和 HTTP/3.0 详细对比图](https://oss.javaguide.cn/github/offerkit/cs-basics/network/http2-and-http3-stacks-comparison.png)
 
 从上图可以看出：
 
@@ -304,7 +304,7 @@ HTTP 协议本身是 **无状态的（stateless）**。这意味着服务器默�
 
 **方案一：Session（会话）配合 Cookie（主流方式）：**
 
-![Session 配合 Cookie 保存用户登录状态的流程](https://oss.javaguide.cn/github/javaguide/system-design/security/session-cookie-authentication-process.png)
+![Session 配合 Cookie 保存用户登录状态的流程](https://oss.javaguide.cn/github/offerkit/system-design/security/session-cookie-authentication-process.png)
 
 这可以说是最经典也是最常用的方法了。基本流程是这样的：
 
@@ -340,7 +340,7 @@ Session 数据本身存储在服务器端。常见的存储方式有：
 
 这是一种越来越流行的无状态认证方式，尤其适用于前后端分离的架构和微服务。
 
-![JWT 身份验证示意图](https://oss.javaguide.cn/github/javaguide/system-design/jwt/jwt-authentication%20process.png)
+![JWT 身份验证示意图](https://oss.javaguide.cn/github/offerkit/system-design/jwt/jwt-authentication%20process.png)
 
 以 JWT 为例（普通 Token 方案也可以），简化后的步骤如下：
 
@@ -352,8 +352,8 @@ Session 数据本身存储在服务器端。常见的存储方式有：
 
 JWT 详细介绍可以查看这两篇文章：
 
-- [JWT 基础概念详解](https://javaguide.cn/system-design/security/jwt-intro.html)
-- [JWT 身份认证优缺点分析](https://javaguide.cn/system-design/security/advantages-and-disadvantages-of-jwt.html)
+- [JWT 基础概念详解](/system-design/security/jwt-intro.html)
+- [JWT 身份认证优缺点分析](/system-design/security/advantages-and-disadvantages-of-jwt.html)
 
 总结来说，虽然 HTTP 本身是无状态的，但通过 Cookie + Session、URL 重写或 Token 等机制，我们能够有效地在 Web 应用中跟踪和管理用户状态。其中，**Cookie + Session 是最传统也最广泛使用的方式，而 Token-based 认证则在现代 Web 应用中越来越受欢迎。**
 
@@ -366,7 +366,7 @@ URI 的作用像身份证号一样，URL 的作用更像家庭住址一样。URL
 
 ### Cookie 和 Session 有什么区别？
 
-准确点来说，这个问题属于认证授权的范畴，你可以在 [认证授权基础概念详解](https://javaguide.cn/system-design/security/basis-of-authority-certification.html) 这篇文章中找到详细的答案。
+准确点来说，这个问题属于认证授权的范畴，你可以在 [认证授权基础概念详解](/system-design/security/basis-of-authority-certification.html) 这篇文章中找到详细的答案。
 
 ### ⭐️ GET 和 POST 的区别
 
@@ -392,12 +392,12 @@ WebSocket 协议在 2008 年诞生，2011 年成为国际标准，几乎所有�
 
 WebSocket 协议本质上是应用层的协议，用于弥补 HTTP 协议在持久通信能力上的不足。客户端和服务器仅需一次握手，两者之间就直接可以创建持久性的连接，并进行双向数据传输。
 
-![WebSocket 建立持久连接实现双向通信](https://oss.javaguide.cn/github/javaguide/system-design/web-real-time-message-push/1460000042192394.png)
+![WebSocket 建立持久连接实现双向通信](https://oss.javaguide.cn/github/offerkit/system-design/web-real-time-message-push/1460000042192394.png)
 
 下面是 WebSocket 的常见应用场景：
 
 - 视频弹幕
-- 实时消息推送，详见[Web 实时消息推送详解](https://javaguide.cn/system-design/web-real-time-message-push.html)这篇文章
+- 实时消息推送，详见[Web 实时消息推送详解](/system-design/web-real-time-message-push.html)这篇文章
 - 实时游戏对战
 - 多用户协同编辑
 - 社交聊天
@@ -458,7 +458,7 @@ WebSocket 的工作过程可以分为以下几个步骤：
   - **使用限制**：需要服务器和客户端都支持 WebSocket 协议。对连接管理有一定要求（如心跳保活、断线重连等）。
   - **实现麻烦**：实现起来比短轮询和长轮询要更麻烦一些。
 
-![WebSocket 与短轮询和长轮询的通信方式对比](https://oss.javaguide.cn/github/javaguide/system-design/web-real-time-message-push/1460000042192394.png)
+![WebSocket 与短轮询和长轮询的通信方式对比](https://oss.javaguide.cn/github/offerkit/system-design/web-real-time-message-push/1460000042192394.png)
 
 ### ⭐️ SSE 与 WebSocket 有什么区别？
 
@@ -484,9 +484,9 @@ SSE（Server-Sent Events）和 WebSocket 都是用来实现服务器向浏览器
 
 这里以 DeepSeek 为例，我们发送一个请求并打开浏览器控制台验证一下：
 
-![DeepSeek 响应标头](https://oss.javaguide.cn/github/javaguide/cs-basics/network/deepseek-sse.png)
+![DeepSeek 响应标头](https://oss.javaguide.cn/github/offerkit/cs-basics/network/deepseek-sse.png)
 
-![DeepSeek SSE 响应使用 text/event-stream 持续传输事件](https://oss.javaguide.cn/github/javaguide/cs-basics/network/deepseek-sse-eventstream.png)
+![DeepSeek SSE 响应使用 text/event-stream 持续传输事件](https://oss.javaguide.cn/github/offerkit/cs-basics/network/deepseek-sse-eventstream.png)
 
 可以看到，响应头里包含了 `text/event-stream`，说明使用的确实是 SSE。并且，响应数据也确实是持续分块传输。
 
@@ -542,7 +542,7 @@ PING 用到的 ICMP Echo Request（类型为 8）和 ICMP Echo Reply（类型为
 
 Ping 使用 ICMP（网络层），TCP 连接使用 TCP（传输层），两者可能经过同一条网络路径，但中间设备会按协议类型、端口、连接状态和安全策略分别处理。你能 Ping 通，只能说明 ICMP Echo 这条路径能往返，不等于目标 TCP 端口一定可达。
 
-![ICMP与TCP路径差异](https://oss.javaguide.cn/github/javaguide/cs-basics/network/can-ping-but-tcp-may-not-connect-icmp-and-tcp-path-differences.png)
+![ICMP与TCP路径差异](https://oss.javaguide.cn/github/offerkit/cs-basics/network/can-ping-but-tcp-may-not-connect-icmp-and-tcp-path-differences.png)
 
 常见原因有这几种：
 
@@ -555,7 +555,7 @@ Ping 使用 ICMP（网络层），TCP 连接使用 TCP（传输层），两者�
 
 排查建议：先看 DNS（域名场景），再用 `ping` 看 ICMP，然后用 `nc` 测端口，最后用 `curl` 或 `openssl s_client` 看 HTTPS / TLS。别用一个命令过早下结论。
 
-![HTTPS连接排查层次](https://oss.javaguide.cn/github/javaguide/cs-basics/network/can-ping-but-tcp-may-not-connect-https-connection-troubleshooting-layers.png)
+![HTTPS连接排查层次](https://oss.javaguide.cn/github/offerkit/cs-basics/network/can-ping-but-tcp-may-not-connect-https-connection-troubleshooting-layers.png)
 
 详细介绍：[能 Ping 通，TCP 就一定能连通吗？](./can-ping-but-tcp-may-not-connect.md)
 
@@ -565,7 +565,7 @@ Ping 使用 ICMP（网络层），TCP 连接使用 TCP（传输层），两者�
 
 DNS（Domain Name System）域名管理系统，是当用户使用浏览器访问网址之后，使用的第一个重要协议。DNS 要解决的是**域名和 IP 地址的映射问题**。
 
-![DNS 将域名解析为 IP 地址的系统概览](https://oss.javaguide.cn/github/javaguide/cs-basics/network/dns-overview.png)
+![DNS 将域名解析为 IP 地址的系统概览](https://oss.javaguide.cn/github/offerkit/cs-basics/network/dns-overview.png)
 
 在一台电脑上，可能存在浏览器 DNS 缓存，操作系统 DNS 缓存，路由器 DNS 缓存。如果以上缓存都查询不到，那么 DNS 就闪亮登场了。
 
@@ -584,7 +584,7 @@ DNS 可以从两个维度描述。权威层次包括根、顶级域和具体区�
 
 ### ⭐️ DNS 解析的过程是什么样的？
 
-整个过程的步骤比较多，我单独写了一篇文章详细介绍：[DNS 域名系统详解（应用层）](https://javaguide.cn/cs-basics/network/dns.html)。
+整个过程的步骤比较多，我单独写了一篇文章详细介绍：[DNS 域名系统详解（应用层）](/cs-basics/network/dns.html)。
 
 ### DNS 劫持了解吗？如何应对？
 

@@ -16,7 +16,7 @@ head:
 
 AQS 的全称为 `AbstractQueuedSynchronizer`，翻译过来的意思就是抽象队列同步器。这个类在 `java.util.concurrent.locks` 包下面。
 
-![](https://oss.javaguide.cn/github/javaguide/AQS.png)
+![](https://oss.javaguide.cn/github/offerkit/AQS.png)
 
 AQS 就是一个抽象类，主要用来构建锁和同步器。
 
@@ -85,7 +85,7 @@ AQS 核心思想是，如果被请求的共享资源空闲，则将当前请求�
 
 **CLH 锁** 对自旋锁进行了改进，是基于单链表的自旋锁。在多线程场景下，会将请求获取锁的线程组织成一个单向队列，每个等待的线程会通过自旋访问前一个线程节点的状态，前一个节点释放锁之后，当前节点才可以获取锁。**CLH 锁** 的队列结构如下图所示。
 
-![CLH 锁的队列结构](https://oss.javaguide.cn/github/javaguide/open-source-project/clh-lock-queue-structure.png)
+![CLH 锁的队列结构](https://oss.javaguide.cn/github/offerkit/open-source-project/clh-lock-queue-structure.png)
 
 AQS 中使用的 **等待队列** 是 CLH 锁队列的变体（接下来简称为 CLH 变体队列）。
 
@@ -98,13 +98,13 @@ AQS 将每条请求共享资源的线程封装成一个 CLH 变体队列的一�
 
 AQS 中的 CLH 变体队列结构如下图所示：
 
-![CLH 变体队列结构](https://oss.javaguide.cn/github/javaguide/java/concurrent/clh-queue-structure-bianti.png)
+![CLH 变体队列结构](https://oss.javaguide.cn/github/offerkit/java/concurrent/clh-queue-structure-bianti.png)
 
 关于 AQS 核心数据结构-CLH 锁的详细解读，强烈推荐阅读 [Java AQS 核心数据结构-CLH 锁 - Qunar 技术沙龙](https://mp.weixin.qq.com/s/jEx-4XhNGOFdCo4Nou5tqg) 这篇文章。
 
 AQS(`AbstractQueuedSynchronizer`)的核心原理图：
 
-![CLH 变体队列](https://oss.javaguide.cn/github/javaguide/java/concurrent/clh-queue-state.png)
+![CLH 变体队列](https://oss.javaguide.cn/github/offerkit/java/concurrent/clh-queue-state.png)
 
 AQS 使用 **int 成员变量 `state` 表示同步状态**，通过内置的 **FIFO 线程等待/等待队列** 来完成获取资源线程的排队工作。
 
@@ -136,7 +136,7 @@ protected final boolean compareAndSetState(int expect, int update) {
 
 线程 A 尝试获取锁的过程如下图所示（图源[从 ReentrantLock 的实现看 AQS 的原理及应用 - 美团技术团队](./reentrantlock.md)）：
 
-![AQS 独占模式获取锁](https://oss.javaguide.cn/github/javaguide/java/concurrent/aqs-exclusive-mode-acquire-lock.png)
+![AQS 独占模式获取锁](https://oss.javaguide.cn/github/offerkit/java/concurrent/aqs-exclusive-mode-acquire-lock.png)
 
 再以倒计时器 `CountDownLatch` 为例，可以将 `state` 初始化为 N，表示需要等待 N 次 `countDown()` 调用。N 表示事件数或计数次数，不要求与线程数一致；同一个线程可以调用多次 `countDown()`，也可以由多个线程分别调用。当 `state` 变为 0 时，AQS 会唤醒等待队列中因调用 `await()` 而阻塞的线程，这些线程随后可以继续执行。
 
@@ -424,7 +424,7 @@ private Node enq(final Node node) {
 
 **初始化后的队列如下图所示：**
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/clh-queue-structure-init.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/clh-queue-structure-init.png)
 
 #### `acquireQueued()` 分析
 
@@ -688,7 +688,7 @@ private Node addWaiter(Node mode) {
 
 在极端情况下，可能会出现 `head` 节点的下一个节点状态为 `CANCELLED`，此时新入队的节点仅更新了 `node.prev` 指针，还未更新 `pred.next` 指针，如下图：
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/aqs-addWaiter.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/aqs-addWaiter.png)
 
 这样如果从 `head` 指针向后遍历，无法找到新入队的节点，因此需要从 `tail` 指针向前遍历找到新入队的节点。
 
@@ -702,25 +702,25 @@ private Node addWaiter(Node mode) {
 
 此时，假设线程 `T1` 先获取到锁，线程 `T2` 排队等待获取锁。在线程 `T2` 进入队列之前，需要对 AQS 内部队列进行初始化。`head` 节点在初始化后状态为 `0`。AQS 内部初始化后的队列如下图：
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/aqs-acquire-and-release-process.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/aqs-acquire-and-release-process.png)
 
 此时，线程 `T2` 尝试获取锁。由于线程 `T1` 持有锁，因此线程 `T2` 会进入队列中等待获取锁。同时会将前继节点（`head` 节点）的状态由 `0` 更新为 `SIGNAL`，表示需要对 `head` 节点的后继节点进行唤醒。此时，AQS 内部队列如下图所示：
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/aqs-acquire-and-release-process-2.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/aqs-acquire-and-release-process-2.png)
 
 此时，线程 `T3` 尝试获取锁。由于线程 `T1` 持有锁，因此线程 `T3` 会进入队列中等待获取锁。同时会将前继节点（线程 `T2` 节点）的状态由 `0` 更新为 `SIGNAL`，表示线程 `T2` 节点需要对后继节点进行唤醒。此时，AQS 内部队列如下图所示：
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/aqs-acquire-and-release-process-3.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/aqs-acquire-and-release-process-3.png)
 
 此时，假设线程 `T1` 释放锁，会唤醒后继节点 `T2`。线程 `T2` 被唤醒后获取到锁，并且会从等待队列中退出。
 
 这里线程 `T2` 节点退出等待队列并不是直接从队列移除，而是令线程 `T2` 节点成为新的 `head` 节点，以此来退出资源获取的等待。此时 AQS 内部队列如下所示：
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/aqs-acquire-and-release-process-4.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/aqs-acquire-and-release-process-4.png)
 
 此时，假设线程 `T2` 释放锁，会唤醒后继节点 `T3`。线程 `T3` 获取到锁之后，同样也退出等待队列，即将线程 `T3` 节点变为 `head` 节点来退出资源获取的等待。此时 AQS 内部队列如下所示：
 
-![](https://oss.javaguide.cn/github/javaguide/java/concurrent/aqs-acquire-and-release-process-5.png)
+![](https://oss.javaguide.cn/github/offerkit/java/concurrent/aqs-acquire-and-release-process-5.png)
 
 ### AQS 资源获取源码分析（共享模式）
 
@@ -1530,7 +1530,7 @@ semaphore.release(5);// 释放5个许可
 
 除了 `acquire()` 方法之外，另一个比较常用的与之对应的方法是 `tryAcquire()` 方法，该方法如果获取不到许可就立即返回 false。
 
-[issue645 补充内容](https://github.com/Snailclimb/JavaGuide/issues/645)：
+[issue645 补充内容](https://github.com/jiangshang-dev/offerkit/issues/645)：
 
 > `Semaphore` 基于 AQS 实现，用于控制并发访问的线程数量，但它与共享锁的概念有所不同。`Semaphore` 的构造函数使用 `permits` 参数初始化 AQS 的 `state` 变量，该变量表示可用的许可数量。当线程调用 `acquire()` 方法尝试获取许可时，`state` 会原子性地减 1。如果 `state` 减 1 后大于等于 0，则 `acquire()` 成功返回，线程可以继续执行。如果 `state` 减 1 后小于 0，表示当前并发访问的线程数量已达到 `permits` 的限制，该线程会被放入 AQS 的等待队列并阻塞，**而不是自旋等待**。当其他线程完成任务并调用 `release()` 方法时，`state` 会原子性地加 1。`release()` 操作会唤醒 AQS 等待队列中的一个或多个阻塞线程。这些被唤醒的线程将再次尝试 `acquire()` 操作，竞争获取可用的许可。因此，`Semaphore` 通过控制许可数量来限制并发访问的线程数量，而不是通过自旋和共享锁机制。
 

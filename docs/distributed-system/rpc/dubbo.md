@@ -26,7 +26,7 @@ head:
 
 ### 什么是 Dubbo?
 
-![Dubbo 官网](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/rpc/dubbo.org-overview.png)
+![Dubbo 官网](https://oss.javaguide.cn/github/offerkit/system-design/distributed-system/rpc/dubbo.org-overview.png)
 
 [Apache Dubbo](https://github.com/apache/dubbo) |ˈdʌbəʊ| 是一款高性能、轻量级的开源 WEB 和 RPC 框架。
 
@@ -66,7 +66,7 @@ Dubbo 是由阿里开源，后来加入了 Apache 。正是由于 Dubbo 的出�
 3. **服务访问压力以及时长统计、资源调度和治理**：基于访问压力实时管理集群容量，提高集群利用率。
 4. ……
 
-![Dubbo 能力概览](https://oss.javaguide.cn/github/javaguide/system-design/distributed-system/rpc/dubbo-features-overview.jpg)
+![Dubbo 能力概览](https://oss.javaguide.cn/github/offerkit/system-design/distributed-system/rpc/dubbo-features-overview.jpg)
 
 另外，Dubbo 除了能够应用在分布式系统中，也可以应用在现在比较火的微服务系统中。不过，由于 Spring Cloud 在微服务中应用更加广泛，所以，我觉得一般我们提 Dubbo 的话，大部分是分布式系统的情况。
 
@@ -443,7 +443,7 @@ Dubbo 中的 `RoundRobinLoadBalance` 的代码实现被修改重建了好几次�
 
 ### Dubbo 支持哪些序列化方式呢？
 
-![Dubbo 支持的序列化协议](https://oss.javaguide.cn/github/javaguide/csdn/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MzM3Mjcy,size_16,color_FFFFFF,t_70-20230309234143460.png)
+![Dubbo 支持的序列化协议](https://oss.javaguide.cn/github/offerkit/csdn/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM0MzM3Mjcy,size_16,color_FFFFFF,t_70-20230309234143460.png)
 
 Dubbo 支持多种序列化方式：JDK 自带的序列化、hessian2、JSON、Kryo、FST、Protostuff，ProtoBuf 等等。
 
@@ -464,6 +464,6 @@ Kryo 和 FST 这两种序列化方式是 Dubbo 后来才引入的，性能非常
 
 Dubbo 官方文档中还有一个关于这些[序列化协议的性能对比图](https://dubbo.apache.org/zh/docs/v2.7/user/serialization/#m-zhdocsv27userserialization)可供参考。
 
-![序列化协议的性能对比](https://oss.javaguide.cn/github/javaguide/distributed-system/rpc/dubbo-serialization-protocol-performance-comparison.png)
+![序列化协议的性能对比](https://oss.javaguide.cn/github/offerkit/distributed-system/rpc/dubbo-serialization-protocol-performance-comparison.png)
 
 <!-- @include: @article-footer.snippet.md -->

@@ -75,7 +75,7 @@ static final int tableSizeFor(int cap) {
 
 `TreeMap` 和 `HashMap` 都继承自 `AbstractMap`，但是需要注意的是 `TreeMap` 它还实现了 `NavigableMap` 接口和 `SortedMap` 接口。
 
-![TreeMap 继承关系图](https://oss.javaguide.cn/github/javaguide/java/collection/treemap_hierarchy.png)
+![TreeMap 继承关系图](https://oss.javaguide.cn/github/offerkit/java/collection/treemap_hierarchy.png)
 
 实现 `NavigableMap` 接口让 `TreeMap` 有了对集合内元素的搜索的能力。
 
@@ -216,7 +216,7 @@ static int hash(int h) {
 
 所谓 **“拉链法”** 就是：将链表和数组相结合。也就是说创建一个链表数组，数组中每一格就是一个链表。若遇到哈希冲突，则将冲突的值加到链表中即可。
 
-![jdk1.8 之前的内部结构-HashMap](https://oss.javaguide.cn/github/javaguide/java/collection/jdk1.7_hashmap.png)
+![jdk1.8 之前的内部结构-HashMap](https://oss.javaguide.cn/github/offerkit/java/collection/jdk1.7_hashmap.png)
 
 #### JDK1.8 之后
 
@@ -224,7 +224,7 @@ static int hash(int h) {
 
 这样做的目的是减少搜索时间：链表的查询效率为 O(n)（n 是链表的长度），红黑树是一种自平衡二叉搜索树，其查询效率为 O(log n)。当链表较短时，O(n) 和 O(log n) 的性能差异不明显。但当链表变长时，查询性能会显著下降。
 
-![jdk1.8之后的内部结构-HashMap](https://oss.javaguide.cn/github/javaguide/java/collection/jdk1.8_hashmap.png)
+![jdk1.8之后的内部结构-HashMap](https://oss.javaguide.cn/github/offerkit/java/collection/jdk1.8_hashmap.png)
 
 **为什么优先扩容而非直接转为红黑树？**
 
@@ -418,7 +418,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent,
 
 [HashMap 的 7 种遍历方式与性能分析！](https://mp.weixin.qq.com/s/zQBN3UvJDhRTKP6SzcZFKw)
 
-**🐛 修正（参见：[issue#1411](https://github.com/Snailclimb/JavaGuide/issues/1411)）**：
+**🐛 修正（参见：[issue#1411](https://github.com/jiangshang-dev/offerkit/issues/1411)）**：
 
 这篇文章对于 parallelStream 遍历方式的性能分析有误，先说结论：**存在阻塞时 parallelStream 性能最高, 非阻塞时 parallelStream 性能最低**。
 
@@ -456,13 +456,13 @@ Test.parallelStream     avgt    5   186345456.667 ±  3210435.590  ns/op
 
 **Hashtable** :
 
-![Hashtable 的内部结构](https://oss.javaguide.cn/github/javaguide/java/collection/jdk1.7_hashmap.png)
+![Hashtable 的内部结构](https://oss.javaguide.cn/github/offerkit/java/collection/jdk1.7_hashmap.png)
 
 <p style="text-align:right;font-size:13px;color:gray">https://www.cnblogs.com/chengxiao/p/6842045.html></p>
 
 **JDK1.7 的 ConcurrentHashMap**：
 
-![Java7 ConcurrentHashMap 存储结构](https://oss.javaguide.cn/github/javaguide/java/collection/java7_concurrenthashmap.png)
+![Java7 ConcurrentHashMap 存储结构](https://oss.javaguide.cn/github/offerkit/java/collection/java7_concurrenthashmap.png)
 
 `ConcurrentHashMap` 是由 `Segment` 数组结构和 `HashEntry` 数组结构组成。
 
@@ -470,7 +470,7 @@ Test.parallelStream     avgt    5   186345456.667 ±  3210435.590  ns/op
 
 **JDK1.8 的 ConcurrentHashMap**：
 
-![Java8 ConcurrentHashMap 存储结构](https://oss.javaguide.cn/github/javaguide/java/collection/java8_concurrenthashmap.png)
+![Java8 ConcurrentHashMap 存储结构](https://oss.javaguide.cn/github/offerkit/java/collection/java8_concurrenthashmap.png)
 
 JDK1.8 的 `ConcurrentHashMap` 不再是 **Segment 数组 + HashEntry 数组 + 链表**，而是 **Node 数组 + 链表 / 红黑树**。不过，Node 只能用于链表的情况，红黑树的情况需要使用 **`TreeNode`**。当冲突链表达到一定长度时，链表会转换成红黑树。
 
@@ -494,7 +494,7 @@ static final class TreeBin<K,V> extends Node<K,V> {
 
 #### JDK1.8 之前
 
-![Java7 ConcurrentHashMap 存储结构](https://oss.javaguide.cn/github/javaguide/java/collection/java7_concurrenthashmap.png)
+![Java7 ConcurrentHashMap 存储结构](https://oss.javaguide.cn/github/offerkit/java/collection/java7_concurrenthashmap.png)
 
 首先将数据分为一段一段（这个“段”就是 `Segment`）的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据时，其他段的数据也能被其他线程访问。
 
@@ -513,7 +513,7 @@ static class Segment<K,V> extends ReentrantLock implements Serializable {
 
 #### JDK1.8 之后
 
-![Java8 ConcurrentHashMap 存储结构](https://oss.javaguide.cn/github/javaguide/java/collection/java8_concurrenthashmap.png)
+![Java8 ConcurrentHashMap 存储结构](https://oss.javaguide.cn/github/offerkit/java/collection/java8_concurrenthashmap.png)
 
 Java 8 几乎完全重写了 `ConcurrentHashMap`，代码量从原来 Java 7 中的 1000 多行，变成了现在的 6000 多行。
 
@@ -538,7 +538,7 @@ Java 8 中，锁粒度更细，更新非空桶时通常使用 `synchronized` 锁
 
 这也就是二义性的由来。
 
-具体可以参考 [ConcurrentHashMap 源码分析](https://javaguide.cn/java/collection/concurrent-hash-map-source-code.html)。
+具体可以参考 [ConcurrentHashMap 源码分析](/java/collection/concurrent-hash-map-source-code.html)。
 
 多线程环境下，存在一个线程操作该 `ConcurrentHashMap` 时，其他的线程将该 `ConcurrentHashMap` 修改的情况，所以无法通过 `containsKey(key)` 来判断否存在这个键值对，也就没办法解决二义性问题了。
 

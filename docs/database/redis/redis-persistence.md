@@ -20,7 +20,7 @@ Redis 不同于 Memcached 的很重要一点就是，Redis 支持持久化，而
 
 官方文档地址：<https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/> 。
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/redis4.0-persitence.png)
+![](https://oss.javaguide.cn/github/offerkit/database/redis/redis4.0-persitence.png)
 
 **本文基于 Redis 7.0+ 版本**。不同版本的持久化机制有重要差异，使用前请确认你的 Redis 版本：
 
@@ -45,7 +45,7 @@ redis-cli INFO server | grep redis_version
 
 下面这张图展示了 Redis 持久化机制的完整流程，包含了本文的核心内容：
 
-![Redis 持久化机制完整流程](https://oss.javaguide.cn/github/javaguide/database/redis/redis-persistence-flow.png)
+![Redis 持久化机制完整流程](https://oss.javaguide.cn/github/offerkit/database/redis/redis-persistence-flow.png)
 
 ## RDB 持久化
 
@@ -188,7 +188,7 @@ AOF 持久化功能的实现可以简单分为 5 步：
 
 AOF 工作流程图如下：
 
-![AOF 工作基本流程](https://oss.javaguide.cn/github/javaguide/database/redis/aof-work-process.png)
+![AOF 工作基本流程](https://oss.javaguide.cn/github/offerkit/database/redis/aof-work-process.png)
 
 ### AOF 持久化方式有哪些？
 
@@ -221,13 +221,13 @@ AOF 工作流程图如下：
 
 Multi Part AOF 不是重点，了解即可，详细介绍可以看看阿里开发者的[Redis 7.0 Multi Part AOF 的设计和实现](https://zhuanlan.zhihu.com/p/467217082) 这篇文章。
 
-**相关 issue**：[Redis 的 AOF 方式 #783](https://github.com/Snailclimb/JavaGuide/issues/783)。
+**相关 issue**：[Redis 的 AOF 方式 #783](https://github.com/jiangshang-dev/offerkit/issues/783)。
 
 ### AOF 为什么是在执行完命令之后记录日志？
 
 关系型数据库（如 MySQL）通常都是执行命令之前记录日志（方便故障恢复），而 Redis AOF 持久化机制是在执行完命令之后再记录日志。
 
-![AOF 记录日志过程](https://oss.javaguide.cn/github/javaguide/database/redis/redis-aof-write-log-disc.png)
+![AOF 记录日志过程](https://oss.javaguide.cn/github/offerkit/database/redis/redis-aof-write-log-disc.png)
 
 **为什么是在执行完命令之后记录日志呢？**
 
@@ -243,7 +243,7 @@ Multi Part AOF 不是重点，了解即可，详细介绍可以看看阿里开�
 
 当 AOF 变得太大时，Redis 能够在后台自动重写 AOF 产生一个新的 AOF 文件，这个新的 AOF 文件和原有的 AOF 文件所保存的数据库状态一样，但体积更小。
 
-![AOF 重写](https://oss.javaguide.cn/github/javaguide/database/redis/aof-rewrite.png)
+![AOF 重写](https://oss.javaguide.cn/github/offerkit/database/redis/aof-rewrite.png)
 
 > AOF 重写（rewrite） 是一个有歧义的名字，该功能是通过读取数据库中的键值对来实现的，程序无须对现有 AOF 文件进行任何读入、分析或者写入操作。
 
@@ -294,7 +294,7 @@ Redis 7.0 版本之后，AOF 重写机制得到了优化改进。下面这段内
 >
 > 阿里云的 Redis 企业版在最初也遇到了这个问题，在内部经过多次迭代开发，实现了 Multi-part AOF 机制来解决，同时也贡献给了社区并随此次 7.0 发布。具体方法是采用 base（全量数据）+inc（增量数据）独立文件存储的方式，彻底解决内存和 IO 资源的浪费，同时也支持对历史 AOF 文件的保存管理，结合 AOF 文件中的时间信息还可以实现 PITR 按时间点恢复（阿里云企业版 Tair 已支持），这进一步增强了 Redis 的数据可靠性，满足用户数据回档等需求。
 
-**相关 issue**：[Redis AOF 重写描述不准确 #1439](https://github.com/Snailclimb/JavaGuide/issues/1439)。
+**相关 issue**：[Redis AOF 重写描述不准确 #1439](https://github.com/jiangshang-dev/offerkit/issues/1439)。
 
 ### AOF 文件如何验证数据完整性？
 
@@ -539,7 +539,7 @@ no-appendfsync-on-rewrite no        # 重写期间仍执行 fsync，可能阻塞
 
 官方文档地址：<https://redis.io/docs/latest/operate/oss_and_stack/management/persistence/>
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/redis4.0-persitence.png)
+![](https://oss.javaguide.cn/github/offerkit/database/redis/redis4.0-persitence.png)
 
 ### Redis 7.0 对于持久化机制做了什么优化？
 

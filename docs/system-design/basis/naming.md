@@ -238,7 +238,7 @@ Codelf 提供了在线网站版本，网址：[https://unbug.github.io/codelf/](
 
 1. 《阿里巴巴 Java 开发手册》
 2. 《Clean Code》
-3. Google Java 代码指南：<https://google.github.io/styleguide/javaguide.html>
+3. Google Java 代码指南：<https://google.github.io/styleguide/offerkit.html>
 4. 告别编码 5 分钟，命名 2 小时！史上最全的 Java 命名规范参考：<https://www.cnblogs.com/liqiangchn/p/12000361.html>
 
 ## 总结

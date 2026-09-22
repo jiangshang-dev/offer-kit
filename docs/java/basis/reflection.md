@@ -79,7 +79,7 @@ Class alunbarClass = TargetObject.class;
 **2. 通过 `Class.forName()` 传入类的全路径获取：**
 
 ```java
-Class alunbarClass1 = Class.forName("cn.javaguide.TargetObject");
+Class alunbarClass1 = Class.forName("cn.offerkit.TargetObject");
 ```
 
 **3. 通过对象实例 `instance.getClass()` 获取：**
@@ -92,7 +92,7 @@ Class alunbarClass2 = o.getClass();
 **4. 通过类加载器 `xxxClassLoader.loadClass()` 传入类路径获取:**
 
 ```java
-ClassLoader.getSystemClassLoader().loadClass("cn.javaguide.TargetObject");
+ClassLoader.getSystemClassLoader().loadClass("cn.offerkit.TargetObject");
 ```
 
 通过类加载器获取 Class 对象不会进行初始化，意味着不进行包括初始化等一系列步骤，静态代码块和静态对象不会得到执行
@@ -102,13 +102,13 @@ ClassLoader.getSystemClassLoader().loadClass("cn.javaguide.TargetObject");
 1. 创建一个我们要使用反射操作的类 `TargetObject`。
 
 ```java
-package cn.javaguide;
+package cn.offerkit;
 
 public class TargetObject {
     private String value;
 
     public TargetObject() {
-        value = "JavaGuide";
+        value = "OfferKit";
     }
 
     public void publicMethod(String s) {
@@ -124,7 +124,7 @@ public class TargetObject {
 2. 使用反射操作这个类的方法以及属性
 
 ```java
-package cn.javaguide;
+package cn.offerkit;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -135,7 +135,7 @@ public class Main {
         /**
          * 获取 TargetObject 类的 Class 对象并且创建 TargetObject 类实例
          */
-        Class<?> targetClass = Class.forName("cn.javaguide.TargetObject");
+        Class<?> targetClass = Class.forName("cn.offerkit.TargetObject");
         TargetObject targetObject = (TargetObject) targetClass.getDeclaredConstructor().newInstance();
         /**
          * 获取 TargetObject 类中定义的所有方法
@@ -151,7 +151,7 @@ public class Main {
         Method publicMethod = targetClass.getDeclaredMethod("publicMethod",
                 String.class);
 
-        publicMethod.invoke(targetObject, "JavaGuide");
+        publicMethod.invoke(targetObject, "OfferKit");
 
         /**
          * 获取指定参数并对参数进行修改
@@ -159,7 +159,7 @@ public class Main {
         Field field = targetClass.getDeclaredField("value");
         //为了对类中的参数进行修改我们取消安全检查
         field.setAccessible(true);
-        field.set(targetObject, "JavaGuide");
+        field.set(targetObject, "OfferKit");
 
         /**
          * 调用 private 方法
@@ -178,15 +178,15 @@ public class Main {
 ```plain
 publicMethod
 privateMethod
-I love JavaGuide
-value is JavaGuide
+I love OfferKit
+value is OfferKit
 ```
 
 **注意** : 有读者提到上面代码运行会抛出 `ClassNotFoundException` 异常，具体原因是你没有下面把这段代码的包名替换成自己创建的 `TargetObject` 所在的包。
 可以参考：<https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html> 这篇文章。
 
 ```java
-Class<?> targetClass = Class.forName("cn.javaguide.TargetObject");
+Class<?> targetClass = Class.forName("cn.offerkit.TargetObject");
 ```
 
 <!-- @include: @article-footer.snippet.md -->

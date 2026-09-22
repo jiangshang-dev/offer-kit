@@ -1,6 +1,6 @@
 ---
 title: 害，毕业三年了！
-description: 双非一本程序员的大学四年，从参加社团活动到办补习班赚钱、确定Java后端方向、创建JavaGuide、最终拿到ThoughtWorks offer的真实经历。
+description: 双非一本程序员的大学四年，从参加社团活动到办补习班赚钱、确定Java后端方向、创建OfferKit、最终拿到ThoughtWorks offer的真实经历。
 category: 走近作者
 star: 1
 tag:
@@ -81,7 +81,7 @@ tag:
 
 记忆犹新，那一年孝感也是闹洪水，还挺严重的。
 
-![](https://oss.javaguide.cn/javaguide/image-20210820201908759.png)
+![](https://oss.javaguide.cn/offerkit/image-20210820201908759.png)
 
 有一次我差点回不去学校参加期末考试。虽然没有备考，但是也没有挂过任何一门课，甚至很多科目考的还不错。不过，这还是对我绩点产生了比较大的影响，导致我后面没有机会拿到奖学金。
 
@@ -259,13 +259,13 @@ tag:
 
 和很多大佬可能不太一样，比起图书馆和办公室，我在寝室的学习效率更高一些。
 
-### JavaGuide 诞生
+### OfferKit 诞生
 
-我的开源项目 JavaGuide 和公众号都是这一年启动的。
+我的开源项目 OfferKit 和公众号都是这一年启动的。
 
 ![](https://oss.javaguide.cn/about-the-author/college-life/the-birth-of-javaguide.jpeg)
 
-目前的话，JavaGuide 也已经 100k star ，我的公众号也已经有 15w+ 的关注。
+目前的话，OfferKit 也已经 100k star ，我的公众号也已经有 15w+ 的关注。
 
 ![](https://oss.javaguide.cn/about-the-author/college-life/image-20210820211926742.png)
 

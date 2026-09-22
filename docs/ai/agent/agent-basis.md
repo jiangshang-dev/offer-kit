@@ -20,7 +20,7 @@ head:
 
 Agent 的能力不是一次性出现的。模型先获得外部调用能力，随后才有编排、长任务和长期在线这些需求。
 
-**2022 年，ChatGPT 这类产品刚火的时候**，模型主要依据已有知识回答问题，不能主动调用外部工具，也不能自行完成操作。[Prompt Engineering](https://javaguide.cn/ai/agent/prompt-engineering.html) 是当时最重要的使用方式：把约束和上下文说清楚，输出才更稳定。
+**2022 年，ChatGPT 这类产品刚火的时候**，模型主要依据已有知识回答问题，不能主动调用外部工具，也不能自行完成操作。[Prompt Engineering](/ai/agent/prompt-engineering.html) 是当时最重要的使用方式：把约束和上下文说清楚，输出才更稳定。
 
 **2023 年中，Function Calling 出现后，事情开始变了。**
 
@@ -34,7 +34,7 @@ Coze、Dify 等平台用 DAG（有向无环图）约束执行路径，给完全�
 
 **2024 年底，标准化和多模态开始变重要。**
 
-[MCP 协议](https://javaguide.cn/ai/agent/mcp.html)开始处理工具接入碎片化的问题，Computer Use 则把可执行范围扩展到图形界面。Cursor、Claude Code、Codex 等编程工具也逐渐把代码库阅读、修改、测试和提交串进同一条任务链路，“Vibe Coding”随之被更多人讨论。
+[MCP 协议](/ai/agent/mcp.html)开始处理工具接入碎片化的问题，Computer Use 则把可执行范围扩展到图形界面。Cursor、Claude Code、Codex 等编程工具也逐渐把代码库阅读、修改、测试和提交串进同一条任务链路，“Vibe Coding”随之被更多人讨论。
 
 **2025 年，Agent 开始往长任务执行方向走。**
 
@@ -87,7 +87,7 @@ AI Agent 是能感知环境、决策并执行动作的软件系统。LLM 处理�
 
 常用的拆分方式是：**Agent = LLM + Planning + Memory + Tools**。
 
-![AI Agent 核心架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-core-arch.png)
+![AI Agent 核心架构](https://oss.javaguide.cn/github/offerkit/ai/agent/agent-core-arch.png)
 
 **推理与规划（Reasoning / Planning）**决定下一步的目标与动作。LLM 根据当前任务状态拆解目标；Chain-of-Thought（CoT）提示技术把推理过程拆成步骤，减少直接给出未经展开的结论。
 
@@ -99,7 +99,7 @@ AI Agent 是能感知环境、决策并执行动作的软件系统。LLM 处理�
 
 Agent Loop 把这条反馈链路连续跑起来。每轮先由 LLM 根据上下文选择动作，再执行工具并写回结果；任务完成或命中停止条件时退出。
 
-![Agent Loop 工作流程](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-loop-flow.png)
+![Agent Loop 工作流程](https://oss.javaguide.cn/github/offerkit/ai/agent/agent-loop-flow.png)
 
 Loop 初始化时载入 System Prompt、工具列表和用户请求。之后模型在“直接回复”和“调用工具”之间选择；工具结果写回上下文，直到模型不再请求工具。
 
@@ -184,7 +184,7 @@ Skill 用可按需加载的指令文件保存这条执行链的顺序、约束�
 
 `SKILL.md` 前面的轻量元数据用于发现，说明 Skill 的用途和触发条件；正文则记录流程、约束和示例。宿主先读取元数据，模型判断需要后才加载完整正文，这种延迟加载是 Agent Skills 与传统 Toolkits 的关键差异。
 
-Claude Code、Cursor 等工具会扫描项目中的 `.claude/skills/` 目录，由模型决定是否激活某个 Skill。调用路径固定时用 Toolkits；需要沉淀团队经验、又保留任务流程弹性时，Agent Skills 更合适。路由设计、`SKILL.md` 的写法和第三方 Skill 安全审计可参见：[《Agent Skills 详解》](https://javaguide.cn/ai/agent/skills.html)。
+Claude Code、Cursor 等工具会扫描项目中的 `.claude/skills/` 目录，由模型决定是否激活某个 Skill。调用路径固定时用 Toolkits；需要沉淀团队经验、又保留任务流程弹性时，Agent Skills 更合适。路由设计、`SKILL.md` 的写法和第三方 Skill 安全审计可参见：[《Agent Skills 详解》](/ai/agent/skills.html)。
 
 ### 通信接入：MCP 协议
 
@@ -198,7 +198,7 @@ Anthropic 在 2024 年 11 月推出 MCP。它要解决的痛点很直接：以�
 
 MCP 提供了一套基于 JSON-RPC 2.0 的统一通信协议，经常被叫作 AI 领域的 “USB-C 接口”。外部系统通过 MCP Server 暴露能力，宿主程序连接 Server 后，就能自动发现并注册工具。
 
-![MCP 图解](https://oss.javaguide.cn/github/javaguide/ai/skills/mcp-simple-diagram.png)
+![MCP 图解](https://oss.javaguide.cn/github/offerkit/ai/skills/mcp-simple-diagram.png)
 
 这样 AI 应用和底层外部代码就解耦了。
 
@@ -216,7 +216,7 @@ JSON Schema 是数据格式，MCP 是通信协议层。
 
 ## 什么是 Prompt Engineering？
 
-Prompt 是给大语言模型的指令与上下文。Prompt Engineering 要处理的是任务边界、输出格式和约束条件：缺少这些信息时，模型只能自行猜测；条件明确后，输出才有稳定的依据。具体方法见：[《提示词工程（Prompt Engineering）》](https://javaguide.cn/ai/agent/prompt-engineering.html)。
+Prompt 是给大语言模型的指令与上下文。Prompt Engineering 要处理的是任务边界、输出格式和约束条件：缺少这些信息时，模型只能自行猜测；条件明确后，输出才有稳定的依据。具体方法见：[《提示词工程（Prompt Engineering）》](/ai/agent/prompt-engineering.html)。
 
 ## 什么是 Context Engineering？
 
@@ -226,9 +226,9 @@ Context Engineering 做的事情，就是在有限 Token 窗口里，把最有�
 
 Prompt Engineering 更偏提示词怎么写，Context Engineering 管得更宽，包括规则、记忆、工具描述、会话状态、外部观察结果、Token 预算。
 
-![Context Engineering 和 Prompt Engineering 差别](https://oss.javaguide.cn/github/javaguide/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
+![Context Engineering 和 Prompt Engineering 差别](https://oss.javaguide.cn/github/offerkit/ai/context-engineering/context-engineering-vs-context-engineering-dimension-comparison.png)
 
-这块展开讲内容很多，可以单独看这篇：[《提示词工程（Prompt Engineering）》](https://javaguide.cn/ai/agent/prompt-engineering.html) 和 [《上下文工程（Context Engineering）》](https://javaguide.cn/ai/agent/context-engineering.html)。
+这块展开讲内容很多，可以单独看这篇：[《提示词工程（Prompt Engineering）》](/ai/agent/prompt-engineering.html) 和 [《上下文工程（Context Engineering）》](/ai/agent/context-engineering.html)。
 
 ## Agent 核心范式有哪些？
 
@@ -242,7 +242,7 @@ LangChain、LlamaIndex、AgentScope 这类框架里的 Agent 模块，很多都�
 
 LLM 自己容易缺少实时信息，也容易幻觉。ReAct 就让它“走一步看一步”，每一步都根据工具返回结果继续判断。
 
-![ReAct-LLM](https://oss.javaguide.cn/github/javaguide/ai/agent/ReAct-LLM.png)
+![ReAct-LLM](https://oss.javaguide.cn/github/offerkit/ai/agent/ReAct-LLM.png)
 
 比如任务是：帮我排查一下今天早上 user-service 接口变慢的原因，并把结果发给负责人。
 
@@ -268,7 +268,7 @@ ReAct 落地时一般需要这几个组件配合：
 4. 工具集与技能库，包括原子工具和 Skills
 5. 反馈观察机制，采集工具响应并追加回上下文
 
-![ReAct 模式流程](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-react-flow.png)
+![ReAct 模式流程](https://oss.javaguide.cn/github/offerkit/ai/agent/agent-react-flow.png)
 
 ReAct 的每一步都由外部观察结果推动，因而比一次性生成更容易追溯决策依据，也能减少脱离环境的判断。相应地，多轮调用会增加响应延迟，效果还取决于工具和 Skills 是否可靠。
 
@@ -298,7 +298,7 @@ Reflection 通常叠加在 ReAct 或 Plan-and-Execute 上：执行过程中加�
 
 需要辩论、评审或相互验证时，可采用 **Peer-to-Peer 模式**，由地位对等的 Agent 直接对话和审查。
 
-![Multi-Agent 系统架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-multi-agent-arch.png)
+![Multi-Agent 系统架构](https://oss.javaguide.cn/github/offerkit/ai/agent/agent-multi-agent-arch.png)
 
 当任务确实能按专业角色拆分时，Multi-Agent 可以并行执行，且单个子任务失败未必阻断整体。代价是 Agent 间的通信、协调和调试成本都会上升，Token 消耗也随之增加。
 
@@ -320,13 +320,13 @@ A2A 协议就是给 Agent 之间定义接口契约。
 
 比如“产品经理 Agent”写完需求后，不会输出一句“我写好了，你开发一下”。它应该输出一个标准 JSON Payload，里面包含 TaskID、Dependencies、AcceptanceCriteria。开发 Agent 拿到后直接反序列化，进入执行流程。
 
-![A2A 协议架构](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-a2a.png)
+![A2A 协议架构](https://oss.javaguide.cn/github/offerkit/ai/agent/agent-a2a.png)
 
 ### Agentic Workflows
 
 Agentic Workflows 是吴恩达（Andrew Ng）重点倡导的概念，强调用工程编排把推理、工具、记忆、反思和多实体协作接成可执行流程，而不只等待底层模型能力变化。
 
-![智能体工作流核心模式](https://oss.javaguide.cn/github/javaguide/ai/agent/agent-agentic-workflows.png)
+![智能体工作流核心模式](https://oss.javaguide.cn/github/offerkit/ai/agent/agent-agentic-workflows.png)
 
 其中常见的设计模式包括：
 
@@ -353,7 +353,7 @@ Node 只做一件事，读取状态、执行逻辑、写回结果。节点里可
 
 “审核不通过就回到修改，最多重试 3 次”，翻译成图结构，是一条从 ReviewNode 指向 ReviseNode 的条件边，加上 `iteration_count >= 3` 时跳到 ExitNode 的安全边界。State 里的 `iteration_count` 是让这条逻辑能跑起来的关键。
 
-这套图结构比写死的 if-else 链更容易扩展，出了问题也好定位到哪个节点哪条边。LangGraph（Python）和 Spring AI Alibaba Graph（Java）都是基于这套思路实现的。详细设计和代码实现可以看：[《AI 工作流中的 Workflow、Graph 与 Loop》](https://javaguide.cn/ai/agent/workflow-graph-loop.html)。
+这套图结构比写死的 if-else 链更容易扩展，出了问题也好定位到哪个节点哪条边。LangGraph（Python）和 Spring AI Alibaba Graph（Java）都是基于这套思路实现的。详细设计和代码实现可以看：[《AI 工作流中的 Workflow、Graph 与 Loop》](/ai/agent/workflow-graph-loop.html)。
 
 ### 什么时候用 Agent，什么时候用 Workflow？
 
