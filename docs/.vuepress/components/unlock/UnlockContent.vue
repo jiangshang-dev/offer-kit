@@ -17,7 +17,12 @@
         </p>
 
         <div class="qr-container">
-          <img :src="resolvedQrCodeUrl" alt="公众号二维码" class="qr-image" />
+          <img
+            :src="resolvedQrCodeUrl"
+            alt="公众号二维码"
+            class="qr-image"
+            referrerpolicy="no-referrer"
+          />
           <p class="qr-tip">
             扫码关注「{{ unlockConfig.accountName }}」，回复
             <span class="highlight">“验证码”</span>

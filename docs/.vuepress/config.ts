@@ -24,22 +24,9 @@ export default defineUserConfig({
     // meta
     ["meta", { name: "robots", content: "all" }],
     ["meta", { name: "author", content: "姜小白" }],
-    // [
-    //   "meta",
-    //   {
-    //     name: "keywords",
-    //     content:
-    //       "OfferKit, 后端面试, 后端开发, Java面试, Java基础, 并发编程, JVM, 数据库, MySQL, Redis, Spring, 分布式, 高并发, 高性能, 高可用, 系统设计, 消息队列, 缓存, 计算机网络, Linux",
-    //   },
-    // ],
-    // [
-    //   "meta",
-    //   {
-    //     name: "description",
-    //     content:
-    //       "OfferKit 是一份面向后端开发/后端面试的学习与复习指南，覆盖 Java、数据库/MySQL、Redis、分布式、高并发、高可用、系统设计等核心知识。",
-    //   },
-    // ],
+    // oss.javaguide.cn 开启了 Referer 防盗链：生产域名会 403，本地正常。
+    // 不发送 Referer 即可正常加载图床图片。
+    ["meta", { name: "referrer", content: "no-referrer" }],
     ["meta", { name: "apple-mobile-web-app-capable", content: "yes" }],
   ],
 

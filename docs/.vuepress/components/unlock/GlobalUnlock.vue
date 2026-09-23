@@ -31,6 +31,7 @@
                 :src="qrCodeSrc"
                 alt="公众号二维码"
                 class="qr-image"
+                referrerpolicy="no-referrer"
               />
               <p class="qr-tip">
                 扫码/微信搜索关注

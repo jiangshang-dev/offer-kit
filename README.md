@@ -29,4 +29,4 @@ pnpm docs:build:offer
 
 - GitHub: https://github.com/jiangshang-dev?tab=repositories
 - 博客: https://alibabap8developer.github.io/myblog/
-
+- 面试笔记: https://www.mianshi-offer.cn/offer/
